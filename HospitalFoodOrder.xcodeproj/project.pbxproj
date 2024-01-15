@@ -1,0 +1,563 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		BD8E7A155E67A906DC36D82D /* libPods-HospitalFoodOrder.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3114773519FB4A5B6593D6B5 /* libPods-HospitalFoodOrder.a */; };
+		DC113C6F2B227AEF005D326F /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC113C6E2B227AEF005D326F /* LottieView.swift */; };
+		DC19EEDC2B34946E003ABDCE /* ColorSchemeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC19EEDB2B34946E003ABDCE /* ColorSchemeModel.swift */; };
+		DC2ABDEE2AB50E3F00778F10 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2ABDED2AB50E3F00778F10 /* ContentView.swift */; };
+		DC2ABDF02AB50E4400778F10 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DC2ABDEF2AB50E4400778F10 /* Assets.xcassets */; };
+		DC2D04AD2B33DF0C009E8EAA /* TabPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2D04AA2B33DF0C009E8EAA /* TabPosition.swift */; };
+		DC2D04AE2B33DF0C009E8EAA /* Tabs.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2D04AB2B33DF0C009E8EAA /* Tabs.swift */; };
+		DC2D04AF2B33DF0C009E8EAA /* TabShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2D04AC2B33DF0C009E8EAA /* TabShape.swift */; };
+		DC3EB2002B23C32F00F5D46F /* addPlus.lottie in Resources */ = {isa = PBXBuildFile; fileRef = DC3EB1FF2B23C32F00F5D46F /* addPlus.lottie */; };
+		DC3EB2042B23C7FC00F5D46F /* LottieAnimationView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC3EB2032B23C7FC00F5D46F /* LottieAnimationView2.swift */; };
+		DC44752C2B0C38B30012E3FB /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC44752B2B0C38B30012E3FB /* SettingsView.swift */; };
+		DC44752E2B0C39A10012E3FB /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC44752D2B0C39A10012E3FB /* InfoView.swift */; };
+		DC45E12D2B003B15003B48C3 /* PatientSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC45E12C2B003B15003B48C3 /* PatientSelectionView.swift */; };
+		DC45E12F2B003E0B003B48C3 /* CardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC45E12E2B003E0B003B48C3 /* CardModel.swift */; };
+		DC6C77B92B2913820080494A /* WorkingTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC6C77B82B2913820080494A /* WorkingTimeView.swift */; };
+		DC6C77BD2B2A74AC0080494A /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC6C77BC2B2A74AC0080494A /* SplashView.swift */; };
+		DC8F09B42B1DF85B00F5EF3A /* OptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8F09B32B1DF85B00F5EF3A /* OptionView.swift */; };
+		DC8F09B62B1DFBD200F5EF3A /* ColorSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8F09B52B1DFBD200F5EF3A /* ColorSettingsView.swift */; };
+		DC9113DC2B026A6900F51D16 /* OverViewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9113DB2B026A6900F51D16 /* OverViewView.swift */; };
+		DCB49BC12AFD912C003E450F /* Feedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB49BC02AFD912C003E450F /* Feedback.swift */; };
+		DCC358912B0FA36000C7DD3A /* OrderFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCC358902B0FA36000C7DD3A /* OrderFormView.swift */; };
+		DCF2FDB32B2CDC3F00BFBE63 /* DeveloperSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF2FDB22B2CDC3F00BFBE63 /* DeveloperSettingsView.swift */; };
+		DCF2FDB72B2E49AC00BFBE63 /* SettingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF2FDB62B2E49AC00BFBE63 /* SettingsModel.swift */; };
+		DCF2FDBA2B2E594700BFBE63 /* WorkingDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF2FDB92B2E594700BFBE63 /* WorkingDetailView.swift */; };
+		DCF5F78A2B22935B00AA4B2F /* foodAnimation.lottie in Resources */ = {isa = PBXBuildFile; fileRef = DCF5F7892B22935B00AA4B2F /* foodAnimation.lottie */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		DC3DF34B2AF18B5100A0856D /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		05C20A8BED30AEC72D1E8723 /* Pods-HospitalFoodOrder.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HospitalFoodOrder.release.xcconfig"; path = "Target Support Files/Pods-HospitalFoodOrder/Pods-HospitalFoodOrder.release.xcconfig"; sourceTree = "<group>"; };
+		293AE7A944ABA949890CD4FB /* Pods-HospitalFoodOrder.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HospitalFoodOrder.debug.xcconfig"; path = "Target Support Files/Pods-HospitalFoodOrder/Pods-HospitalFoodOrder.debug.xcconfig"; sourceTree = "<group>"; };
+		3114773519FB4A5B6593D6B5 /* libPods-HospitalFoodOrder.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-HospitalFoodOrder.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DC113C6E2B227AEF005D326F /* LottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
+		DC19EEDB2B34946E003ABDCE /* ColorSchemeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSchemeModel.swift; sourceTree = "<group>"; };
+		DC2ABDE82AB50E3F00778F10 /* HospitalFoodOrder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HospitalFoodOrder.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		DC2ABDED2AB50E3F00778F10 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		DC2ABDEF2AB50E4400778F10 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		DC2D04AA2B33DF0C009E8EAA /* TabPosition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabPosition.swift; sourceTree = "<group>"; };
+		DC2D04AB2B33DF0C009E8EAA /* Tabs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tabs.swift; sourceTree = "<group>"; };
+		DC2D04AC2B33DF0C009E8EAA /* TabShape.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabShape.swift; sourceTree = "<group>"; };
+		DC3DF3322AF18AE600A0856D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		DC3DF3392AF18B5000A0856D /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		DC3DF33B2AF18B5000A0856D /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		DC3EB1FF2B23C32F00F5D46F /* addPlus.lottie */ = {isa = PBXFileReference; lastKnownFileType = file; path = addPlus.lottie; sourceTree = "<group>"; };
+		DC3EB2032B23C7FC00F5D46F /* LottieAnimationView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieAnimationView2.swift; sourceTree = "<group>"; };
+		DC44752B2B0C38B30012E3FB /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		DC44752D2B0C39A10012E3FB /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
+		DC45E12C2B003B15003B48C3 /* PatientSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientSelectionView.swift; sourceTree = "<group>"; };
+		DC45E12E2B003E0B003B48C3 /* CardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardModel.swift; sourceTree = "<group>"; };
+		DC6C77B82B2913820080494A /* WorkingTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkingTimeView.swift; sourceTree = "<group>"; };
+		DC6C77BC2B2A74AC0080494A /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
+		DC8F09B32B1DF85B00F5EF3A /* OptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionView.swift; sourceTree = "<group>"; };
+		DC8F09B52B1DFBD200F5EF3A /* ColorSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSettingsView.swift; sourceTree = "<group>"; };
+		DC9113DB2B026A6900F51D16 /* OverViewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverViewView.swift; sourceTree = "<group>"; };
+		DCB49BC02AFD912C003E450F /* Feedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feedback.swift; sourceTree = "<group>"; };
+		DCC358902B0FA36000C7DD3A /* OrderFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderFormView.swift; sourceTree = "<group>"; };
+		DCF2FDB22B2CDC3F00BFBE63 /* DeveloperSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeveloperSettingsView.swift; sourceTree = "<group>"; };
+		DCF2FDB62B2E49AC00BFBE63 /* SettingsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsModel.swift; sourceTree = "<group>"; };
+		DCF2FDB92B2E594700BFBE63 /* WorkingDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkingDetailView.swift; sourceTree = "<group>"; };
+		DCF5F7892B22935B00AA4B2F /* foodAnimation.lottie */ = {isa = PBXFileReference; lastKnownFileType = file; path = foodAnimation.lottie; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		DC2ABDE52AB50E3F00778F10 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BD8E7A155E67A906DC36D82D /* libPods-HospitalFoodOrder.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		44E8455F3331A0A486E1B93B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				293AE7A944ABA949890CD4FB /* Pods-HospitalFoodOrder.debug.xcconfig */,
+				05C20A8BED30AEC72D1E8723 /* Pods-HospitalFoodOrder.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		DC2ABDDF2AB50E3F00778F10 = {
+			isa = PBXGroup;
+			children = (
+				DC2ABDEA2AB50E3F00778F10 /* HospitalFoodOrder */,
+				DC3DF3382AF18B5000A0856D /* Frameworks */,
+				DC2ABDE92AB50E3F00778F10 /* Products */,
+				44E8455F3331A0A486E1B93B /* Pods */,
+			);
+			sourceTree = "<group>";
+		};
+		DC2ABDE92AB50E3F00778F10 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				DC2ABDE82AB50E3F00778F10 /* HospitalFoodOrder.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		DC2ABDEA2AB50E3F00778F10 /* HospitalFoodOrder */ = {
+			isa = PBXGroup;
+			children = (
+				DC4475302B0C3A6D0012E3FB /* Views */,
+				DC44752F2B0C3A460012E3FB /* Models */,
+				DCF2FDB52B2E48AC00BFBE63 /* UnusedViews */,
+				DC2ABDEF2AB50E4400778F10 /* Assets.xcassets */,
+				DCF5F7892B22935B00AA4B2F /* foodAnimation.lottie */,
+				DC3DF3322AF18AE600A0856D /* Info.plist */,
+			);
+			path = HospitalFoodOrder;
+			sourceTree = "<group>";
+		};
+		DC3DF3382AF18B5000A0856D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DC3DF3392AF18B5000A0856D /* WidgetKit.framework */,
+				DC3DF33B2AF18B5000A0856D /* SwiftUI.framework */,
+				3114773519FB4A5B6593D6B5 /* libPods-HospitalFoodOrder.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DC44752F2B0C3A460012E3FB /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				DC3EB1FF2B23C32F00F5D46F /* addPlus.lottie */,
+				DC2D04AA2B33DF0C009E8EAA /* TabPosition.swift */,
+				DC2D04AB2B33DF0C009E8EAA /* Tabs.swift */,
+				DC2D04AC2B33DF0C009E8EAA /* TabShape.swift */,
+				DC45E12E2B003E0B003B48C3 /* CardModel.swift */,
+				DCF2FDB62B2E49AC00BFBE63 /* SettingsModel.swift */,
+				DC19EEDB2B34946E003ABDCE /* ColorSchemeModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		DC4475302B0C3A6D0012E3FB /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				DC2ABDED2AB50E3F00778F10 /* ContentView.swift */,
+				DC6C77BC2B2A74AC0080494A /* SplashView.swift */,
+				DCF2FDB42B2E487400BFBE63 /* NavigationBarViews */,
+				DC44752D2B0C39A10012E3FB /* InfoView.swift */,
+				DC113C6E2B227AEF005D326F /* LottieView.swift */,
+				DC3EB2032B23C7FC00F5D46F /* LottieAnimationView2.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		DCF2FDB42B2E487400BFBE63 /* NavigationBarViews */ = {
+			isa = PBXGroup;
+			children = (
+				DCC358902B0FA36000C7DD3A /* OrderFormView.swift */,
+				DC6C77B82B2913820080494A /* WorkingTimeView.swift */,
+				DCF2FDB92B2E594700BFBE63 /* WorkingDetailView.swift */,
+				DC44752B2B0C38B30012E3FB /* SettingsView.swift */,
+				DCF2FDB82B2E4A3C00BFBE63 /* InSettingsViews */,
+			);
+			path = NavigationBarViews;
+			sourceTree = "<group>";
+		};
+		DCF2FDB52B2E48AC00BFBE63 /* UnusedViews */ = {
+			isa = PBXGroup;
+			children = (
+				DC9113DB2B026A6900F51D16 /* OverViewView.swift */,
+				DC45E12C2B003B15003B48C3 /* PatientSelectionView.swift */,
+			);
+			path = UnusedViews;
+			sourceTree = "<group>";
+		};
+		DCF2FDB82B2E4A3C00BFBE63 /* InSettingsViews */ = {
+			isa = PBXGroup;
+			children = (
+				DC8F09B32B1DF85B00F5EF3A /* OptionView.swift */,
+				DC8F09B52B1DFBD200F5EF3A /* ColorSettingsView.swift */,
+				DCF2FDB22B2CDC3F00BFBE63 /* DeveloperSettingsView.swift */,
+				DCB49BC02AFD912C003E450F /* Feedback.swift */,
+			);
+			path = InSettingsViews;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		DC2ABDE72AB50E3F00778F10 /* HospitalFoodOrder */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DC2ABE0C2AB50E4400778F10 /* Build configuration list for PBXNativeTarget "HospitalFoodOrder" */;
+			buildPhases = (
+				7DA8E6B2281033E35D82E956 /* [CP] Check Pods Manifest.lock */,
+				DC2ABDE42AB50E3F00778F10 /* Sources */,
+				DC2ABDE52AB50E3F00778F10 /* Frameworks */,
+				DC2ABDE62AB50E3F00778F10 /* Resources */,
+				DC3DF34B2AF18B5100A0856D /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = HospitalFoodOrder;
+			packageProductDependencies = (
+			);
+			productName = HospitalFoodOrderChatGPT;
+			productReference = DC2ABDE82AB50E3F00778F10 /* HospitalFoodOrder.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		DC2ABDE02AB50E3F00778F10 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1500;
+				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+					DC2ABDE72AB50E3F00778F10 = {
+						CreatedOnToolsVersion = 15.0;
+					};
+				};
+			};
+			buildConfigurationList = DC2ABDE32AB50E3F00778F10 /* Build configuration list for PBXProject "HospitalFoodOrder" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = de;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				de,
+			);
+			mainGroup = DC2ABDDF2AB50E3F00778F10;
+			packageReferences = (
+			);
+			productRefGroup = DC2ABDE92AB50E3F00778F10 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				DC2ABDE72AB50E3F00778F10 /* HospitalFoodOrder */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		DC2ABDE62AB50E3F00778F10 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DCF5F78A2B22935B00AA4B2F /* foodAnimation.lottie in Resources */,
+				DC3EB2002B23C32F00F5D46F /* addPlus.lottie in Resources */,
+				DC2ABDF02AB50E4400778F10 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		7DA8E6B2281033E35D82E956 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-HospitalFoodOrder-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		DC2ABDE42AB50E3F00778F10 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DCF2FDB72B2E49AC00BFBE63 /* SettingsModel.swift in Sources */,
+				DC44752E2B0C39A10012E3FB /* InfoView.swift in Sources */,
+				DC19EEDC2B34946E003ABDCE /* ColorSchemeModel.swift in Sources */,
+				DCC358912B0FA36000C7DD3A /* OrderFormView.swift in Sources */,
+				DC44752C2B0C38B30012E3FB /* SettingsView.swift in Sources */,
+				DCF2FDB32B2CDC3F00BFBE63 /* DeveloperSettingsView.swift in Sources */,
+				DC2D04AE2B33DF0C009E8EAA /* Tabs.swift in Sources */,
+				DC6C77B92B2913820080494A /* WorkingTimeView.swift in Sources */,
+				DC2ABDEE2AB50E3F00778F10 /* ContentView.swift in Sources */,
+				DC9113DC2B026A6900F51D16 /* OverViewView.swift in Sources */,
+				DC2D04AF2B33DF0C009E8EAA /* TabShape.swift in Sources */,
+				DC2D04AD2B33DF0C009E8EAA /* TabPosition.swift in Sources */,
+				DCB49BC12AFD912C003E450F /* Feedback.swift in Sources */,
+				DC45E12D2B003B15003B48C3 /* PatientSelectionView.swift in Sources */,
+				DC8F09B62B1DFBD200F5EF3A /* ColorSettingsView.swift in Sources */,
+				DC8F09B42B1DF85B00F5EF3A /* OptionView.swift in Sources */,
+				DC113C6F2B227AEF005D326F /* LottieView.swift in Sources */,
+				DC45E12F2B003E0B003B48C3 /* CardModel.swift in Sources */,
+				DC3EB2042B23C7FC00F5D46F /* LottieAnimationView2.swift in Sources */,
+				DCF2FDBA2B2E594700BFBE63 /* WorkingDetailView.swift in Sources */,
+				DC6C77BD2B2A74AC0080494A /* SplashView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		DC2ABE0A2AB50E4400778F10 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		DC2ABE0B2AB50E4400778F10 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		DC2ABE0D2AB50E4400778F10 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 293AE7A944ABA949890CD4FB /* Pods-HospitalFoodOrder.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_USE_OPTIMIZATION_PROFILE = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 4;
+				DEVELOPMENT_ASSET_PATHS = "\"HospitalFoodOrder/Preview Content\"";
+				DEVELOPMENT_TEAM = 6728DRMDL9;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = HospitalFoodOrder/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Food Order";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.medical";
+				INFOPLIST_KEY_LSSupportsOpeningDocumentsInPlace = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.4;
+				PRODUCT_BUNDLE_IDENTIFIER = PrivatFelix.HospitalFoodOrder;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		DC2ABE0E2AB50E4400778F10 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 05C20A8BED30AEC72D1E8723 /* Pods-HospitalFoodOrder.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_USE_OPTIMIZATION_PROFILE = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 4;
+				DEVELOPMENT_ASSET_PATHS = "\"HospitalFoodOrder/Preview Content\"";
+				DEVELOPMENT_TEAM = 6728DRMDL9;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = HospitalFoodOrder/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Food Order";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.medical";
+				INFOPLIST_KEY_LSSupportsOpeningDocumentsInPlace = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.4;
+				PRODUCT_BUNDLE_IDENTIFIER = PrivatFelix.HospitalFoodOrder;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		DC2ABDE32AB50E3F00778F10 /* Build configuration list for PBXProject "HospitalFoodOrder" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DC2ABE0A2AB50E4400778F10 /* Debug */,
+				DC2ABE0B2AB50E4400778F10 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DC2ABE0C2AB50E4400778F10 /* Build configuration list for PBXNativeTarget "HospitalFoodOrder" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DC2ABE0D2AB50E4400778F10 /* Debug */,
+				DC2ABE0E2AB50E4400778F10 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = DC2ABDE02AB50E3F00778F10 /* Project object */;
+}

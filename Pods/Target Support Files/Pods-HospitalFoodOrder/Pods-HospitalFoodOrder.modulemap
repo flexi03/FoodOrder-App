@@ -1,0 +1,6 @@
+module Pods_HospitalFoodOrder {
+  umbrella header "Pods-HospitalFoodOrder-umbrella.h"
+
+  export *
+  module * { export * }
+}
