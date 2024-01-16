@@ -16,11 +16,10 @@ struct OrderFormView: View {
     
     @State private var isResetConfirmationPresented: Bool = false
     @State private var isResetAllConfirmationPresented: Bool = false
-    //    @State private var isOrderConfirmationPresented: Bool = false
     
     @ObservedObject private var selectionManager = SelectionManager()
     
-    @State private var color = Color.primary
+    @State private var color = Color.accentColor
     
     @State private var isButtonPressed = false
     
@@ -48,90 +47,7 @@ struct OrderFormView: View {
                     generator.impactOccurred()
                     determineColor()
                 }
-                //                    .onChange(of: patientSelection.patientSelection) { _ in
-                //                        // Vibration hinzufügen
-                //                        let generator = UINotificationFeedbackGenerator()
-                //                        generator.notificationOccurred(.success) }
-                
             }
-            
-            //                Section {
-            //                    LottieAnimationView2()
-            //                        .frame(height: 200)
-            //                }
-            
-            
-            //                if patientSelection.patientSelection == "P1" {
-            //                    Section {
-            //                        Picker("Unverträglichkeiten", selection: $patientSelection.foodIntolerance1) {
-            //                            Text("WK").tag("WK1")
-            //                            Text("Leicht").tag("Leicht1")
-            //                            Text("Passiert").tag("Passiert1")
-            //                            Text("Nüchtern").tag("Nüchtern1")
-            //                        }
-            ////                        .frame(height: 50)
-            //                        .pickerStyle(SegmentedPickerStyle())
-            //                        .onChange(of: patientSelection.foodIntolerance1) { _ in
-            //                            // Vibration hinzufügen
-            //                            let generator = UINotificationFeedbackGenerator()
-            //                            generator.notificationOccurred(.success) }
-            //
-            //                    }
-            //                }
-            //
-            //                if patientSelection.patientSelection == "P2" {
-            //                    Section {
-            //                        Picker("Unverträglichkeiten", selection: $patientSelection.foodIntolerance2) {
-            //                            Text("WK").tag("WK2")
-            //                            Text("Leicht").tag("Leicht2")
-            //                            Text("Passiert").tag("Passiert2")
-            //                            Text("Nüchtern").tag("Nüchtern2")
-            //                        }
-            ////                        .frame(height: 50)
-            //                        .pickerStyle(SegmentedPickerStyle())
-            //                        .onChange(of: patientSelection.foodIntolerance2) { _ in
-            //                            // Vibration hinzufügen
-            //                            let generator = UINotificationFeedbackGenerator()
-            //                            generator.notificationOccurred(.success) }
-            //
-            //                    }
-            //                }
-            //
-            //                if patientSelection.patientSelection == "P3" {
-            //                    Section {
-            //                        Picker("Unverträglichkeiten", selection: $patientSelection.foodIntolerance3) {
-            //                            Text("WK").tag("WK3")
-            //                            Text("Leicht").tag("Leicht3")
-            //                            Text("Passiert").tag("Passiert3")
-            //                            Text("Nüchtern").tag("Nüchtern3")
-            //                        }
-            ////                        .frame(height: 50)
-            //                        .pickerStyle(SegmentedPickerStyle())
-            //                        .onChange(of: patientSelection.foodIntolerance3) { _ in
-            //                            // Vibration hinzufügen
-            //                            let generator = UINotificationFeedbackGenerator()
-            //                            generator.notificationOccurred(.success) }
-            //
-            //                    }
-            //                }
-            //
-            //                if patientSelection.patientSelection == "P4" {
-            //                    Section {
-            //                        Picker("Unverträglichkeiten", selection: $patientSelection.foodIntolerance4) {
-            //                            Text("WK").tag("WK4")
-            //                            Text("Leicht").tag("Leicht4")
-            //                            Text("Passiert").tag("Passiert4")
-            //                            Text("Nüchtern").tag("Nüchtern4")
-            //                        }
-            ////                        .frame(height: 50)
-            //                        .pickerStyle(SegmentedPickerStyle())
-            //                        .onChange(of: patientSelection.foodIntolerance4) { _ in
-            //                            // Vibration hinzufügen
-            //                            let generator = UINotificationFeedbackGenerator()
-            //                            generator.notificationOccurred(.success) }
-            //
-            //                    }
-            //                }
             
             if patientSelection.patientSelection == "P1" {
                 Section(header: Text("Brot").fontWeight(.semibold)) {
@@ -661,7 +577,6 @@ struct OrderFormView: View {
             // MARK: Button Bestellungsview
             Button(action: {
                 isButtonPressed.toggle()
-                //                                    isOrderConfirmationPresented.toggle()
             }, label: {
                 if isButtonPressed == false {
                     Text("Bestellübersicht anzeigen")
@@ -702,20 +617,6 @@ struct OrderFormView: View {
             Image(systemName: "trash")
                 .fontWeight(.bold)
         })
-        
-        //            .navigationBarItems(
-        //                leading: Button(action: {
-        //                    // Use NavigationLink here
-        //                }) {
-        //                    Image(systemName: "lightbulb.max")
-        //                },
-        //                trailing: Button(action: {
-        //                    isResetConfirmationPresented.toggle()
-        //                }) {
-        //                    Image(systemName: "trash")
-        //                        .fontWeight(.bold)
-        //                }
-        //            )
         .actionSheet(isPresented: $isResetConfirmationPresented) {
             ActionSheet(title: Text("Welche Bestellung möchtest Du zurücksetzen?"), buttons: [
                 .default(Text("Bestellung 1")) { resetSelections1() // Vibration hinzufügen
@@ -738,21 +639,6 @@ struct OrderFormView: View {
         }
         .accentColor(color) // Farbe auch vom Picker jetzt in der richtigen Patientenfarbe anzeigen
         .background(validateBackgroundColor())
-        
-        // Alert für Alle
-        //            .alert(isPresented: $isResetAllConfirmationPresented) {
-        //                Alert(
-        //                    title: Text("Bestellungen zurücksetzen"),
-        //                    message: Text("Sind Sie sicher, dass Sie die komplette Auswahl zurücksetzen möchten?"),
-        //                    primaryButton: .destructive(Text("Zurücksetzen")) {
-        //                        resetAllSelections()
-        //                        // Vibration hinzufügen
-        //                        let generator = UINotificationFeedbackGenerator()
-        //                        generator.notificationOccurred(.warning)
-        //                    },
-        //                    secondaryButton: .cancel(Text("Abbrechen"))
-        //                )
-        //            }
     }
     
     func resetAllSelections() {
