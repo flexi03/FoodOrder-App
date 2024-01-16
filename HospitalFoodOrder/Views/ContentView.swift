@@ -10,7 +10,14 @@ import SwiftUI
 import Lottie
 
 public class patientSelectionManager: ObservableObject {
-    @Published var patientSelection: String = "P1"
+    @Published var patientSelection: String = "P1" {
+        didSet {
+            UserDefaults.standard.set(patientSelection, forKey: "patientSelection")
+        }
+    }
+    init() {
+        self.patientSelection = UserDefaults.standard.object(forKey: "patientSelection") as? String ?? "P1"
+    }
     @Published var foodIntolerance1: String = "WK1"
     @Published var foodIntolerance2: String = "WK2"
     @Published var foodIntolerance3: String = "WK3"

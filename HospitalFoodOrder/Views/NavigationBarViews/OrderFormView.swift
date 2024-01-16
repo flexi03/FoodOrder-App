@@ -19,7 +19,7 @@ struct OrderFormView: View {
     
     @ObservedObject private var selectionManager = SelectionManager()
     
-    @State private var color = Color.accentColor
+    @State private var color = Color.accent
     
     @State private var isButtonPressed = false
     
@@ -820,7 +820,7 @@ struct OrderFormView: View {
     
     func determineColor() {
         if patientSelection.patientSelection == "P1" {
-            color = Color.accentColor
+            color = Color.accent
         }
         
         if patientSelection.patientSelection == "P2" {

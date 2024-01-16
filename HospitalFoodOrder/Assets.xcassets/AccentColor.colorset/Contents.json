@@ -2,8 +2,8 @@
   "colors" : [
     {
       "color" : {
-        "platform" : "ios",
-        "reference" : "tintColor"
+        "platform" : "universal",
+        "reference" : "systemCyanColor"
       },
       "idiom" : "universal"
     }

@@ -114,7 +114,7 @@ public class Settings: ObservableObject {
     }
     
     // Brot Zähler 1-4
-    @Published var selectedBreadCounts: [String: Int] = [:] {
+    @Published var selectedBreadCounts: [String: Int] {
         didSet {
             UserDefaults.standard.set(selectedBreadCounts, forKey: "selectedBreadCounts")
         }
@@ -322,6 +322,42 @@ public class Settings: ObservableObject {
         self.spreadsOptions = UserDefaults.standard.stringArray(forKey: "spreadsOptions") ?? ["Butter", "Margarine", "Käse", "Pute", "Fleischwurst", "Schinken", "Salami"]
         self.spreadsOptions2 = UserDefaults.standard.stringArray(forKey: "spreadsOptions2") ?? ["Frischkäse Natur", "Frischkäse Kräuter", "Quark", "Schmelzkäse", "Leberwurst", "Mettwurst", "Marmelade", "Honig"]
         self.specialsOptions = UserDefaults.standard.stringArray(forKey: "specialsOptions") ?? ["Frucht Joghurt", "Natur Joghurt", "Grießpudding", "Milchreis", "Brühe" , "Brühe vegetarisch"]
+        self.selectedBreadCounts = UserDefaults.standard.dictionary(forKey: "selectedBreadCounts") as? [String: Int] ?? [:]
+        self.selectedBreadCounts2 = UserDefaults.standard.dictionary(forKey: "selectedBreadCounts2") as? [String: Int] ?? [:]
+        self.selectedBreadCounts3 = UserDefaults.standard.dictionary(forKey: "selectedBreadCounts3") as? [String: Int] ?? [:]
+        self.selectedBreadCounts4 = UserDefaults.standard.dictionary(forKey: "selectedBreadCounts4") as? [String: Int] ?? [:]
+        self.selectedSpreadsCounts = UserDefaults.standard.dictionary(forKey: "selectedSpreadsCounts") as? [String: Int] ?? [:]
+        self.selectedSpreadsCounts_2 = UserDefaults.standard.dictionary(forKey: "selectedSpreadsCounts_2") as? [String: Int] ?? [:]
+        self.selectedSpreadsCounts_3 = UserDefaults.standard.dictionary(forKey: "selectedSpreadsCounts_3") as? [String: Int] ?? [:]
+        self.selectedSpreadsCounts_4 = UserDefaults.standard.dictionary(forKey: "selectedSpreadsCounts_4") as? [String: Int] ?? [:]
+        self.selectedSpreadsCounts2 = UserDefaults.standard.dictionary(forKey: "selectedSpreadsCounts2") as? [String: Int] ?? [:]
+        self.selectedSpreadsCounts2_2 = UserDefaults.standard.dictionary(forKey: "selectedSpreadsCounts2_2") as? [String: Int] ?? [:]
+        self.selectedSpreadsCounts2_3 = UserDefaults.standard.dictionary(forKey: "selectedSpreadsCounts2_3") as? [String: Int] ?? [:]
+        self.selectedSpreadsCounts2_4 = UserDefaults.standard.dictionary(forKey: "selectedSpreadsCounts2_4") as? [String: Int] ?? [:]
+        self.selectedSpecialsCounts = UserDefaults.standard.dictionary(forKey: "selectedSpecialsCounts") as? [String: Int] ?? [:]
+        self.selectedSpecialsCounts2 = UserDefaults.standard.dictionary(forKey: "selectedSpecialsCounts2") as? [String: Int] ?? [:]
+        self.selectedSpecialsCounts3 = UserDefaults.standard.dictionary(forKey: "selectedSpecialsCounts3") as? [String: Int] ?? [:]
+        self.selectedSpecialsCounts4 = UserDefaults.standard.dictionary(forKey: "selectedSpecialsCounts4") as? [String: Int] ?? [:]
+        self.selectedTeaFlavor = UserDefaults.standard.string(forKey: "selectedTeaFlavor") ?? "Nichts"
+        self.selectedTeaFlavor2 = UserDefaults.standard.string(forKey: "selectedTeaFlavor2") ?? "Nichts"
+        self.selectedTeaFlavor3 = UserDefaults.standard.string(forKey: "selectedTeaFlavor3") ?? "Nichts"
+        self.selectedTeaFlavor4 = UserDefaults.standard.string(forKey: "selectedTeaFlavor4") ?? "Nichts"
+        self.selectedCoffeeFlavor = UserDefaults.standard.string(forKey: "selectedCoffeeFlavor") ?? "Nichts"
+        self.selectedCoffeeFlavor2 = UserDefaults.standard.string(forKey: "selectedCoffeeFlavor2") ?? "Nichts"
+        self.selectedCoffeeFlavor3 = UserDefaults.standard.string(forKey: "selectedCoffeeFlavor3") ?? "Nichts"
+        self.selectedCoffeeFlavor4 = UserDefaults.standard.string(forKey: "selectedCoffeeFlavor4") ?? "Nichts"
+        self.selectedFruitComposition = UserDefaults.standard.string(forKey: "selectedFruitComposition") ?? "Nichts"
+        self.selectedFruitComposition2 = UserDefaults.standard.string(forKey: "selectedFruitComposition2") ?? "Nichts"
+        self.selectedFruitComposition3 = UserDefaults.standard.string(forKey: "selectedFruitComposition3") ?? "Nichts"
+        self.selectedFruitComposition4 = UserDefaults.standard.string(forKey: "selectedFruitComposition4") ?? "Nichts"
+        self.fruitSelection = UserDefaults.standard.string(forKey: "fruitSelection") ?? "Nichts"
+        self.fruitSelection2 = UserDefaults.standard.string(forKey: "fruitSelection2") ?? "Nichts"
+        self.fruitSelection3 = UserDefaults.standard.string(forKey: "fruitSelection3") ?? "Nichts"
+        self.fruitSelection4 = UserDefaults.standard.string(forKey: "fruitSelection4") ?? "Nichts"
+        self.extrasOptionSelection = UserDefaults.standard.dictionary(forKey: "extrasOptionSelection") as? [String: Int] ?? [:]
+        self.extrasOptionSelection2 = UserDefaults.standard.dictionary(forKey: "extrasOptionSelection2") as? [String: Int] ?? [:]
+        self.extrasOptionSelection3 = UserDefaults.standard.dictionary(forKey: "extrasOptionSelection3") as? [String: Int] ?? [:]
+        self.extrasOptionSelection4 = UserDefaults.standard.dictionary(forKey: "extrasOptionSelection4") as? [String: Int] ?? [:]
         self.drinkSelection = UserDefaults.standard.string(forKey: "drinkSelection") ?? "Nichts"
         self.drinkSelection2 = UserDefaults.standard.string(forKey: "drinkSelection2") ?? "Nichts"
         self.drinkSelection3 = UserDefaults.standard.string(forKey: "drinkSelection3") ?? "Nichts"
@@ -331,6 +367,10 @@ public class Settings: ObservableObject {
         self.fruitOptions = UserDefaults.standard.stringArray(forKey: "fruitOptions") ?? ["Nichts", "Apfel", "Banane", "Birne"]
         self.coffeeSelected = UserDefaults.standard.bool(forKey: "Kaffee")
         self.extrasOptions = UserDefaults.standard.stringArray(forKey: "extrasOptions") ?? ["Zucker", "Süßstoff", "Milch", "Salz", "Pfeffer", "Gurke", "Tomate", "Suppe"]
+        self.extras = UserDefaults.standard.string(forKey: "extras") ?? ""
+        self.extras2 = UserDefaults.standard.string(forKey: "extras2") ?? ""
+        self.extras3 = UserDefaults.standard.string(forKey: "extras3") ?? ""
+        self.extras4 = UserDefaults.standard.string(forKey: "extras4") ?? ""
     }
     
     func deleteBreadOption(at offsets: IndexSet) {
