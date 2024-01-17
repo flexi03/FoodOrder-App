@@ -10,6 +10,42 @@ import SwiftUI
 // Modell für Einstellungen
 public class Settings: ObservableObject {
     
+    @Published var showRestrictions: Bool = true {
+        didSet {
+            UserDefaults.standard.set(showRestrictions, forKey: "showRestrictions")
+        }
+    }
+    
+    @Published var coffeeSelected: Bool = true {
+        didSet {
+            UserDefaults.standard.set(coffeeSelected, forKey: "Kaffee")
+        }
+    }
+    
+    @Published var restrictions1: String = "Keine" {
+        didSet {
+            UserDefaults.standard.set(restrictions1, forKey: "restrictions1")
+        }
+    }
+    
+    @Published var restrictions2: String = "Keine" {
+        didSet {
+            UserDefaults.standard.set(restrictions2, forKey: "restrictions2")
+        }
+    }
+    
+    @Published var restrictions3: String = "Keine" {
+        didSet {
+            UserDefaults.standard.set(restrictions3, forKey: "restrictions3")
+        }
+    }
+    
+    @Published var restrictions4: String = "Keine" {
+        didSet {
+            UserDefaults.standard.set(restrictions4, forKey: "restrictions4")
+        }
+    }
+    
     @Published var breadOptions: [String] {
         didSet {
             UserDefaults.standard.set(breadOptions, forKey: "breadOptions")
@@ -27,7 +63,6 @@ public class Settings: ObservableObject {
             UserDefaults.standard.set(spreadsOptions2, forKey: "spreadsOptions2")
         }
     }
-    
     
     @Published var specialsOptions: [String] {
         didSet {
@@ -50,12 +85,6 @@ public class Settings: ObservableObject {
     @Published var fruitOptions: [String] {
         didSet {
             UserDefaults.standard.set(fruitOptions, forKey: "fruitOptions")
-        }
-    }
-    
-    @Published var coffeeSelected: Bool = false {
-        didSet {
-            UserDefaults.standard.set(coffeeSelected, forKey: "Kaffee")
         }
     }
     
@@ -318,6 +347,12 @@ public class Settings: ObservableObject {
     @Published var newFruitOption: String = "Nichts"
     
     init() {
+        self.showRestrictions = UserDefaults.standard.bool(forKey: "showRestrictions")
+        self.coffeeSelected = UserDefaults.standard.bool(forKey: "Kaffee")
+        self.restrictions1 = UserDefaults.standard.string(forKey: "restrictions1") ?? "Keine"
+        self.restrictions2 = UserDefaults.standard.string(forKey: "restrictions2") ?? "Keine"
+        self.restrictions3 = UserDefaults.standard.string(forKey: "restrictions3") ?? "Keine"
+        self.restrictions4 = UserDefaults.standard.string(forKey: "restrictions4") ?? "Keine"
         self.breadOptions = UserDefaults.standard.stringArray(forKey: "breadOptions") ?? ["Weizen", "Grau", "Körner", "Brötchen"]
         self.spreadsOptions = UserDefaults.standard.stringArray(forKey: "spreadsOptions") ?? ["Butter", "Margarine", "Käse", "Pute", "Fleischwurst", "Schinken", "Salami"]
         self.spreadsOptions2 = UserDefaults.standard.stringArray(forKey: "spreadsOptions2") ?? ["Frischkäse Natur", "Frischkäse Kräuter", "Quark", "Schmelzkäse", "Leberwurst", "Mettwurst", "Marmelade", "Honig"]
@@ -365,7 +400,6 @@ public class Settings: ObservableObject {
         self.teaOptions = UserDefaults.standard.stringArray(forKey: "teaOptions") ?? ["Nichts", "Kamille", "Kräuter/ Grüner Tee", "Schwarzer Tee", "Früchte Tee", "Fenchel", "Pfefferminz"]
         self.coffeeOptions = UserDefaults.standard.stringArray(forKey: "coffeeOptions") ?? ["Nichts", "Kaffee", "Kaffee mit Milch", "Kaffee mit Zucker", "Kaffee mit Milch und Zucker"]
         self.fruitOptions = UserDefaults.standard.stringArray(forKey: "fruitOptions") ?? ["Nichts", "Apfel", "Banane", "Birne"]
-        self.coffeeSelected = UserDefaults.standard.bool(forKey: "Kaffee")
         self.extrasOptions = UserDefaults.standard.stringArray(forKey: "extrasOptions") ?? ["Zucker", "Süßstoff", "Milch", "Salz", "Pfeffer", "Gurke", "Tomate", "Suppe"]
         self.extras = UserDefaults.standard.string(forKey: "extras") ?? ""
         self.extras2 = UserDefaults.standard.string(forKey: "extras2") ?? ""

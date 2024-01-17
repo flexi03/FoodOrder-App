@@ -26,6 +26,9 @@ struct SettingsView: View {
                     Toggle(isOn: $settings.coffeeSelected) {
                         Text("Kaffee auswählbar")
                     }
+                    Toggle(isOn: $settings.showRestrictions) {
+                        Text("Einschränkungen anzeigen")
+                    }
                     NavigationLink("Auswahl Optionen", destination: OptionView(settings: Settings()))
                 }
                 

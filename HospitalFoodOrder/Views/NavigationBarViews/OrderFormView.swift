@@ -30,7 +30,6 @@ struct OrderFormView: View {
     
     var body: some View {
         Form {
-            
             Section {
                 Picker("Patientenauswahl", selection: $patientSelection.patientSelection) {
                     Text("1").tag("P1")
@@ -48,6 +47,109 @@ struct OrderFormView: View {
                     determineColor()
                 }
             }
+            
+            if settings.showRestrictions == true {
+                if patientSelection.patientSelection == "P1" {
+                    if isButtonPressed == false {
+                        Section(header: Text("Einschränkungen").fontWeight(.semibold)) {
+                            Picker ("Einschränkungen", selection: $settings.restrictions1) {
+                                Text("Keine").tag("Keine")
+                                Text("Schnabelbecher").tag("Schnabelbecher")
+                                Text("Schmieren").tag("Schmieren")
+                                Text("Schnabelbecher & Schmieren").tag("Schnabelbecher & Schmieren")
+                            }
+                        }
+                    }
+                    if isButtonPressed == true && settings.restrictions1 == "Keine" {
+                        // Nichts anzeigen
+                    } else if isButtonPressed == true && settings.restrictions1 != "Keine" {
+                        Section(header: Text("Einschränkungen").fontWeight(.semibold)) {
+                            Picker ("Einschränkungen", selection: $settings.restrictions1) {
+                                Text("Keine").tag("Keine")
+                                Text("Schnabelbecher").tag("Schnabelbecher")
+                                Text("Schmieren").tag("Schmieren")
+                                Text("Schnabelbecher & Schmieren").tag("Schnabelbecher & Schmieren")
+                            }
+                        }
+                    }
+                }
+                
+                if patientSelection.patientSelection == "P2" {
+                    if isButtonPressed == false {
+                        Section(header: Text("Einschränkungen").fontWeight(.semibold)) {
+                            Picker ("Einschränkungen", selection: $settings.restrictions2) {
+                                Text("Keine").tag("Keine")
+                                Text("Schnabelbecher").tag("Schnabelbecher")
+                                Text("Schmieren").tag("Schmieren")
+                                Text("Schnabelbecher & Schmieren").tag("Schnabelbecher & Schmieren")
+                            }
+                        }
+                    }
+                    if isButtonPressed == true && settings.restrictions2 == "Keine" {
+                        // Nichts anzeigen
+                    } else if isButtonPressed == true && settings.restrictions2 != "Keine" {
+                        Section(header: Text("Einschränkungen").fontWeight(.semibold)) {
+                            Picker ("Einschränkungen", selection: $settings.restrictions2) {
+                                Text("Keine").tag("Keine")
+                                Text("Schnabelbecher").tag("Schnabelbecher")
+                                Text("Schmieren").tag("Schmieren")
+                                Text("Schnabelbecher & Schmieren").tag("Schnabelbecher & Schmieren")
+                            }
+                        }
+                    }
+                }
+                
+                if patientSelection.patientSelection == "P3" {
+                    if isButtonPressed == false {
+                        Section(header: Text("Einschränkungen").fontWeight(.semibold)) {
+                            Picker ("Einschränkungen", selection: $settings.restrictions3) {
+                                Text("Keine").tag("Keine")
+                                Text("Schnabelbecher").tag("Schnabelbecher")
+                                Text("Schmieren").tag("Schmieren")
+                                Text("Schnabelbecher & Schmieren").tag("Schnabelbecher & Schmieren")
+                            }
+                        }
+                    }
+                    if isButtonPressed == true && settings.restrictions3 == "Keine" {
+                        // Nichts anzeigen
+                    } else if isButtonPressed == true && settings.restrictions3 != "Keine" {
+                        Section(header: Text("Einschränkungen").fontWeight(.semibold)) {
+                            Picker ("Einschränkungen", selection: $settings.restrictions3) {
+                                Text("Keine").tag("Keine")
+                                Text("Schnabelbecher").tag("Schnabelbecher")
+                                Text("Schmieren").tag("Schmieren")
+                                Text("Schnabelbecher & Schmieren").tag("Schnabelbecher & Schmieren")
+                            }
+                        }
+                    }
+                }
+                
+                if patientSelection.patientSelection == "P4" {
+                    if isButtonPressed == false {
+                        Section(header: Text("Einschränkungen").fontWeight(.semibold)) {
+                            Picker ("Einschränkungen", selection: $settings.restrictions4) {
+                                Text("Keine").tag("Keine")
+                                Text("Schnabelbecher").tag("Schnabelbecher")
+                                Text("Schmieren").tag("Schmieren")
+                                Text("Schnabelbecher & Schmieren").tag("Schnabelbecher & Schmieren")
+                            }
+                        }
+                    }
+                    if isButtonPressed == true && settings.restrictions4 == "Keine" {
+                        // Nichts anzeigen
+                    } else if isButtonPressed == true && settings.restrictions4 != "Keine" {
+                        Section(header: Text("Einschränkungen").fontWeight(.semibold)) {
+                            Picker ("Einschränkungen", selection: $settings.restrictions4) {
+                                Text("Keine").tag("Keine")
+                                Text("Schnabelbecher").tag("Schnabelbecher")
+                                Text("Schmieren").tag("Schmieren")
+                                Text("Schnabelbecher & Schmieren").tag("Schnabelbecher & Schmieren")
+                            }
+                        }
+                    }
+                }
+            }
+            
             
             if patientSelection.patientSelection == "P1" {
                 Section(header: Text("Brot").fontWeight(.semibold)) {
@@ -642,6 +744,12 @@ struct OrderFormView: View {
     }
     
     func resetAllSelections() {
+        
+        settings.restrictions1 = "Keine"
+        settings.restrictions2 = "Keine"
+        settings.restrictions3 = "Keine"
+        settings.restrictions4 = "Keine"
+        
         patientSelection.patientSelection = "P1"
         patientSelection.foodIntolerance1 = "WK1"
         patientSelection.foodIntolerance2 = "WK2"
@@ -708,6 +816,8 @@ struct OrderFormView: View {
     
     func resetSelections1() {
         
+        settings.restrictions1 = "Keine"
+        
         patientSelection.foodIntolerance1 = "WK1"
         
         settings.selectedBreadCounts.removeAll()
@@ -735,6 +845,8 @@ struct OrderFormView: View {
     }
     
     func resetSelections2() {
+        
+        settings.restrictions2 = "Keine"
         
         patientSelection.foodIntolerance2 = "WK2"
         
@@ -764,6 +876,8 @@ struct OrderFormView: View {
     
     func resetSelections3() {
         
+        settings.restrictions3 = "Keine"
+        
         patientSelection.foodIntolerance3 = "WK3"
         
         settings.selectedBreadCounts3.removeAll()
@@ -791,6 +905,8 @@ struct OrderFormView: View {
     }
     
     func resetSelections4() {
+        
+        settings.restrictions4 = "Keine"
         
         patientSelection.foodIntolerance4 = "WK4"
         
