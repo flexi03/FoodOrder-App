@@ -289,12 +289,12 @@ struct WorkingTimeView: View {
         //        .padding()
     }
     
-    // MARK: Chart
+//    // MARK: Chart
 //    @ViewBuilder
 //    func AnimatedChart() -> some View {
 //        Chart {
 //            ForEach(sortedWorkingTimes) {item in
-//                BarMark(x: .value("Tag", item.date, unit: .weekOfMonth),
+//                BarMark(x: .value("Tag", item.date, unit: .day),
 //                        y: .value("Überstunden", item.overtimeHours))
 //            }
 //        }

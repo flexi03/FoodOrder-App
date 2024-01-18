@@ -62,8 +62,8 @@ struct InfoView: View {
                                     Text("E-Mail kopiert")
                                         .foregroundColor(.black)
                                 }
-    //                            .padding(8)
-                                .transition(.opacity.animation(.easeInOut(duration: 1)))                            
+                                //                            .padding(8)
+                                .transition(.opacity.animation(.easeInOut(duration: 1)))
                                 .zIndex(1)
                             }
                         }
@@ -71,11 +71,10 @@ struct InfoView: View {
                     
                 }
                 Section("") {
-//                    Text("")
+                    //                    Text("")
                 }
-                    .frame(height: 100)
+                .frame(height: 100)
                 
-            
             }
 //            Image(systemName: "figure.walk.diamond")
 //                .resizable()
