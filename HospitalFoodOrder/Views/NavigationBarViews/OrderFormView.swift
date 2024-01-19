@@ -153,10 +153,7 @@ struct OrderFormView: View {
             if patientSelection.patientSelection == "P1" {
                 let breadOptions = isButtonPressed ? filterOptions(options: settings.breadOptions, counts: settings.selectedBreadCounts) : settings.breadOptions
                 if breadOptions.isEmpty {
-                    //                    Text("Bitte wähle mindestens eine Brotsorte aus")
-                    //                        .font(.title3)
-                    //                        .foregroundColor(.red)
-                    //                        .multilineTextAlignment(.center)
+                    // Nichts anzeigen
                 } else {
                     Section(header: Text("Brot").fontWeight(.semibold)) {
                         ForEach(breadOptions, id: \.self) { bread in
@@ -309,20 +306,6 @@ struct OrderFormView: View {
                 }
                 
                 if isButtonPressed == true && settings.restrictions1 == "Keine" && breadOptions.isEmpty && spreadOptions.isEmpty && spread2Options.isEmpty && specialsOptions.isEmpty && settings.selectedTeaFlavor == "Nichts" && settings.selectedCoffeeFlavor == "Nichts" && settings.fruitSelection == "Nichts" && extrasOptions.isEmpty && settings.extras.isEmpty {
-//                    Section() {
-//                        RoundedRectangle(cornerRadius: 10)
-//                            .fill(.red)
-//                            .overlay(
-//                                Text("Bestellung ist leer")
-//                                    .font(.title)
-//                                    .bold()
-//                                    .foregroundColor(.primary)
-//                            )
-//                            .frame(height: 100)
-////                        Text("Bestellung ist leer")
-////                            .contentShape(Rectangle())
-////                            .frame(height: 18)
-//                    }
                     Button(action: {
                         isButtonPressed.toggle()
                     }, label: {
@@ -339,400 +322,505 @@ struct OrderFormView: View {
             }
             
             if patientSelection.patientSelection == "P2" {
-                Section(header: Text("Brot").fontWeight(.semibold)) {
-                    let breadOptions2 = isButtonPressed ? filterOptions(options: settings.breadOptions, counts: settings.selectedBreadCounts2) : settings.breadOptions
-                    ForEach(breadOptions2, id: \.self) { bread in
-                        Stepper("\(bread) (\(max(0, settings.selectedBreadCounts2[bread] ?? 0)))", value: Binding(
-                            get: { max(0, settings.selectedBreadCounts2[bread] ?? 0) },
-                            set: { newValue in
-                                settings.selectedBreadCounts2[bread] = max(0, newValue)
-                                // Vibration hinzufügen
-                                let generator = UINotificationFeedbackGenerator()
-                                generator.notificationOccurred(.success)
+                let breadOptions = isButtonPressed ? filterOptions(options: settings.breadOptions, counts: settings.selectedBreadCounts2) : settings.breadOptions
+                if breadOptions.isEmpty {
+                    // Kein Brot ausgewählt
+                } else {
+                    Section(header: Text("Brot").fontWeight(.semibold)) {
+                        ForEach(breadOptions, id: \.self) { bread in
+                            Stepper("\(bread) (\(max(0, settings.selectedBreadCounts2[bread] ?? 0)))", value: Binding(
+                                get: { max(0, settings.selectedBreadCounts2[bread] ?? 0) },
+                                set: { newValue in
+                                    settings.selectedBreadCounts2[bread] = max(0, newValue)
+                                    // Vibration hinzufügen
+                                    let generator = UINotificationFeedbackGenerator()
+                                    generator.notificationOccurred(.success)
+                                }
+                                
+                            ))
+                            .onAppear(perform: determineColor)
+                            .foregroundColor(settings.selectedBreadCounts2[bread] ?? 0 >= 1 ? color : .primary)
+                        }
+                        .onDelete(perform: settings.deleteBreadOption)
+                    }
+                }
+                
+                let spreadsOptions = isButtonPressed ? filterOptions(options: settings.spreadsOptions, counts: settings.selectedSpreadsCounts_2) : settings.spreadsOptions
+                if spreadsOptions.isEmpty {
+                    // Keine Aufstriche ausgewählt
+                } else {
+                    Section(header: Text("Aufstrich").fontWeight(.semibold)) {
+                        ForEach(spreadsOptions, id: \.self) { spread in
+                            Stepper("\(spread) (\(max(0, settings.selectedSpreadsCounts_2[spread] ?? 0)))", value: Binding(
+                                get: { max(0, settings.selectedSpreadsCounts_2[spread] ?? 0) },
+                                set: { newValue in
+                                    settings.selectedSpreadsCounts_2[spread] = max(0, newValue)
+                                    // Vibration hinzufügen
+                                    let generator = UINotificationFeedbackGenerator()
+                                    generator.notificationOccurred(.success)
+                                }
+                            ))
+                            .foregroundColor(settings.selectedSpreadsCounts_2[spread] ?? 0 >= 1 ? color : .primary)
+                        }
+                        .onDelete(perform: settings.deleteSpreadOption)
+                        
+                    }
+                }
+                
+                let spreadsOptions2 = isButtonPressed ? filterOptions(options: settings.spreadsOptions2, counts: settings.selectedSpreadsCounts2_2) : settings.spreadsOptions2
+                if spreadsOptions2.isEmpty {
+                    // Keine Aufstriche2 ausgewählt
+                } else {
+                    Section(header: Text("Aufstrich 2").fontWeight(.semibold)) {
+                        ForEach(spreadsOptions2, id: \.self) { spread in
+                            Stepper("\(spread) (\(max(0, settings.selectedSpreadsCounts2_2[spread] ?? 0)))", value: Binding(
+                                get: { max(0, settings.selectedSpreadsCounts2_2[spread] ?? 0) },
+                                set: { newValue in
+                                    settings.selectedSpreadsCounts2_2[spread] = max(0, newValue)
+                                    // Vibration hinzufügen
+                                    let generator = UINotificationFeedbackGenerator()
+                                    generator.notificationOccurred(.success)
+                                }
+                            ))
+                            .foregroundColor(settings.selectedSpreadsCounts2_2[spread] ?? 0 >= 1 ? color : .primary)
+                        }
+                        .onDelete(perform: settings.deleteSpreadOption2)
+                    }
+                }
+                
+                let specialsOptions = isButtonPressed ? filterOptions(options: settings.specialsOptions, counts: settings.selectedSpecialsCounts2) : settings.specialsOptions
+                if specialsOptions.isEmpty {
+                    // Keine Specials ausgewählt
+                } else {
+                    Section(header: Text("Specials").fontWeight(.semibold)) {
+                        ForEach(specialsOptions, id: \.self) { specials in
+                            Stepper("\(specials) (\(max(0, settings.selectedSpecialsCounts2[specials] ?? 0)))", value: Binding(
+                                get: { max(0, settings.selectedSpecialsCounts2[specials] ?? 0) },
+                                set: { newValue in
+                                    settings.selectedSpecialsCounts2[specials] = max(0, newValue)
+                                    // Vibration hinzufügen
+                                    let generator = UINotificationFeedbackGenerator()
+                                    generator.notificationOccurred(.success)
+                                }
+                            ))
+                            .foregroundColor(settings.selectedSpecialsCounts2[specials] ?? 0 >= 1 ? color : .primary)
+                        }
+                        .onDelete(perform: settings.deleteSpecialsOption)
+                    }
+                }
+                
+                if isButtonPressed == true && settings.selectedTeaFlavor2 == "Nichts" && settings.selectedCoffeeFlavor2 == "Nichts" && settings.fruitSelection2 == "Nichts" {
+                    // Nichts ausgewählr
+                } else {
+                    Section(header: Text("Getränke und Obst").fontWeight(.semibold)) {
+                        Picker("Getränk und oder Obst auswählen", selection: $settings.drinkSelection2) {
+                            Text("Nichts").tag("Nichts")
+                            Text("Tee").tag("Tee")
+                            if settings.coffeeSelected == true {
+                                Text("Kaffee").tag("Kaffee")
                             }
+                            Text("Obst").tag("Obst")
+                        }
+                        .pickerStyle(SegmentedPickerStyle())
+                        
+                        if settings.drinkSelection2 == "Tee" {
+                            Picker("Teesorte auswählen", selection: $settings.selectedTeaFlavor2) {
+                                ForEach(settings.teaOptions, id: \.self) { tea in
+                                    Text(tea).tag(tea)
+                                }
+                            }
+                            .pickerStyle(DefaultPickerStyle())
                             
-                        ))
-                        .onAppear(perform: determineColor)
-                        .foregroundColor(settings.selectedBreadCounts2[bread] ?? 0 >= 1 ? color : .primary)
-                    }
-                    .onDelete(perform: settings.deleteBreadOption)
-                }
-                
-                Section(header: Text("Aufstrich").fontWeight(.semibold)) {
-                    let spreadsOptions = isButtonPressed ? filterOptions(options: settings.spreadsOptions, counts: settings.selectedSpreadsCounts_2) : settings.spreadsOptions
-                    ForEach(spreadsOptions, id: \.self) { spread in
-                        Stepper("\(spread) (\(max(0, settings.selectedSpreadsCounts_2[spread] ?? 0)))", value: Binding(
-                            get: { max(0, settings.selectedSpreadsCounts_2[spread] ?? 0) },
-                            set: { newValue in
-                                settings.selectedSpreadsCounts_2[spread] = max(0, newValue)
-                                // Vibration hinzufügen
-                                let generator = UINotificationFeedbackGenerator()
-                                generator.notificationOccurred(.success)
+                        } else if settings.drinkSelection2 == "Obst" {
+                            Picker("Obst auswählen", selection: $settings.fruitSelection2) {
+                                ForEach(settings.fruitOptions, id: \.self) { fruit in
+                                    Text(fruit).tag(fruit)
+                                }
                             }
-                        ))
-                        .foregroundColor(settings.selectedSpreadsCounts_2[spread] ?? 0 >= 1 ? color : .primary)
-                    }
-                    .onDelete(perform: settings.deleteSpreadOption)
-                    
-                }
-                
-                Section(header: Text("Aufstrich 2").fontWeight(.semibold)) {
-                    let spreadsOptions2 = isButtonPressed ? filterOptions(options: settings.spreadsOptions2, counts: settings.selectedSpreadsCounts2_2) : settings.spreadsOptions2
-                    ForEach(spreadsOptions2, id: \.self) { spread in
-                        Stepper("\(spread) (\(max(0, settings.selectedSpreadsCounts2_2[spread] ?? 0)))", value: Binding(
-                            get: { max(0, settings.selectedSpreadsCounts2_2[spread] ?? 0) },
-                            set: { newValue in
-                                settings.selectedSpreadsCounts2_2[spread] = max(0, newValue)
-                                // Vibration hinzufügen
-                                let generator = UINotificationFeedbackGenerator()
-                                generator.notificationOccurred(.success)
+                            .pickerStyle(DefaultPickerStyle())
+                            
+                        } else if settings.drinkSelection2 == "Kaffee" {
+                            Picker("Kaffee auswählen", selection: $settings.selectedCoffeeFlavor2) {
+                                ForEach(settings.coffeeOptions, id: \.self) { coffee in
+                                    Text(coffee).tag(coffee)
+                                }
                             }
-                        ))
-                        .foregroundColor(settings.selectedSpreadsCounts2_2[spread] ?? 0 >= 1 ? color : .primary)
-                    }
-                    .onDelete(perform: settings.deleteSpreadOption2)
-                    
-                }
-                
-                Section(header: Text("Specials").fontWeight(.semibold)) {
-                    let specialsOptions = isButtonPressed ? filterOptions(options: settings.specialsOptions, counts: settings.selectedSpecialsCounts2) : settings.specialsOptions
-                    ForEach(specialsOptions, id: \.self) { specials in
-                        Stepper("\(specials) (\(max(0, settings.selectedSpecialsCounts2[specials] ?? 0)))", value: Binding(
-                            get: { max(0, settings.selectedSpecialsCounts2[specials] ?? 0) },
-                            set: { newValue in
-                                settings.selectedSpecialsCounts2[specials] = max(0, newValue)
-                                // Vibration hinzufügen
-                                let generator = UINotificationFeedbackGenerator()
-                                generator.notificationOccurred(.success)
-                            }
-                        ))
-                        .foregroundColor(settings.selectedSpecialsCounts2[specials] ?? 0 >= 1 ? color : .primary)
-                    }
-                    .onDelete(perform: settings.deleteSpecialsOption)
-                    
-                }
-                
-                Section(header: Text("Getränke und Obst").fontWeight(.semibold)) {
-                    Picker("Getränk und oder Obst auswählen", selection: $settings.drinkSelection2) {
-                        Text("Nichts").tag("Nichts")
-                        Text("Tee").tag("Tee")
-                        if settings.coffeeSelected == true {
-                            Text("Kaffee").tag("Kaffee")
+                            .pickerStyle(DefaultPickerStyle())
                         }
-                        Text("Obst").tag("Obst")
-                    }
-                    .pickerStyle(SegmentedPickerStyle())
-                    
-                    if settings.drinkSelection2 == "Tee" {
-                        Picker("Teesorte auswählen", selection: $settings.selectedTeaFlavor2) {
-                            ForEach(settings.teaOptions, id: \.self) { tea in
-                                Text(tea).tag(tea)
-                            }
-                        }
-                        .pickerStyle(DefaultPickerStyle())
-                        
-                    } else if settings.drinkSelection2 == "Obst" {
-                        Picker("Obst auswählen", selection: $settings.fruitSelection2) {
-                            ForEach(settings.fruitOptions, id: \.self) { fruit in
-                                Text(fruit).tag(fruit)
-                            }
-                        }
-                        .pickerStyle(DefaultPickerStyle())
-                        
-                    } else if settings.drinkSelection2 == "Kaffee" {
-                        Picker("Kaffee auswählen", selection: $settings.selectedCoffeeFlavor2) {
-                            ForEach(settings.coffeeOptions, id: \.self) { coffee in
-                                Text(coffee).tag(coffee)
-                            }
-                        }
-                        .pickerStyle(DefaultPickerStyle())
                     }
                 }
                 
-                Section(header: Text("Extras").fontWeight(.semibold)) {
-                    let extrasOptions = isButtonPressed ? filterOptions(options: settings.extrasOptions, counts: settings.extrasOptionSelection2) : settings.extrasOptions
-                    ForEach(extrasOptions, id: \.self) { extras in
-                        Stepper("\(extras) (\(max(0, settings.extrasOptionSelection2[extras] ?? 0)))", value: Binding(
-                            get: { max(0, settings.extrasOptionSelection2[extras] ?? 0) },
-                            set: { newValue in
-                                settings.extrasOptionSelection2[extras] = max(0, newValue)
-                                // Vibration hinzufügen
-                                let generator = UINotificationFeedbackGenerator()
-                                generator.notificationOccurred(.success)
-                            }
-                        ))
-                        .foregroundColor(settings.extrasOptionSelection2[extras] ?? 0 >= 1 ? color : .primary)
+                let extrasOptions = isButtonPressed ? filterOptions(options: settings.extrasOptions, counts: settings.extrasOptionSelection2) : settings.extrasOptions
+                if extrasOptions.isEmpty && settings.extras2.isEmpty {
+                    // Keine Extras ausgewählt
+                } else {
+                    Section(header: Text("Extras").fontWeight(.semibold)) {
+                        ForEach(extrasOptions, id: \.self) { extras in
+                            Stepper("\(extras) (\(max(0, settings.extrasOptionSelection2[extras] ?? 0)))", value: Binding(
+                                get: { max(0, settings.extrasOptionSelection2[extras] ?? 0) },
+                                set: { newValue in
+                                    settings.extrasOptionSelection2[extras] = max(0, newValue)
+                                    // Vibration hinzufügen
+                                    let generator = UINotificationFeedbackGenerator()
+                                    generator.notificationOccurred(.success)
+                                }
+                            ))
+                            .foregroundColor(settings.extrasOptionSelection2[extras] ?? 0 >= 1 ? color : .primary)
+                        }
+                        .onDelete(perform: settings.deleteExtrasOption)
+                        TextField("Bitte Extras eingeben", text: $settings.extras2)
+                            .frame(height: 200, alignment: .top)
+                            .submitLabel(.done)
                     }
-                    .onDelete(perform: settings.deleteExtrasOption)
-                    TextField("Bitte Extras eingeben", text: $settings.extras2)
-                        .frame(height: 200, alignment: .top)
-                        .submitLabel(.done)
+                }
+                if isButtonPressed == true && settings.restrictions2 == "Keine" && breadOptions.isEmpty && spreadsOptions.isEmpty && spreadsOptions2.isEmpty && specialsOptions.isEmpty && settings.selectedTeaFlavor2 == "Nichts" && settings.selectedCoffeeFlavor2 == "Nichts" && settings.fruitSelection2 == "Nichts" && extrasOptions.isEmpty && settings.extras2.isEmpty {
+                    Button(action: {
+                        isButtonPressed.toggle()
+                    }, label: {
+                            Text("Bestellung ist leer 🙈")
+                                .fontWeight(.bold)
+                                .foregroundColor(.white)
+                                .frame(maxWidth: .infinity)
+                                .padding(.vertical, 100)
+                                .background(.red)
+                                .contentShape(Rectangle())
+                                .cornerRadius(12)
+                    })
                 }
             }
             
             if patientSelection.patientSelection == "P3" {
-                Section(header: Text("Brot").fontWeight(.semibold)) {
-                    let breadOptions = isButtonPressed ? filterOptions(options: settings.breadOptions, counts: settings.selectedBreadCounts3) : settings.breadOptions
-                    ForEach(breadOptions, id: \.self) { bread in
-                        Stepper("\(bread) (\(max(0, settings.selectedBreadCounts3[bread] ?? 0)))", value: Binding(
-                            get: { max(0, settings.selectedBreadCounts3[bread] ?? 0) },
-                            set: { newValue in
-                                settings.selectedBreadCounts3[bread] = max(0, newValue)
-                                // Vibration hinzufügen
-                                let generator = UINotificationFeedbackGenerator()
-                                generator.notificationOccurred(.success)
-                            }
-                        ))
-                        .onAppear(perform: determineColor)
-                        .foregroundColor(settings.selectedBreadCounts3[bread] ?? 0 >= 1 ? color : .primary)
-                    }
-                    .onDelete(perform: settings.deleteBreadOption)
-                }
-                
-                Section(header: Text("Aufstrich").fontWeight(.semibold)) {
-                    let spreadsOptions = isButtonPressed ? filterOptions(options: settings.spreadsOptions, counts: settings.selectedSpreadsCounts_3) : settings.spreadsOptions
-                    ForEach(spreadsOptions, id: \.self) { spread in
-                        Stepper("\(spread) (\(max(0, settings.selectedSpreadsCounts_3[spread] ?? 0)))", value: Binding(
-                            get: { max(0, settings.selectedSpreadsCounts_3[spread] ?? 0) },
-                            set: { newValue in
-                                settings.selectedSpreadsCounts_3[spread] = max(0, newValue)
-                                // Vibration hinzufügen
-                                let generator = UINotificationFeedbackGenerator()
-                                generator.notificationOccurred(.success)
-                            }
-                        ))
-                        .foregroundColor(settings.selectedSpreadsCounts_3[spread] ?? 0 >= 1 ? color : .primary)
-                    }
-                    .onDelete(perform: settings.deleteSpreadOption)
-                    
-                }
-                
-                Section(header: Text("Aufstrich 2").fontWeight(.semibold)) {
-                    let spreadsOptions2 = isButtonPressed ? filterOptions(options: settings.spreadsOptions2, counts: settings.selectedSpreadsCounts2_3) : settings.spreadsOptions2
-                    ForEach(spreadsOptions2, id: \.self) { spread in
-                        Stepper("\(spread) (\(max(0, settings.selectedSpreadsCounts2_3[spread] ?? 0)))", value: Binding(
-                            get: { max(0, settings.selectedSpreadsCounts2_3[spread] ?? 0) },
-                            set: { newValue in
-                                settings.selectedSpreadsCounts2_3[spread] = max(0, newValue)
-                                // Vibration hinzufügen
-                                let generator = UINotificationFeedbackGenerator()
-                                generator.notificationOccurred(.success)
-                            }
-                        ))
-                        .foregroundColor(settings.selectedSpreadsCounts2_3[spread] ?? 0 >= 1 ? color : .primary)
-                    }
-                    .onDelete(perform: settings.deleteSpreadOption2)
-                    
-                }
-                
-                Section(header: Text("Specials").fontWeight(.semibold)) {
-                    let specialsOptions = isButtonPressed ? filterOptions(options: settings.specialsOptions, counts: settings.selectedSpecialsCounts3) : settings.specialsOptions
-                    ForEach(specialsOptions, id: \.self) { specials in
-                        Stepper("\(specials) (\(max(0, settings.selectedSpecialsCounts3[specials] ?? 0)))", value: Binding(
-                            get: { max(0, settings.selectedSpecialsCounts3[specials] ?? 0) },
-                            set: { newValue in
-                                settings.selectedSpecialsCounts3[specials] = max(0, newValue)
-                                // Vibration hinzufügen
-                                let generator = UINotificationFeedbackGenerator()
-                                generator.notificationOccurred(.success)
-                            }
-                        ))
-                        .foregroundColor(settings.selectedSpecialsCounts3[specials] ?? 0 >= 1 ? color : .primary)
-                    }
-                    .onDelete(perform: settings.deleteSpecialsOption)
-                    
-                }
-                
-                Section(header: Text("Getränke und Obst").fontWeight(.semibold)) {
-                    Picker("Getränk und oder Obst auswählen", selection: $settings.drinkSelection3) {
-                        Text("Nichts").tag("Nichts")
-                        Text("Tee").tag("Tee")
-                        if settings.coffeeSelected == true {
-                            Text("Kaffee").tag("Kaffee")
+                let breadOptions = isButtonPressed ? filterOptions(options: settings.breadOptions, counts: settings.selectedBreadCounts3) : settings.breadOptions
+                if breadOptions.isEmpty {
+                    // Kein Brot ausgewählt
+                } else {
+                    Section(header: Text("Brot").fontWeight(.semibold)) {
+                        ForEach(breadOptions, id: \.self) { bread in
+                            Stepper("\(bread) (\(max(0, settings.selectedBreadCounts3[bread] ?? 0)))", value: Binding(
+                                get: { max(0, settings.selectedBreadCounts3[bread] ?? 0) },
+                                set: { newValue in
+                                    settings.selectedBreadCounts3[bread] = max(0, newValue)
+                                    // Vibration hinzufügen
+                                    let generator = UINotificationFeedbackGenerator()
+                                    generator.notificationOccurred(.success)
+                                }
+                            ))
+                            .onAppear(perform: determineColor)
+                            .foregroundColor(settings.selectedBreadCounts3[bread] ?? 0 >= 1 ? color : .primary)
                         }
-                        Text("Obst").tag("Obst")
+                        .onDelete(perform: settings.deleteBreadOption)
                     }
-                    .pickerStyle(SegmentedPickerStyle())
-                    
-                    if settings.drinkSelection3 == "Tee" {
-                        Picker("Teesorte auswählen", selection: $settings.selectedTeaFlavor3) {
-                            ForEach(settings.teaOptions, id: \.self) { tea in
-                                Text(tea).tag(tea)
-                            }
+                }
+                
+                let spreadsOptions = isButtonPressed ? filterOptions(options: settings.spreadsOptions, counts: settings.selectedSpreadsCounts_3) : settings.spreadsOptions
+                if spreadsOptions.isEmpty {
+                    // Keine Aufstriche ausgewählt
+                } else {
+                    Section(header: Text("Aufstrich").fontWeight(.semibold)) {
+                        ForEach(spreadsOptions, id: \.self) { spread in
+                            Stepper("\(spread) (\(max(0, settings.selectedSpreadsCounts_3[spread] ?? 0)))", value: Binding(
+                                get: { max(0, settings.selectedSpreadsCounts_3[spread] ?? 0) },
+                                set: { newValue in
+                                    settings.selectedSpreadsCounts_3[spread] = max(0, newValue)
+                                    // Vibration hinzufügen
+                                    let generator = UINotificationFeedbackGenerator()
+                                    generator.notificationOccurred(.success)
+                                }
+                            ))
+                            .foregroundColor(settings.selectedSpreadsCounts_3[spread] ?? 0 >= 1 ? color : .primary)
                         }
-                        .pickerStyle(DefaultPickerStyle())
+                        .onDelete(perform: settings.deleteSpreadOption)
+                    }
+                }
+                
+                let spreadsOptions2 = isButtonPressed ? filterOptions(options: settings.spreadsOptions2, counts: settings.selectedSpreadsCounts2_3) : settings.spreadsOptions2
+                if spreadsOptions2.isEmpty {
+                    // Keine Aufstriche2 ausgewählt
+                } else {
+                    Section(header: Text("Aufstrich 2").fontWeight(.semibold)) {
+                        ForEach(spreadsOptions2, id: \.self) { spread in
+                            Stepper("\(spread) (\(max(0, settings.selectedSpreadsCounts2_3[spread] ?? 0)))", value: Binding(
+                                get: { max(0, settings.selectedSpreadsCounts2_3[spread] ?? 0) },
+                                set: { newValue in
+                                    settings.selectedSpreadsCounts2_3[spread] = max(0, newValue)
+                                    // Vibration hinzufügen
+                                    let generator = UINotificationFeedbackGenerator()
+                                    generator.notificationOccurred(.success)
+                                }
+                            ))
+                            .foregroundColor(settings.selectedSpreadsCounts2_3[spread] ?? 0 >= 1 ? color : .primary)
+                        }
+                        .onDelete(perform: settings.deleteSpreadOption2)
+                    }
+                }
+                
+                let specialsOptions = isButtonPressed ? filterOptions(options: settings.specialsOptions, counts: settings.selectedSpecialsCounts3) : settings.specialsOptions
+                if specialsOptions.isEmpty {
+                    // Keine Specials ausgewählt
+                } else {
+                    Section(header: Text("Specials").fontWeight(.semibold)) {
+                        ForEach(specialsOptions, id: \.self) { specials in
+                            Stepper("\(specials) (\(max(0, settings.selectedSpecialsCounts3[specials] ?? 0)))", value: Binding(
+                                get: { max(0, settings.selectedSpecialsCounts3[specials] ?? 0) },
+                                set: { newValue in
+                                    settings.selectedSpecialsCounts3[specials] = max(0, newValue)
+                                    // Vibration hinzufügen
+                                    let generator = UINotificationFeedbackGenerator()
+                                    generator.notificationOccurred(.success)
+                                }
+                            ))
+                            .foregroundColor(settings.selectedSpecialsCounts3[specials] ?? 0 >= 1 ? color : .primary)
+                        }
+                        .onDelete(perform: settings.deleteSpecialsOption)
+                    }
+                }
+                
+                if isButtonPressed == true && settings.selectedTeaFlavor3 == "Nichts" && settings.selectedCoffeeFlavor3 == "Nichts" && settings.fruitSelection3 == "Nichts" {
+                    // Nichts ausgewählt
+                } else {
+                    Section(header: Text("Getränke und Obst").fontWeight(.semibold)) {
+                        Picker("Getränk und oder Obst auswählen", selection: $settings.drinkSelection3) {
+                            Text("Nichts").tag("Nichts")
+                            Text("Tee").tag("Tee")
+                            if settings.coffeeSelected == true {
+                                Text("Kaffee").tag("Kaffee")
+                            }
+                            Text("Obst").tag("Obst")
+                        }
+                        .pickerStyle(SegmentedPickerStyle())
                         
-                    } else if settings.drinkSelection3 == "Obst" {
-                        Picker("Obst auswählen", selection: $settings.fruitSelection3) {
-                            ForEach(settings.fruitOptions, id: \.self) { fruit in
-                                Text(fruit).tag(fruit)
+                        if settings.drinkSelection3 == "Tee" {
+                            Picker("Teesorte auswählen", selection: $settings.selectedTeaFlavor3) {
+                                ForEach(settings.teaOptions, id: \.self) { tea in
+                                    Text(tea).tag(tea)
+                                }
                             }
-                        }
-                        .pickerStyle(DefaultPickerStyle())
-                        
-                    } else if settings.drinkSelection3 == "Kaffee" {
-                        Picker("Kaffee auswählen", selection: $settings.selectedCoffeeFlavor3) {
-                            ForEach(settings.coffeeOptions, id: \.self) { coffee in
-                                Text(coffee).tag(coffee)
+                            .pickerStyle(DefaultPickerStyle())
+                            
+                        } else if settings.drinkSelection3 == "Obst" {
+                            Picker("Obst auswählen", selection: $settings.fruitSelection3) {
+                                ForEach(settings.fruitOptions, id: \.self) { fruit in
+                                    Text(fruit).tag(fruit)
+                                }
                             }
+                            .pickerStyle(DefaultPickerStyle())
+                            
+                        } else if settings.drinkSelection3 == "Kaffee" {
+                            Picker("Kaffee auswählen", selection: $settings.selectedCoffeeFlavor3) {
+                                ForEach(settings.coffeeOptions, id: \.self) { coffee in
+                                    Text(coffee).tag(coffee)
+                                }
+                            }
+                            .pickerStyle(DefaultPickerStyle())
                         }
-                        .pickerStyle(DefaultPickerStyle())
                     }
                 }
                 
-                Section(header: Text("Extras").fontWeight(.semibold)) {
-                    let extrasOptions = isButtonPressed ? filterOptions(options: settings.extrasOptions, counts: settings.extrasOptionSelection3) : settings.extrasOptions
-                    ForEach(extrasOptions, id: \.self) { extras in
-                        Stepper("\(extras) (\(max(0, settings.extrasOptionSelection3[extras] ?? 0)))", value: Binding(
-                            get: { max(0, settings.extrasOptionSelection3[extras] ?? 0) },
-                            set: { newValue in
-                                settings.extrasOptionSelection3[extras] = max(0, newValue)
-                                // Vibration hinzufügen
-                                let generator = UINotificationFeedbackGenerator()
-                                generator.notificationOccurred(.success)
-                            }
-                        ))
-                        .foregroundColor(settings.extrasOptionSelection3[extras] ?? 0 >= 1 ? color : .primary)
+                let extrasOptions = isButtonPressed ? filterOptions(options: settings.extrasOptions, counts: settings.extrasOptionSelection3) : settings.extrasOptions
+                if extrasOptions.isEmpty && settings.extras3.isEmpty {
+                    // Keine Extras ausgewählt
+                } else {
+                    Section(header: Text("Extras").fontWeight(.semibold)) {
+                        ForEach(extrasOptions, id: \.self) { extras in
+                            Stepper("\(extras) (\(max(0, settings.extrasOptionSelection3[extras] ?? 0)))", value: Binding(
+                                get: { max(0, settings.extrasOptionSelection3[extras] ?? 0) },
+                                set: { newValue in
+                                    settings.extrasOptionSelection3[extras] = max(0, newValue)
+                                    // Vibration hinzufügen
+                                    let generator = UINotificationFeedbackGenerator()
+                                    generator.notificationOccurred(.success)
+                                }
+                            ))
+                            .foregroundColor(settings.extrasOptionSelection3[extras] ?? 0 >= 1 ? color : .primary)
+                        }
+                        .onDelete(perform: settings.deleteExtrasOption)
+                        TextField("Bitte Extras eingeben", text: $settings.extras3)
+                            .frame(height: 200, alignment: .top)
+                            .submitLabel(.done)
                     }
-                    .onDelete(perform: settings.deleteExtrasOption)
-                    TextField("Bitte Extras eingeben", text: $settings.extras3)
-                        .frame(height: 200, alignment: .top)
-                        .submitLabel(.done)
+                }
+                if isButtonPressed == true && settings.restrictions3 == "Keine" && breadOptions.isEmpty && spreadsOptions.isEmpty && spreadsOptions2.isEmpty && specialsOptions.isEmpty && settings.selectedTeaFlavor3 == "Nichts" && settings.selectedCoffeeFlavor3 == "Nichts" && settings.fruitSelection3 == "Nichts" && extrasOptions.isEmpty && settings.extras3.isEmpty {
+                    Button(action: {
+                        isButtonPressed.toggle()
+                    }, label: {
+                            Text("Bestellung ist leer 🙈")
+                                .fontWeight(.bold)
+                                .foregroundColor(.white)
+                                .frame(maxWidth: .infinity)
+                                .padding(.vertical, 100)
+                                .background(.red)
+                                .contentShape(Rectangle())
+                                .cornerRadius(12)
+                    })
                 }
             }
             
             if patientSelection.patientSelection == "P4" {
-                Section(header: Text("Brot").fontWeight(.semibold)) {
-                    let breadOptions = isButtonPressed ? filterOptions(options: settings.breadOptions, counts: settings.selectedBreadCounts4) : settings.breadOptions
-                    ForEach(breadOptions, id: \.self) { bread in
-                        Stepper("\(bread) (\(max(0, settings.selectedBreadCounts4[bread] ?? 0)))", value: Binding(
-                            get: { max(0, settings.selectedBreadCounts4[bread] ?? 0) },
-                            set: { newValue in
-                                settings.selectedBreadCounts4[bread] = max(0, newValue)
-                                // Vibration hinzufügen
-                                let generator = UINotificationFeedbackGenerator()
-                                generator.notificationOccurred(.success)
-                            }
-                        ))
-                        .onAppear(perform: determineColor)
-                        .foregroundColor(settings.selectedBreadCounts4[bread] ?? 0 >= 1 ? color : .primary)
-                    }
-                    .onDelete(perform: settings.deleteBreadOption)
-                }
-                
-                Section(header: Text("Aufstrich").fontWeight(.semibold)) {
-                    let spreadsOptions = isButtonPressed ? filterOptions(options: settings.spreadsOptions, counts: settings.selectedSpreadsCounts_4) : settings.spreadsOptions
-                    ForEach(spreadsOptions, id: \.self) { spread in
-                        Stepper("\(spread) (\(max(0, settings.selectedSpreadsCounts_4[spread] ?? 0)))", value: Binding(
-                            get: { max(0, settings.selectedSpreadsCounts_4[spread] ?? 0) },
-                            set: { newValue in
-                                settings.selectedSpreadsCounts_4[spread] = max(0, newValue)
-                                // Vibration hinzufügen
-                                let generator = UINotificationFeedbackGenerator()
-                                generator.notificationOccurred(.success)
-                            }
-                        ))
-                        .foregroundColor(settings.selectedSpreadsCounts_4[spread] ?? 0 >= 1 ? color : .primary)
-                    }
-                    .onDelete(perform: settings.deleteSpreadOption)
-                    
-                }
-                
-                Section(header: Text("Aufstrich 2").fontWeight(.semibold)) {
-                    let spreadsOptions2 = isButtonPressed ? filterOptions(options: settings.spreadsOptions2, counts: settings.selectedSpreadsCounts2_4) : settings.spreadsOptions2
-                    ForEach(spreadsOptions2, id: \.self) { spread in
-                        Stepper("\(spread) (\(max(0, settings.selectedSpreadsCounts2_4[spread] ?? 0)))", value: Binding(
-                            get: { max(0, settings.selectedSpreadsCounts2_4[spread] ?? 0) },
-                            set: { newValue in
-                                settings.selectedSpreadsCounts2_4[spread] = max(0, newValue)
-                                // Vibration hinzufügen
-                                let generator = UINotificationFeedbackGenerator()
-                                generator.notificationOccurred(.success)
-                            }
-                        ))
-                        .foregroundColor(settings.selectedSpreadsCounts2_4[spread] ?? 0 >= 1 ? color : .primary)
-                    }
-                    .onDelete(perform: settings.deleteSpreadOption2)
-                }
-                
-                Section(header: Text("Specials").fontWeight(.semibold)) {
-                    let specialsOptions = isButtonPressed ? filterOptions(options: settings.specialsOptions, counts: settings.selectedSpecialsCounts4) : settings.specialsOptions
-                    ForEach(specialsOptions, id: \.self) { specials in
-                        Stepper("\(specials) (\(max(0, settings.selectedSpecialsCounts4[specials] ?? 0)))", value: Binding(
-                            get: { max(0, settings.selectedSpecialsCounts4[specials] ?? 0) },
-                            set: { newValue in
-                                settings.selectedSpecialsCounts4[specials] = max(0, newValue)
-                                // Vibration hinzufügen
-                                let generator = UINotificationFeedbackGenerator()
-                                generator.notificationOccurred(.success)
-                            }
-                        ))
-                        .foregroundColor(settings.selectedSpecialsCounts4[specials] ?? 0 >= 1 ? color : .primary)
-                    }
-                    .onDelete(perform: settings.deleteSpecialsOption)
-                    
-                }
-                
-                Section(header: Text("Getränke und Obst").fontWeight(.semibold)) {
-                    Picker("Getränk und oder Obst auswählen", selection: $settings.drinkSelection4) {
-                        Text("Nichts").tag("Nichts")
-                        Text("Tee").tag("Tee")
-                        if settings.coffeeSelected == true {
-                            Text("Kaffee").tag("Kaffee")
+                let breadOptions = isButtonPressed ? filterOptions(options: settings.breadOptions, counts: settings.selectedBreadCounts4) : settings.breadOptions
+                if breadOptions.isEmpty {
+                    // Kein Brot ausgewählt
+                } else {
+                    Section(header: Text("Brot").fontWeight(.semibold)) {
+                        ForEach(breadOptions, id: \.self) { bread in
+                            Stepper("\(bread) (\(max(0, settings.selectedBreadCounts4[bread] ?? 0)))", value: Binding(
+                                get: { max(0, settings.selectedBreadCounts4[bread] ?? 0) },
+                                set: { newValue in
+                                    settings.selectedBreadCounts4[bread] = max(0, newValue)
+                                    // Vibration hinzufügen
+                                    let generator = UINotificationFeedbackGenerator()
+                                    generator.notificationOccurred(.success)
+                                }
+                            ))
+                            .onAppear(perform: determineColor)
+                            .foregroundColor(settings.selectedBreadCounts4[bread] ?? 0 >= 1 ? color : .primary)
                         }
-                        Text("Obst").tag("Obst")
+                        .onDelete(perform: settings.deleteBreadOption)
                     }
-                    .pickerStyle(SegmentedPickerStyle())
-                    
-                    if settings.drinkSelection4 == "Tee" {
-                        Picker("Teesorte auswählen", selection: $settings.selectedTeaFlavor4) {
-                            ForEach(settings.teaOptions, id: \.self) { tea in
-                                Text(tea).tag(tea)
-                            }
+                }
+                
+                let spreadsOptions = isButtonPressed ? filterOptions(options: settings.spreadsOptions, counts: settings.selectedSpreadsCounts_4) : settings.spreadsOptions
+                if spreadsOptions.isEmpty {
+                    // Keine Aufstriche ausgewählt
+                } else {
+                    Section(header: Text("Aufstrich").fontWeight(.semibold)) {
+                        ForEach(spreadsOptions, id: \.self) { spread in
+                            Stepper("\(spread) (\(max(0, settings.selectedSpreadsCounts_4[spread] ?? 0)))", value: Binding(
+                                get: { max(0, settings.selectedSpreadsCounts_4[spread] ?? 0) },
+                                set: { newValue in
+                                    settings.selectedSpreadsCounts_4[spread] = max(0, newValue)
+                                    // Vibration hinzufügen
+                                    let generator = UINotificationFeedbackGenerator()
+                                    generator.notificationOccurred(.success)
+                                }
+                            ))
+                            .foregroundColor(settings.selectedSpreadsCounts_4[spread] ?? 0 >= 1 ? color : .primary)
                         }
-                        .pickerStyle(DefaultPickerStyle())
+                        .onDelete(perform: settings.deleteSpreadOption)
+                    }
+                }
+                
+                let spreadsOptions2 = isButtonPressed ? filterOptions(options: settings.spreadsOptions2, counts: settings.selectedSpreadsCounts2_4) : settings.spreadsOptions2
+                if spreadsOptions2.isEmpty {
+                    // Keine Aufstriche2 ausgewählt
+                } else {
+                    Section(header: Text("Aufstrich 2").fontWeight(.semibold)) {
+                        ForEach(spreadsOptions2, id: \.self) { spread in
+                            Stepper("\(spread) (\(max(0, settings.selectedSpreadsCounts2_4[spread] ?? 0)))", value: Binding(
+                                get: { max(0, settings.selectedSpreadsCounts2_4[spread] ?? 0) },
+                                set: { newValue in
+                                    settings.selectedSpreadsCounts2_4[spread] = max(0, newValue)
+                                    // Vibration hinzufügen
+                                    let generator = UINotificationFeedbackGenerator()
+                                    generator.notificationOccurred(.success)
+                                }
+                            ))
+                            .foregroundColor(settings.selectedSpreadsCounts2_4[spread] ?? 0 >= 1 ? color : .primary)
+                        }
+                        .onDelete(perform: settings.deleteSpreadOption2)
+                    }
+                }
+                
+                let specialsOptions = isButtonPressed ? filterOptions(options: settings.specialsOptions, counts: settings.selectedSpecialsCounts4) : settings.specialsOptions
+                if specialsOptions.isEmpty {
+                    // Keine Specials ausgewählt
+                } else {
+                    Section(header: Text("Specials").fontWeight(.semibold)) {
+                        ForEach(specialsOptions, id: \.self) { specials in
+                            Stepper("\(specials) (\(max(0, settings.selectedSpecialsCounts4[specials] ?? 0)))", value: Binding(
+                                get: { max(0, settings.selectedSpecialsCounts4[specials] ?? 0) },
+                                set: { newValue in
+                                    settings.selectedSpecialsCounts4[specials] = max(0, newValue)
+                                    // Vibration hinzufügen
+                                    let generator = UINotificationFeedbackGenerator()
+                                    generator.notificationOccurred(.success)
+                                }
+                            ))
+                            .foregroundColor(settings.selectedSpecialsCounts4[specials] ?? 0 >= 1 ? color : .primary)
+                        }
+                        .onDelete(perform: settings.deleteSpecialsOption)
+                    }
+                }
+                
+                if isButtonPressed == true && settings.selectedTeaFlavor4 == "Nichts" && settings.selectedCoffeeFlavor4 == "Nichts" && settings.fruitSelection4 == "Nichts" {
+                    // Keine Auswahl
+                } else {
+                    Section(header: Text("Getränke und Obst").fontWeight(.semibold)) {
+                        Picker("Getränk und oder Obst auswählen", selection: $settings.drinkSelection4) {
+                            Text("Nichts").tag("Nichts")
+                            Text("Tee").tag("Tee")
+                            if settings.coffeeSelected == true {
+                                Text("Kaffee").tag("Kaffee")
+                            }
+                            Text("Obst").tag("Obst")
+                        }
+                        .pickerStyle(SegmentedPickerStyle())
                         
-                    } else if settings.drinkSelection4 == "Obst" {
-                        Picker("Obst auswählen", selection: $settings.fruitSelection4) {
-                            ForEach(settings.fruitOptions, id: \.self) { fruit in
-                                Text(fruit).tag(fruit)
+                        if settings.drinkSelection4 == "Tee" {
+                            Picker("Teesorte auswählen", selection: $settings.selectedTeaFlavor4) {
+                                ForEach(settings.teaOptions, id: \.self) { tea in
+                                    Text(tea).tag(tea)
+                                }
                             }
-                        }
-                        .pickerStyle(DefaultPickerStyle())
-                        
-                    } else if settings.drinkSelection4 == "Kaffee" {
-                        Picker("Kaffee auswählen", selection: $settings.selectedCoffeeFlavor4) {
-                            ForEach(settings.coffeeOptions, id: \.self) { coffee in
-                                Text(coffee).tag(coffee)
+                            .pickerStyle(DefaultPickerStyle())
+                            
+                        } else if settings.drinkSelection4 == "Obst" {
+                            Picker("Obst auswählen", selection: $settings.fruitSelection4) {
+                                ForEach(settings.fruitOptions, id: \.self) { fruit in
+                                    Text(fruit).tag(fruit)
+                                }
                             }
+                            .pickerStyle(DefaultPickerStyle())
+                            
+                        } else if settings.drinkSelection4 == "Kaffee" {
+                            Picker("Kaffee auswählen", selection: $settings.selectedCoffeeFlavor4) {
+                                ForEach(settings.coffeeOptions, id: \.self) { coffee in
+                                    Text(coffee).tag(coffee)
+                                }
+                            }
+                            .pickerStyle(DefaultPickerStyle())
                         }
-                        .pickerStyle(DefaultPickerStyle())
                     }
                 }
                 
-                Section(header: Text("Extras").fontWeight(.semibold)) {
-                    let extrasOptions = isButtonPressed ? filterOptions(options: settings.extrasOptions, counts: settings.extrasOptionSelection4) : settings.extrasOptions
-                    ForEach(extrasOptions, id: \.self) { extras in
-                        Stepper("\(extras) (\(max(0, settings.extrasOptionSelection4[extras] ?? 0)))", value: Binding(
-                            get: { max(0, settings.extrasOptionSelection4[extras] ?? 0) },
-                            set: { newValue in
-                                settings.extrasOptionSelection4[extras] = max(0, newValue)
-                                // Vibration hinzufügen
-                                let generator = UINotificationFeedbackGenerator()
-                                generator.notificationOccurred(.success)
-                            }
-                        ))
-                        .foregroundColor(settings.extrasOptionSelection4[extras] ?? 0 >= 1 ? color : .primary)
+                let extrasOptions = isButtonPressed ? filterOptions(options: settings.extrasOptions, counts: settings.extrasOptionSelection4) : settings.extrasOptions
+                if extrasOptions.isEmpty {
+                    // Keine Extras ausgewählt
+                } else {
+                    Section(header: Text("Extras").fontWeight(.semibold)) {
+                        ForEach(extrasOptions, id: \.self) { extras in
+                            Stepper("\(extras) (\(max(0, settings.extrasOptionSelection4[extras] ?? 0)))", value: Binding(
+                                get: { max(0, settings.extrasOptionSelection4[extras] ?? 0) },
+                                set: { newValue in
+                                    settings.extrasOptionSelection4[extras] = max(0, newValue)
+                                    // Vibration hinzufügen
+                                    let generator = UINotificationFeedbackGenerator()
+                                    generator.notificationOccurred(.success)
+                                }
+                            ))
+                            .foregroundColor(settings.extrasOptionSelection4[extras] ?? 0 >= 1 ? color : .primary)
+                        }
+                        .onDelete(perform: settings.deleteExtrasOption)
+                        TextField("Bitte Extras eingeben", text: $settings.extras4)
+                            .frame(height: 200, alignment: .top)
+                            .submitLabel(.done)
                     }
-                    .onDelete(perform: settings.deleteExtrasOption)
-                    TextField("Bitte Extras eingeben", text: $settings.extras4)
-                        .frame(height: 200, alignment: .top)
-                        .submitLabel(.done)
+                }
+                if isButtonPressed == true && settings.restrictions4 == "Keine" && breadOptions.isEmpty && spreadsOptions.isEmpty && spreadsOptions2.isEmpty && specialsOptions.isEmpty && settings.selectedTeaFlavor4 == "Nichts" && settings.selectedCoffeeFlavor4 == "Nichts" && settings.fruitSelection4 == "Nichts" && extrasOptions.isEmpty && settings.extras4.isEmpty {
+                    Button(action: {
+                        isButtonPressed.toggle()
+                    }, label: {
+                            Text("Bestellung ist leer 🙈")
+                                .fontWeight(.bold)
+                                .foregroundColor(.white)
+                                .frame(maxWidth: .infinity)
+                                .padding(.vertical, 100)
+                                .background(.red)
+                                .contentShape(Rectangle())
+                                .cornerRadius(12)
+                    })
                 }
             }
-            
-            //            OrderSelectionView()
-            
+                        
             // MARK: Button Bestellungsview
             if isButtonPressed == false {
                 Button(action: {
