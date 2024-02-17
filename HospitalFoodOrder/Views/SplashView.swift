@@ -6,17 +6,16 @@
 //
 
 import SwiftUI
-import Lottie
 
 struct SplashView: View {
     @Binding var isFirstLaunch: Bool
 
     var body: some View {
         VStack {
-            Section {
-                LottieAnimationView2()
-                    .frame(height: 200)
-            }
+//            Section {
+//                LottieAnimationView2()
+//                    .frame(height: 200)
+//            }
             Text("Willkommen bei Food Order")
                 .font(.title2)
                 .fontWeight(.heavy)

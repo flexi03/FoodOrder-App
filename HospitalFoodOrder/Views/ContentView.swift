@@ -7,7 +7,7 @@
 
 import SwiftUI
 //import UIKit
-import Lottie
+//import Lottie
 
 public class patientSelectionManager: ObservableObject {
     @Published var patientSelection: String = "P1" {
@@ -60,6 +60,8 @@ struct ContentView: View {
     
     @State private var tabShapePosition: CGPoint = .zero
     
+    @AppStorage("showWorkingTime") var showWorkingTime: Bool = true
+    
     var body: some View {
         TabView(selection: $activeTab) {
             
@@ -72,14 +74,16 @@ struct ContentView: View {
             .tag(Tab.order)
             .toolbar(.hidden, for: .tabBar)
             
-            NavigationView {
-                WorkingTimeView()
+            if showWorkingTime == true {
+                NavigationView {
+                    WorkingTimeView()
+                }
+                .tabItem {
+                    Label("Arbeitszeit", systemImage: "clock.arrow.circlepath")
+                }
+                .tag(Tab.workingtime)
+                .toolbar(.hidden, for: .tabBar)
             }
-            .tabItem {
-                Label("Arbeitszeit", systemImage: "clock.arrow.circlepath")
-            }
-            .tag(Tab.workingtime)
-            .toolbar(.hidden, for: .tabBar)
                     
             NavigationView {
                 SettingsView(colorScheme: ColorSchemeModel(), settings: Settings())
@@ -153,7 +157,7 @@ struct OrderApp: App {
     @ObservedObject var settings = Settings()
     
     @AppStorage("isFirstLaunch") var isFirstLaunch: Bool = true
-
+    
         var body: some Scene {
             WindowGroup {
                 if isFirstLaunch {

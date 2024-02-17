@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-
 // Custom Tab Shape
 struct TabShape: Shape {
     var midpoint: CGFloat

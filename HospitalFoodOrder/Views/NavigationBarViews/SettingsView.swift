@@ -11,6 +11,7 @@ struct SettingsView: View {
 //    @State var colorScheme
     @ObservedObject var colorScheme: ColorSchemeModel
     @ObservedObject var settings: Settings
+    @AppStorage("showWorkingTime") var showWorkingTime: Bool = true
     
     var body: some View {
             Form {
@@ -32,7 +33,10 @@ struct SettingsView: View {
                     NavigationLink("Auswahl Optionen", destination: OptionView(settings: Settings()))
                 }
                 
-                Section {
+                Section(header: Text("Entwickler")) {
+                    Toggle(isOn: $showWorkingTime, label: {
+                        Text("Arbeitszeiterfassung")
+                    })
                     NavigationLink("Entwickler", destination: DeveloperSettingsView())
                 }
                             
