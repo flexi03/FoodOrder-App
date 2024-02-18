@@ -18,10 +18,10 @@ public class patientSelectionManager: ObservableObject {
     init() {
         self.patientSelection = UserDefaults.standard.object(forKey: "patientSelection") as? String ?? "P1"
     }
-    @Published var foodIntolerance1: String = "WK1"
-    @Published var foodIntolerance2: String = "WK2"
-    @Published var foodIntolerance3: String = "WK3"
-    @Published var foodIntolerance4: String = "WK4"
+//    @Published var foodIntolerance1: String = "WK1"
+//    @Published var foodIntolerance2: String = "WK2"
+//    @Published var foodIntolerance3: String = "WK3"
+//    @Published var foodIntolerance4: String = "WK4"
 }
 
 func resetOptions() {
@@ -50,7 +50,7 @@ func resetOptions() {
 
 struct ContentView: View {
     
-//    @State var selection = 1
+    //    @State var selection = 1
     
     @State private var activeTab: Tab = .order
     
@@ -59,9 +59,7 @@ struct ContentView: View {
     @Namespace private var animation
     
     @State private var tabShapePosition: CGPoint = .zero
-    
-    @AppStorage("showWorkingTime") var showWorkingTime: Bool = true
-    
+        
     var body: some View {
         TabView(selection: $activeTab) {
             
@@ -74,33 +72,31 @@ struct ContentView: View {
             .tag(Tab.order)
             .toolbar(.hidden, for: .tabBar)
             
-            if showWorkingTime == true {
-                NavigationView {
-                    WorkingTimeView()
-                }
-                .tabItem {
-                    Label("Arbeitszeit", systemImage: "clock.arrow.circlepath")
-                }
-                .tag(Tab.workingtime)
-                .toolbar(.hidden, for: .tabBar)
+            NavigationView {
+                WorkingTimeView()
             }
-                    
+            .tabItem {
+                Label("Arbeitszeit", systemImage: "clock.arrow.circlepath")
+            }
+            .tag(Tab.workingtime)
+            .toolbar(.hidden, for: .tabBar)
+            
             NavigationView {
                 SettingsView(colorScheme: ColorSchemeModel(), settings: Settings())
-                }
-                .tabItem {
-                    Label("Einstellungen", systemImage: "gear.badge")
-                }
-                .tag(Tab.settings)
-                .toolbar(.hidden, for: .tabBar)
             }
+            .tabItem {
+                Label("Einstellungen", systemImage: "gear.badge")
+            }
+            .tag(Tab.settings)
+            .toolbar(.hidden, for: .tabBar)
+        }
         .navigationViewStyle(StackNavigationViewStyle())
         .colorScheme(getColorScheme())
-//        .preferredColorScheme(getColorScheme())
+        //        .preferredColorScheme(getColorScheme())
         .overlay(CustomTabBar(), alignment: .bottom)
-                .tint(Color.accentColor)
-//                .animation(.interactiveSpring(response: 0.6, dampingFraction: 0.7, blendDuration: 0.7), value: Tab.allCases)
-        }
+        .tint(Color.accentColor)
+        //                .animation(.interactiveSpring(response: 0.6, dampingFraction: 0.7, blendDuration: 0.7), value: Tab.allCases)
+    }
     
     public func getColorScheme() -> ColorScheme {
         switch colorScheme.mode {
@@ -140,14 +136,10 @@ struct ContentView: View {
         .animation(.interactiveSpring(response: 0.6, dampingFraction: 0.7, blendDuration: 0.7), value: activeTab)
         .frame(alignment: .bottom)
         .onChange(of: activeTab) { _ in
-                // Erzeuge eine leichte Vibration
-                let generator = UIImpactFeedbackGenerator(style: .light)
-                generator.impactOccurred()
-            }
-//        .onChange(of: activeTab) { _ in
-//            let generator = UINotificationFeedbackGenerator()
-//            generator.notificationOccurred(.success)
-//        }
+            // Erzeuge eine leichte Vibration
+            let generator = UIImpactFeedbackGenerator(style: .light)
+            generator.impactOccurred()
+        }
     }
 }
 
@@ -158,22 +150,16 @@ struct OrderApp: App {
     
     @AppStorage("isFirstLaunch") var isFirstLaunch: Bool = true
     
-        var body: some Scene {
-            WindowGroup {
-                if isFirstLaunch {
-                    // Zeige den Splashscreen
-                    SplashView(isFirstLaunch: $isFirstLaunch)
-                } else {
-                    // Zeige den Hauptinhalt der App
-                    ContentView(colorScheme: ColorSchemeModel())
-                }
+    var body: some Scene {
+        WindowGroup {
+            if isFirstLaunch {
+                // Zeige den Splashscreen
+                SplashView(isFirstLaunch: $isFirstLaunch)
+            } else {
+                // Zeige den Hauptinhalt der App
+                ContentView(colorScheme: ColorSchemeModel())
             }
-//
-//    var body: some Scene {
-//        WindowGroup {
-//            ContentView()
-////            LottieView(url: Bundle.main.url(forResource: "foodAnimation", withExtension: "lottie")!)
-//        }
+        }
     }
 }
 

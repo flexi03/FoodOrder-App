@@ -15,9 +15,7 @@ struct OrderFormView: View {
     
     @State private var isResetConfirmationPresented: Bool = false
     @State private var isResetAllConfirmationPresented: Bool = false
-    
-    @ObservedObject private var selectionManager = SelectionManager()
-    
+        
     @State private var color = Color.accent
     
     @State private var isButtonPressed = false
@@ -889,10 +887,10 @@ struct OrderFormView: View {
         settings.restrictions4 = "Keine"
         
         patientSelection.patientSelection = "P1"
-        patientSelection.foodIntolerance1 = "WK1"
-        patientSelection.foodIntolerance2 = "WK2"
-        patientSelection.foodIntolerance3 = "WK3"
-        patientSelection.foodIntolerance4 = "WK4"
+//        patientSelection.foodIntolerance1 = "WK1"
+//        patientSelection.foodIntolerance2 = "WK2"
+//        patientSelection.foodIntolerance3 = "WK3"
+//        patientSelection.foodIntolerance4 = "WK4"
         
         settings.selectedBreadCounts.removeAll()
         settings.selectedBreadCounts2.removeAll()
@@ -956,7 +954,7 @@ struct OrderFormView: View {
         
         settings.restrictions1 = "Keine"
         
-        patientSelection.foodIntolerance1 = "WK1"
+//        patientSelection.foodIntolerance1 = "WK1"
         
         settings.selectedBreadCounts.removeAll()
         
@@ -986,7 +984,7 @@ struct OrderFormView: View {
         
         settings.restrictions2 = "Keine"
         
-        patientSelection.foodIntolerance2 = "WK2"
+//        patientSelection.foodIntolerance2 = "WK2"
         
         settings.selectedBreadCounts2.removeAll()
         
@@ -1016,7 +1014,7 @@ struct OrderFormView: View {
         
         settings.restrictions3 = "Keine"
         
-        patientSelection.foodIntolerance3 = "WK3"
+//        patientSelection.foodIntolerance3 = "WK3"
         
         settings.selectedBreadCounts3.removeAll()
         
@@ -1046,7 +1044,7 @@ struct OrderFormView: View {
         
         settings.restrictions4 = "Keine"
         
-        patientSelection.foodIntolerance4 = "WK4"
+//        patientSelection.foodIntolerance4 = "WK4"
         
         settings.selectedBreadCounts4.removeAll()
         

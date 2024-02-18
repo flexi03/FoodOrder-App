@@ -43,7 +43,7 @@ struct OptionView: View {
                         }
                     }
             }
-
+            
             Section(header: Text("Aufstrich Optionen")) {
                 List {
                     ForEach(settings.spreadsOptions.indices, id: \.self) { index in
@@ -109,7 +109,7 @@ struct OptionView: View {
                         }
                     }
             }
-
+            
             Section(header: Text("Tee Optionen")) {
                 List {
                     ForEach(settings.teaOptions.indices, id: \.self) { index in
@@ -153,7 +153,7 @@ struct OptionView: View {
                         }
                     }
             }
-
+            
             Section(header: Text("Obst Optionen")) {
                 List {
                     ForEach(settings.fruitOptions.indices, id: \.self) { index in
@@ -199,11 +199,11 @@ struct OptionView: View {
                     }
             }
             
-        
+            
             
             Section("") {
             }
-                .frame(height: 50)
+            .frame(height: 50)
         }
         .navigationTitle("Optionen")
         .navigationBarItems(trailing: Button(action: {

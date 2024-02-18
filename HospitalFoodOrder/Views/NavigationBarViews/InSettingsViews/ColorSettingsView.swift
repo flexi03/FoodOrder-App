@@ -17,7 +17,7 @@ struct ColorSettingsView: View {
         Form {
             Section {
                 Text("Funktion folgt noch...")
-
+                
             }
             
             Section {
@@ -26,7 +26,7 @@ struct ColorSettingsView: View {
                 ColorPicker("Farbe Patient 3", selection: $color3)
                 ColorPicker("Farbe Patient 4", selection: $color4)
             }
-
+            
         }
         .navigationTitle("Farbauswahl")
     }

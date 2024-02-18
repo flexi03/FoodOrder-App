@@ -10,7 +10,7 @@ import SwiftUI
 struct DeveloperSettingsView: View {
     
     @AppStorage("isFirstLaunch") var isFirstLaunch: Bool = false
-
+    
     var body: some View {
         ScrollView {
             Button(action: {

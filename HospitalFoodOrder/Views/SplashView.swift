@@ -17,12 +17,12 @@ struct SplashView: View {
 //                    .frame(height: 200)
 //            }
             Text("Willkommen bei Food Order")
-                .font(.title2)
+                .font(.title)
                 .fontWeight(.heavy)
             Text("")
             Text("Was kann die App?")
-                .font(.title3)
-                .fontWeight(.semibold)
+                .font(.title2)
+                .fontWeight(.bold)
             HStack {
                 VStack {
                     Image(systemName: "cart.badge.plus")
@@ -30,15 +30,18 @@ struct SplashView: View {
                         .frame(maxWidth: 120, maxHeight: 100)
                         .foregroundColor(.green)
                         .padding()
+                        .fontWeight(.semibold)
                     Image(systemName: "clock.arrow.circlepath")
                         .resizable()
                         .frame(maxWidth: 90, maxHeight: 80)
                         .foregroundColor(.purple)
+                        .fontWeight(.semibold)
                     Image(systemName: "figure.run")
                         .resizable()
                         .frame(maxWidth: 80, maxHeight: 100)
                         .foregroundColor(.accentColor)
                         .padding()
+                        .fontWeight(.semibold)
                 }
                 
                 
@@ -62,14 +65,13 @@ struct SplashView: View {
                 Text("Los geht's")
                     .fontWeight(.bold)
                     .foregroundColor(.white)
-                    .frame(maxWidth: .infinity)
+                    .frame(maxWidth: .infinity, alignment: .bottom)
                     .padding(.vertical, 14)
                     .background(Color.accentColor)
                     .contentShape(Rectangle())
                     .cornerRadius(12)
             })
             .padding()
-            
         }
     }
 }
