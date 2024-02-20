@@ -155,16 +155,18 @@ struct OrderFormView: View {
                     Section(header: Text("Brot").fontWeight(.semibold)) {
                         ForEach(breadOptions, id: \.self) { bread in
                             Stepper("\(bread) (\(max(0, settings.selectedBreadCounts[bread] ?? 0)))", value: Binding(
-                                get: { max(0, settings.selectedBreadCounts[bread] ?? 0) },
+                                get: { settings.selectedBreadCounts[bread] ?? 0 },
                                 set: { newValue in
-                                    settings.selectedBreadCounts[bread] = max(0, newValue)
+                                    settings.selectedBreadCounts[bread] = newValue
                                     // Vibration hinzufügen
                                     let generator = UINotificationFeedbackGenerator()
                                     generator.notificationOccurred(.success)
                                 }
-                            ))
+                            ), in: 0...10)
+                            .fontWeight(settings.selectedBreadCounts[bread] ?? 0 >= 1 ? .semibold : .regular)
                             .onAppear(perform: determineColor)
                             .foregroundColor(settings.selectedBreadCounts[bread] ?? 0 >= 1 ? color : .primary)
+                            
                         }
                         .onDelete(perform: settings.deleteBreadOption)
                     }
