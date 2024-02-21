@@ -64,7 +64,7 @@ struct ContentView: View {
         TabView(selection: $activeTab) {
             
             NavigationView {
-                OrderFormView(settings: Settings(), patientSelection: patientSelectionManager())
+                OrderFormView2(settings: Settings(), patientSelection: patientSelectionManager())
             }
             .tabItem {
                 Label("Bestellung", systemImage: "cart.badge.plus")
