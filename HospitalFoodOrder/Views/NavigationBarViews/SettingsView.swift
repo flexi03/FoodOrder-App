@@ -34,9 +34,9 @@ struct SettingsView: View {
             }
             
             Section(header: Text("Entwickler")) {
-                Toggle(isOn: $showWorkingTime, label: {
-                    Text("Arbeitszeiterfassung")
-                })
+//                Toggle(isOn: $showWorkingTime, label: {
+//                    Text("Arbeitszeiterfassung")
+//                })
                 NavigationLink("Entwickler", destination: DeveloperSettingsView())
             }
             

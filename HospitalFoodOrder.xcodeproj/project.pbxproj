@@ -22,7 +22,7 @@
 		DC9113DC2B026A6900F51D16 /* OverViewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9113DB2B026A6900F51D16 /* OverViewView.swift */; };
 		DCB49BC12AFD912C003E450F /* Feedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB49BC02AFD912C003E450F /* Feedback.swift */; };
 		DCC358912B0FA36000C7DD3A /* OrderFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCC358902B0FA36000C7DD3A /* OrderFormView.swift */; };
-		DCC5E08E2B855FC700D97826 /* OrderFormView copy.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCC5E08D2B855FC700D97826 /* OrderFormView copy.swift */; };
+		DCC5E08E2B855FC700D97826 /* OrderFormView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCC5E08D2B855FC700D97826 /* OrderFormView2.swift */; };
 		DCF2FDB32B2CDC3F00BFBE63 /* DeveloperSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF2FDB22B2CDC3F00BFBE63 /* DeveloperSettingsView.swift */; };
 		DCF2FDB72B2E49AC00BFBE63 /* SettingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF2FDB62B2E49AC00BFBE63 /* SettingsModel.swift */; };
 		DCF2FDBA2B2E594700BFBE63 /* WorkingDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF2FDB92B2E594700BFBE63 /* WorkingDetailView.swift */; };
@@ -61,7 +61,7 @@
 		DC9113DB2B026A6900F51D16 /* OverViewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverViewView.swift; sourceTree = "<group>"; };
 		DCB49BC02AFD912C003E450F /* Feedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feedback.swift; sourceTree = "<group>"; };
 		DCC358902B0FA36000C7DD3A /* OrderFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderFormView.swift; sourceTree = "<group>"; };
-		DCC5E08D2B855FC700D97826 /* OrderFormView copy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "OrderFormView copy.swift"; sourceTree = "<group>"; };
+		DCC5E08D2B855FC700D97826 /* OrderFormView2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderFormView2.swift; sourceTree = "<group>"; };
 		DCF2FDB22B2CDC3F00BFBE63 /* DeveloperSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeveloperSettingsView.swift; sourceTree = "<group>"; };
 		DCF2FDB62B2E49AC00BFBE63 /* SettingsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsModel.swift; sourceTree = "<group>"; };
 		DCF2FDB92B2E594700BFBE63 /* WorkingDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkingDetailView.swift; sourceTree = "<group>"; };
@@ -143,7 +143,7 @@
 			isa = PBXGroup;
 			children = (
 				DCC358902B0FA36000C7DD3A /* OrderFormView.swift */,
-				DCC5E08D2B855FC700D97826 /* OrderFormView copy.swift */,
+				DCC5E08D2B855FC700D97826 /* OrderFormView2.swift */,
 				DC6C77B82B2913820080494A /* WorkingTimeView.swift */,
 				DCF2FDB92B2E594700BFBE63 /* WorkingDetailView.swift */,
 				DC44752B2B0C38B30012E3FB /* SettingsView.swift */,
@@ -248,7 +248,7 @@
 				DC44752C2B0C38B30012E3FB /* SettingsView.swift in Sources */,
 				DCF2FDB32B2CDC3F00BFBE63 /* DeveloperSettingsView.swift in Sources */,
 				DC2D04AE2B33DF0C009E8EAA /* Tabs.swift in Sources */,
-				DCC5E08E2B855FC700D97826 /* OrderFormView copy.swift in Sources */,
+				DCC5E08E2B855FC700D97826 /* OrderFormView2.swift in Sources */,
 				DC6C77B92B2913820080494A /* WorkingTimeView.swift in Sources */,
 				DC2ABDEE2AB50E3F00778F10 /* ContentView.swift in Sources */,
 				DC9113DC2B026A6900F51D16 /* OverViewView.swift in Sources */,
@@ -393,7 +393,7 @@
 				CLANG_USE_OPTIMIZATION_PROFILE = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"HospitalFoodOrder/Preview Content\"";
 				DEVELOPMENT_TEAM = 6728DRMDL9;
 				ENABLE_PREVIEWS = YES;
@@ -412,7 +412,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.4;
+				MARKETING_VERSION = 1.5;
 				PRODUCT_BUNDLE_IDENTIFIER = PrivatFelix.HospitalFoodOrder;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -435,7 +435,7 @@
 				CLANG_USE_OPTIMIZATION_PROFILE = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"HospitalFoodOrder/Preview Content\"";
 				DEVELOPMENT_TEAM = 6728DRMDL9;
 				ENABLE_PREVIEWS = YES;
@@ -454,7 +454,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.4;
+				MARKETING_VERSION = 1.5;
 				PRODUCT_BUNDLE_IDENTIFIER = PrivatFelix.HospitalFoodOrder;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
