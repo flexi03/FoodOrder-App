@@ -10,6 +10,7 @@ import SwiftUI
 // Modell für Einstellungen
 public class Settings: ObservableObject {
     
+    // MARK: Selection Variables
     @Published var showRestrictions: Bool = true {
         didSet {
             UserDefaults.standard.set(showRestrictions, forKey: "showRestrictions")
@@ -22,6 +23,7 @@ public class Settings: ObservableObject {
         }
     }
     
+    // Einschränkungen 1-4
     @Published var restrictions1: String = "Keine" {
         didSet {
             UserDefaults.standard.set(restrictions1, forKey: "restrictions1")
@@ -46,6 +48,7 @@ public class Settings: ObservableObject {
         }
     }
     
+    // Auswahloptionen
     @Published var breadOptions: [String] {
         didSet {
             UserDefaults.standard.set(breadOptions, forKey: "breadOptions")
@@ -88,6 +91,7 @@ public class Settings: ObservableObject {
         }
     }
     
+    // Getränkeauswahl 1-4
     @Published var drinkSelection: String = "Nichts" {
         didSet {
             UserDefaults.standard.set(drinkSelection, forKey: "drinkSelection")
@@ -112,12 +116,14 @@ public class Settings: ObservableObject {
         }
     }
     
+    // Extras Otionen
     @Published var extrasOptions: [String] {
         didSet {
             UserDefaults.standard.set(extrasOptions, forKey: "extrasOptions")
         }
     }
     
+    // Extras 1-4
     @Published var extras: String = "" {
         didSet {
             UserDefaults.standard.set(extras, forKey: "extras")
@@ -186,7 +192,7 @@ public class Settings: ObservableObject {
         }
     }
     
-    // Aufstrich2zähler 1-4
+    // Aufstrichzähler2 1-4
     @Published var selectedSpreadsCounts2: [String: Int] = [:] {
         didSet {
             UserDefaults.standard.set(selectedSpreadsCounts2, forKey: "selectedSpreadsCounts2")
@@ -296,7 +302,6 @@ public class Settings: ObservableObject {
         }
     }
 
-    //@State private var specialsSelection: String = ""
     @Published var fruitSelection: String = "Nichts" {
         didSet {
             UserDefaults.standard.set(fruitSelection, forKey: "fruitSelection")
