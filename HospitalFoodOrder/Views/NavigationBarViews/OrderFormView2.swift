@@ -38,22 +38,22 @@ struct OrderFormView2: View {
     @ViewBuilder
     private func patientView(for patientNumber: Int) -> some View {
         Form {
-            Section {
-                Picker("Patientenauswahl", selection: $patientSelection.patientSelection) {
-                    ForEach(1..<5, id: \.self) { number in
-                        Text("\(number)").tag(number)
-                    }
-                }
-                .frame(height: 50)
-                .pickerStyle(SegmentedPickerStyle())
-                .scaledToFill()
-                .onChange(of: patientSelection.patientSelection) { _ in
-                    // Erzeuge eine leichte Vibration
-                    let generator = UIImpactFeedbackGenerator(style: .medium)
-                    generator.impactOccurred()
-                    determineColor()
-                }
-            }
+//            Section {
+//                Picker("Patientenauswahl", selection: $patientSelection.patientSelection) {
+//                    ForEach(1..<5, id: \.self) { number in
+//                        Text("\(number)").tag(number)
+//                    }
+//                }
+//                .frame(height: 50)
+//                .pickerStyle(SegmentedPickerStyle())
+//                .scaledToFill()
+//                .onChange(of: patientSelection.patientSelection) { _ in
+//                    // Erzeuge eine leichte Vibration
+//                    let generator = UIImpactFeedbackGenerator(style: .medium)
+//                    generator.impactOccurred()
+//                    determineColor()
+//                }
+//            }
             
             if patientSelection.patientSelection == 1 {
                 createRestrictionsSection(restrictionSelection: $settings.restrictions1)
@@ -343,6 +343,12 @@ struct OrderFormView2: View {
                     generator.notificationOccurred(.warning) },
                 .cancel(Text("Abbrechen"))
             ])
+        }
+        .onChange(of: patientSelection.patientSelection) { _ in
+            // Erzeuge eine leichte Vibration
+            let generator = UIImpactFeedbackGenerator(style: .medium)
+            generator.impactOccurred()
+            determineColor()
         }
         .accentColor(color) // Farbe auch vom Picker jetzt in der richtigen Patientenfarbe anzeigen
         .background(validateBackgroundColor())
