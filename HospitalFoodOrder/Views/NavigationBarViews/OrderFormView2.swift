@@ -26,6 +26,17 @@ struct OrderFormView2: View {
     }
     
     var body: some View {
+        TabView(selection: $patientSelection.patientSelection) {
+            ForEach(1..<5, id: \.self) { number in
+                patientView(for: number)
+                    .tag(number)
+            }
+        }
+        .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
+    }
+    
+    @ViewBuilder
+    private func patientView(for patientNumber: Int) -> some View {
         Form {
             Section {
                 Picker("Patientenauswahl", selection: $patientSelection.patientSelection) {
@@ -95,7 +106,8 @@ struct OrderFormView2: View {
                         }
                     }
                 }
-                createSection(name: "Extras", options: settings.extrasOptions, counts: $settings.extrasOptionSelection)
+//                createSection(name: "Extras", options: settings.extrasOptions, counts: $settings.extrasOptionSelection)
+                createExtrasSection(extraNumber: 1, options: settings.extrasOptions, counts: $settings.extrasOptionSelection, extras: $settings.extras)
             }
             
             if patientSelection.patientSelection == 2 {
@@ -104,48 +116,53 @@ struct OrderFormView2: View {
                 createSection(name: "Aufstrich", options: settings.spreadsOptions, counts: $settings.selectedSpreadsCounts)
                 createSection(name: "Aufstrich 2", options: settings.spreadsOptions2, counts: $settings.selectedSpreadsCounts2)
                 createSection(name: "Specials", options: settings.specialsOptions, counts: $settings.selectedSpecialsCounts)
-                Section {
-                    Text("Getränke und Obst ")
-                        .font(.headline)
-                        .bold()
-                        .padding(.leading)
-                        .frame(alignment: .center)
-                    Picker("Getränk und oder Obst auswählen", selection: $settings.drinkSelection2) {
-                        Text("Nichts").tag("Nichts")
-                        Text("Tee").tag("Tee")
-                        if settings.coffeeSelected == true {
-                            Text("Kaffee").tag("Kaffee")
-                        }
-                        Text("Obst").tag("Obst")
-                    }
-                    .pickerStyle(SegmentedPickerStyle())
+                if isButtonPressed && settings.selectedTeaFlavor2 == "Nichts" && settings.selectedCoffeeFlavor2 == "Nichts" && settings.fruitSelection2 == "Nichts" {
                     
-                    if settings.drinkSelection2 == "Tee" {
-                        Picker("Teesorte auswählen", selection: $settings.selectedTeaFlavor2) {
-                            ForEach(settings.teaOptions, id: \.self) { tea in
-                                Text(tea).tag(tea)
+                } else {
+                    Section {
+                        Text("Getränke und Obst ")
+                            .font(.headline)
+                            .bold()
+                            .padding(.leading)
+                            .frame(alignment: .center)
+                        Picker("Getränk und oder Obst auswählen", selection: $settings.drinkSelection2) {
+                            Text("Nichts").tag("Nichts")
+                            Text("Tee").tag("Tee")
+                            if settings.coffeeSelected == true {
+                                Text("Kaffee").tag("Kaffee")
                             }
+                            Text("Obst").tag("Obst")
                         }
-                        .pickerStyle(DefaultPickerStyle())
+                        .pickerStyle(SegmentedPickerStyle())
                         
-                    } else if settings.drinkSelection2 == "Obst" {
-                        Picker("Obst auswählen", selection: $settings.fruitSelection2) {
-                            ForEach(settings.fruitOptions, id: \.self) { fruit in
-                                Text(fruit).tag(fruit)
+                        if settings.drinkSelection2 == "Tee" {
+                            Picker("Teesorte auswählen", selection: $settings.selectedTeaFlavor2) {
+                                ForEach(settings.teaOptions, id: \.self) { tea in
+                                    Text(tea).tag(tea)
+                                }
                             }
-                        }
-                        .pickerStyle(DefaultPickerStyle())
-                        
-                    } else if settings.drinkSelection2 == "Kaffee" {
-                        Picker("Kaffee auswählen", selection: $settings.selectedCoffeeFlavor2) {
-                            ForEach(settings.coffeeOptions, id: \.self) { coffee in
-                                Text(coffee).tag(coffee)
+                            .pickerStyle(DefaultPickerStyle())
+                            
+                        } else if settings.drinkSelection2 == "Obst" {
+                            Picker("Obst auswählen", selection: $settings.fruitSelection2) {
+                                ForEach(settings.fruitOptions, id: \.self) { fruit in
+                                    Text(fruit).tag(fruit)
+                                }
                             }
+                            .pickerStyle(DefaultPickerStyle())
+                            
+                        } else if settings.drinkSelection2 == "Kaffee" {
+                            Picker("Kaffee auswählen", selection: $settings.selectedCoffeeFlavor2) {
+                                ForEach(settings.coffeeOptions, id: \.self) { coffee in
+                                    Text(coffee).tag(coffee)
+                                }
+                            }
+                            .pickerStyle(DefaultPickerStyle())
                         }
-                        .pickerStyle(DefaultPickerStyle())
                     }
                 }
-                createSection(name: "Extras", options: settings.extrasOptions, counts: $settings.extrasOptionSelection2)
+//                createSection(name: "Extras", options: settings.extrasOptions, counts: $settings.extrasOptionSelection2)
+                createExtrasSection(extraNumber: 2, options: settings.extrasOptions, counts: $settings.extrasOptionSelection2, extras: $settings.extras2)
             }
             
             if patientSelection.patientSelection == 3 {
@@ -154,48 +171,53 @@ struct OrderFormView2: View {
                 createSection(name: "Aufstrich", options: settings.spreadsOptions, counts: $settings.selectedSpreadsCounts_3)
                 createSection(name: "Aufstrich 2", options: settings.spreadsOptions2, counts: $settings.selectedSpreadsCounts2_3)
                 createSection(name: "Specials", options: settings.specialsOptions, counts: $settings.selectedSpecialsCounts3)
-                Section {
-                    Text("Getränke und Obst ")
-                        .font(.headline)
-                        .bold()
-                        .padding(.leading)
-                        .frame(alignment: .center)
-                    Picker("Getränk und oder Obst auswählen", selection: $settings.drinkSelection3) {
-                        Text("Nichts").tag("Nichts")
-                        Text("Tee").tag("Tee")
-                        if settings.coffeeSelected == true {
-                            Text("Kaffee").tag("Kaffee")
-                        }
-                        Text("Obst").tag("Obst")
-                    }
-                    .pickerStyle(SegmentedPickerStyle())
+                if isButtonPressed && settings.selectedTeaFlavor3 == "Nichts" && settings.selectedCoffeeFlavor3 == "Nichts" && settings.fruitSelection3 == "Nichts" {
                     
-                    if settings.drinkSelection3 == "Tee" {
-                        Picker("Teesorte auswählen", selection: $settings.selectedTeaFlavor3) {
-                            ForEach(settings.teaOptions, id: \.self) { tea in
-                                Text(tea).tag(tea)
+                } else {
+                    Section {
+                        Text("Getränke und Obst ")
+                            .font(.headline)
+                            .bold()
+                            .padding(.leading)
+                            .frame(alignment: .center)
+                        Picker("Getränk und oder Obst auswählen", selection: $settings.drinkSelection3) {
+                            Text("Nichts").tag("Nichts")
+                            Text("Tee").tag("Tee")
+                            if settings.coffeeSelected == true {
+                                Text("Kaffee").tag("Kaffee")
                             }
+                            Text("Obst").tag("Obst")
                         }
-                        .pickerStyle(DefaultPickerStyle())
+                        .pickerStyle(SegmentedPickerStyle())
                         
-                    } else if settings.drinkSelection3 == "Obst" {
-                        Picker("Obst auswählen", selection: $settings.fruitSelection3) {
-                            ForEach(settings.fruitOptions, id: \.self) { fruit in
-                                Text(fruit).tag(fruit)
+                        if settings.drinkSelection3 == "Tee" {
+                            Picker("Teesorte auswählen", selection: $settings.selectedTeaFlavor3) {
+                                ForEach(settings.teaOptions, id: \.self) { tea in
+                                    Text(tea).tag(tea)
+                                }
                             }
-                        }
-                        .pickerStyle(DefaultPickerStyle())
-                        
-                    } else if settings.drinkSelection3 == "Kaffee" {
-                        Picker("Kaffee auswählen", selection: $settings.selectedCoffeeFlavor3) {
-                            ForEach(settings.coffeeOptions, id: \.self) { coffee in
-                                Text(coffee).tag(coffee)
+                            .pickerStyle(DefaultPickerStyle())
+                            
+                        } else if settings.drinkSelection3 == "Obst" {
+                            Picker("Obst auswählen", selection: $settings.fruitSelection3) {
+                                ForEach(settings.fruitOptions, id: \.self) { fruit in
+                                    Text(fruit).tag(fruit)
+                                }
                             }
+                            .pickerStyle(DefaultPickerStyle())
+                            
+                        } else if settings.drinkSelection3 == "Kaffee" {
+                            Picker("Kaffee auswählen", selection: $settings.selectedCoffeeFlavor3) {
+                                ForEach(settings.coffeeOptions, id: \.self) { coffee in
+                                    Text(coffee).tag(coffee)
+                                }
+                            }
+                            .pickerStyle(DefaultPickerStyle())
                         }
-                        .pickerStyle(DefaultPickerStyle())
                     }
                 }
-                createSection(name: "Extras", options: settings.extrasOptions, counts: $settings.extrasOptionSelection3)
+//                createSection(name: "Extras", options: settings.extrasOptions, counts: $settings.extrasOptionSelection3)
+                createExtrasSection(extraNumber: 3, options: settings.extrasOptions, counts: $settings.extrasOptionSelection3, extras: $settings.extras3)
             }
 
             if patientSelection.patientSelection == 4 {
@@ -204,48 +226,53 @@ struct OrderFormView2: View {
                 createSection(name: "Aufstrich", options: settings.spreadsOptions, counts: $settings.selectedSpreadsCounts_4)
                 createSection(name: "Aufstrich 2", options: settings.spreadsOptions2, counts: $settings.selectedSpreadsCounts2_4)
                 createSection(name: "Specials", options: settings.specialsOptions, counts: $settings.selectedSpecialsCounts4)
-                Section {
-                    Text("Getränke und Obst ")
-                        .font(.headline)
-                        .bold()
-                        .padding(.leading)
-                        .frame(alignment: .center)
-                    Picker("Getränk und oder Obst auswählen", selection: $settings.drinkSelection4) {
-                        Text("Nichts").tag("Nichts")
-                        Text("Tee").tag("Tee")
-                        if settings.coffeeSelected == true {
-                            Text("Kaffee").tag("Kaffee")
-                        }
-                        Text("Obst").tag("Obst")
-                    }
-                    .pickerStyle(SegmentedPickerStyle())
+                if isButtonPressed && settings.selectedTeaFlavor4 == "Nichts" && settings.selectedCoffeeFlavor4 == "Nichts" && settings.fruitSelection4 == "Nichts" {
                     
-                    if settings.drinkSelection4 == "Tee" {
-                        Picker("Teesorte auswählen", selection: $settings.selectedTeaFlavor4) {
-                            ForEach(settings.teaOptions, id: \.self) { tea in
-                                Text(tea).tag(tea)
+                } else {
+                    Section {
+                        Text("Getränke und Obst ")
+                            .font(.headline)
+                            .bold()
+                            .padding(.leading)
+                            .frame(alignment: .center)
+                        Picker("Getränk und oder Obst auswählen", selection: $settings.drinkSelection4) {
+                            Text("Nichts").tag("Nichts")
+                            Text("Tee").tag("Tee")
+                            if settings.coffeeSelected == true {
+                                Text("Kaffee").tag("Kaffee")
                             }
+                            Text("Obst").tag("Obst")
                         }
-                        .pickerStyle(DefaultPickerStyle())
+                        .pickerStyle(SegmentedPickerStyle())
                         
-                    } else if settings.drinkSelection4 == "Obst" {
-                        Picker("Obst auswählen", selection: $settings.fruitSelection4) {
-                            ForEach(settings.fruitOptions, id: \.self) { fruit in
-                                Text(fruit).tag(fruit)
+                        if settings.drinkSelection4 == "Tee" {
+                            Picker("Teesorte auswählen", selection: $settings.selectedTeaFlavor4) {
+                                ForEach(settings.teaOptions, id: \.self) { tea in
+                                    Text(tea).tag(tea)
+                                }
                             }
-                        }
-                        .pickerStyle(DefaultPickerStyle())
-                        
-                    } else if settings.drinkSelection4 == "Kaffee" {
-                        Picker("Kaffee auswählen", selection: $settings.selectedCoffeeFlavor4) {
-                            ForEach(settings.coffeeOptions, id: \.self) { coffee in
-                                Text(coffee).tag(coffee)
+                            .pickerStyle(DefaultPickerStyle())
+                            
+                        } else if settings.drinkSelection4 == "Obst" {
+                            Picker("Obst auswählen", selection: $settings.fruitSelection4) {
+                                ForEach(settings.fruitOptions, id: \.self) { fruit in
+                                    Text(fruit).tag(fruit)
+                                }
                             }
+                            .pickerStyle(DefaultPickerStyle())
+                            
+                        } else if settings.drinkSelection4 == "Kaffee" {
+                            Picker("Kaffee auswählen", selection: $settings.selectedCoffeeFlavor4) {
+                                ForEach(settings.coffeeOptions, id: \.self) { coffee in
+                                    Text(coffee).tag(coffee)
+                                }
+                            }
+                            .pickerStyle(DefaultPickerStyle())
                         }
-                        .pickerStyle(DefaultPickerStyle())
                     }
                 }
-                createSection(name: "Extras", options: settings.extrasOptions, counts: $settings.extrasOptionSelection4)
+//                createSection(name: "Extras", options: settings.extrasOptions, counts: $settings.extrasOptionSelection4)
+                createExtrasSection(extraNumber: 4, options: settings.extrasOptions, counts: $settings.extrasOptionSelection4, extras: $settings.extras4)
             }
                         
             // MARK: Button Bestellungsview
@@ -321,6 +348,8 @@ struct OrderFormView2: View {
         .background(validateBackgroundColor())
     }
     
+
+    
     // MARK: Funktionen
     
     @ViewBuilder
@@ -348,26 +377,6 @@ struct OrderFormView2: View {
                 .onChange(of: counts.wrappedValue) { newValue in
                     determineColor()
                 }
-                // Geht noch nicht
-//                if name == "Extras" {
-//                    if counts ==  Binding<[settings.extrasOptionSelection]>.wrappedValue {
-//                        TextField("Bitte Extras eingeben", text: $settings.extras)
-//                            .frame(height: 200, alignment: .top)
-//                            .submitLabel(.done)
-//                    } else if Text(counts == $settings.extrasOptionSelection2) {
-//                        TextField("Bitte Extras eingeben", text: $settings.extras2)
-//                            .frame(height: 200, alignment: .top)
-//                            .submitLabel(.done)
-//                    } else if Text(counts == $settings.extrasOptionSelection3) {
-//                        TextField("Bitte Extras eingeben", text: $settings.extras3)
-//                            .frame(height: 200, alignment: .top)
-//                            .submitLabel(.done)
-//                    } else if Text(counts == $settings.extrasOptionSelection4) {
-//                        TextField("Bitte Extras eingeben", text: $settings.extras4)
-//                            .frame(height: 200, alignment: .top)
-//                            .submitLabel(.done)
-//                    }
-//                }
             }
             //                .onDelete(perform: settings.deleteBreadOption)
         } else {
@@ -387,6 +396,12 @@ struct OrderFormView2: View {
                         Text("Schmieren").tag("Schmieren")
                         Text("Schnabelbecher & Schmieren").tag("Schnabelbecher & Schmieren")
                     }
+                    .onChange(of: restrictionSelection.wrappedValue) { newValue in
+                        determineColor()
+                    }
+                }
+                .onAppear {
+                    determineColor()
                 }
             }
             if isButtonPressed == true && restrictionSelection.wrappedValue == "Keine" {
@@ -399,7 +414,68 @@ struct OrderFormView2: View {
                         Text("Schmieren").tag("Schmieren")
                         Text("Schnabelbecher & Schmieren").tag("Schnabelbecher & Schmieren")
                     }
+                    .onChange(of: restrictionSelection.wrappedValue) { newValue in
+                        determineColor()
+                    }
                 }
+                .onAppear {
+                    determineColor()
+                }
+            }
+        }
+    }
+    
+    @ViewBuilder
+    func createExtrasSection(extraNumber: Int, options: [String], counts: Binding<[String: Int]>, extras: Binding<String>) -> some View {
+        let filteredOptions = isButtonPressed ? filterOptions(options: options, counts: counts.wrappedValue) : options
+
+        if isButtonPressed == true && filteredOptions.isEmpty && extras.wrappedValue.isEmpty {
+            // Nichts anzeigen
+        } else if isButtonPressed == true && extras.wrappedValue.isEmpty {
+            Section(header: Text("Extras").fontWeight(.semibold)) {
+                ForEach(filteredOptions.indices, id: \.self) { index in
+                    let option = filteredOptions[index]
+                    Stepper("\(option) (\(counts.wrappedValue[option] ?? 0))", value: Binding(
+                        get: { counts.wrappedValue[option] ?? 0 },
+                        set: { newValue in
+                            var updatedCounts = counts.wrappedValue
+                            updatedCounts[option] = newValue
+                            counts.wrappedValue = updatedCounts
+                            let generator = UINotificationFeedbackGenerator()
+                            generator.notificationOccurred(.success)
+                        }), in: 0...10)
+                    .fontWeight(counts.wrappedValue[option] ?? 0 >= 1 ? .semibold : .regular)
+                    .onAppear(perform: determineColor)
+                    .foregroundColor(counts.wrappedValue[option] ?? 0 >= 1 ? color : .primary)
+                }
+                .onChange(of: counts.wrappedValue) { newValue in
+                    determineColor()
+                }
+            }
+        } else {
+            Section(header: Text("Extras").fontWeight(.semibold)) {
+                ForEach(filteredOptions.indices, id: \.self) { index in
+                    let option = filteredOptions[index]
+                    Stepper("\(option) (\(counts.wrappedValue[option] ?? 0))", value: Binding(
+                        get: { counts.wrappedValue[option] ?? 0 },
+                        set: { newValue in
+                            var updatedCounts = counts.wrappedValue
+                            updatedCounts[option] = newValue
+                            counts.wrappedValue = updatedCounts
+                            let generator = UINotificationFeedbackGenerator()
+                            generator.notificationOccurred(.success)
+                        }), in: 0...10)
+                    .fontWeight(counts.wrappedValue[option] ?? 0 >= 1 ? .semibold : .regular)
+                    .onAppear(perform: determineColor)
+                    .foregroundColor(counts.wrappedValue[option] ?? 0 >= 1 ? color : .primary)
+                }
+                .onChange(of: counts.wrappedValue) { newValue in
+                    determineColor()
+                }
+                
+                TextField("Bitte Extras eingeben", text: extras)
+                    .frame(height: 200, alignment: .top)
+                    .submitLabel(.done)
             }
         }
     }

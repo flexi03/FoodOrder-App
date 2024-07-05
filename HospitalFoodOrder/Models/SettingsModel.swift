@@ -404,8 +404,8 @@ public class Settings: ObservableObject {
         self.drinkSelection4 = UserDefaults.standard.string(forKey: "drinkSelection4") ?? "Nichts"
         self.teaOptions = UserDefaults.standard.stringArray(forKey: "teaOptions") ?? ["Nichts", "Kamille", "Kräuter/ Grüner Tee", "Schwarzer Tee", "Früchte Tee", "Fenchel", "Pfefferminz"]
         self.coffeeOptions = UserDefaults.standard.stringArray(forKey: "coffeeOptions") ?? ["Nichts", "Kaffee", "Kaffee mit Milch", "Kaffee mit Zucker", "Kaffee mit Milch und Zucker"]
-        self.fruitOptions = UserDefaults.standard.stringArray(forKey: "fruitOptions") ?? ["Nichts", "Apfel", "Banane", "Birne"]
-        self.extrasOptions = UserDefaults.standard.stringArray(forKey: "extrasOptions") ?? ["Zucker", "Süßstoff", "Milch", "Salz", "Pfeffer", "Gewürzgurke", "Gurke", "Tomate", "Suppe", "Gemüse", "Kakao"]
+        self.fruitOptions = UserDefaults.standard.stringArray(forKey: "fruitOptions") ?? ["Nichts", "Apfel", "Banane", "Birne", "Apfel & Banane", "Apfel & Birne", "Banane & Birne", "Alles"]
+        self.extrasOptions = UserDefaults.standard.stringArray(forKey: "extrasOptions") ?? ["Zucker", "Süßstoff", "Zitrone", "Milch", "Salz", "Pfeffer", "Gewürzgurke", "Gurke", "Tomate", "Suppe", "Gemüse", "Kakao"]
         self.extras = UserDefaults.standard.string(forKey: "extras") ?? ""
         self.extras2 = UserDefaults.standard.string(forKey: "extras2") ?? ""
         self.extras3 = UserDefaults.standard.string(forKey: "extras3") ?? ""

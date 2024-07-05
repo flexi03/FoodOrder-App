@@ -40,9 +40,9 @@ func resetOptions() {
     
     Settings.init().coffeeOptions.replace(Settings.init().coffeeOptions, with: ["Nichts", "Kaffee", "Kaffee mit Milch", "Kaffee mit Zucker", "Kaffee mit Milch und Zucker"])
     
-    Settings.init().fruitOptions.replace(Settings.init().fruitOptions, with: ["Nichts", "Apfel", "Banane", "Birne"])
+    Settings.init().fruitOptions.replace(Settings.init().fruitOptions, with: ["Nichts", "Apfel", "Banane", "Birne", "Apfel & Banane", "Apfel & Birne", "Banane & Birne", "Alles"])
     
-    Settings.init().extrasOptions.replace(Settings.init().extrasOptions, with: ["Zucker", "Süßstoff", "Milch", "Salz", "Pfeffer", "Gewürzgurke", "Gurke", "Tomate", "Suppe", "Gemüse", "Kakao"])
+    Settings.init().extrasOptions.replace(Settings.init().extrasOptions, with: ["Zucker", "Süßstoff", "Zitrone", "Milch", "Salz", "Pfeffer", "Gewürzgurke", "Gurke", "Tomate", "Suppe", "Gemüse", "Kakao"])
     
 //    exit(0)
 }
