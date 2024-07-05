@@ -43,109 +43,6 @@ struct OrderFormView2: View {
                     determineColor()
                 }
             }
-
-            
-//            if settings.showRestrictions == true {
-//                if patientSelection.patientSelection == 1 {
-//                    if isButtonPressed == false {
-//                        Section(header: Text("Einschränkungen").fontWeight(.semibold)) {
-//                            Picker ("Einschränkungen", selection: $settings.restrictions1) {
-//                                Text("Keine").tag("Keine")
-//                                Text("Schnabelbecher").tag("Schnabelbecher")
-//                                Text("Schmieren").tag("Schmieren")
-//                                Text("Schnabelbecher & Schmieren").tag("Schnabelbecher & Schmieren")
-//                            }
-//                        }
-//                    }
-//                    if isButtonPressed == true && settings.restrictions1 == "Keine" {
-//                        // Nichts anzeigen
-//                    } else if isButtonPressed == true && settings.restrictions1 != "Keine" {
-//                        Section(header: Text("Einschränkungen").fontWeight(.semibold)) {
-//                            Picker ("Einschränkungen", selection: $settings.restrictions1) {
-//                                Text("Keine").tag("Keine")
-//                                Text("Schnabelbecher").tag("Schnabelbecher")
-//                                Text("Schmieren").tag("Schmieren")
-//                                Text("Schnabelbecher & Schmieren").tag("Schnabelbecher & Schmieren")
-//                            }
-//                        }
-//                    }
-//                }
-//
-//                if patientSelection.patientSelection == 2 {
-//                    if isButtonPressed == false {
-//                        Section(header: Text("Einschränkungen").fontWeight(.semibold)) {
-//                            Picker ("Einschränkungen", selection: $settings.restrictions2) {
-//                                Text("Keine").tag("Keine")
-//                                Text("Schnabelbecher").tag("Schnabelbecher")
-//                                Text("Schmieren").tag("Schmieren")
-//                                Text("Schnabelbecher & Schmieren").tag("Schnabelbecher & Schmieren")
-//                            }
-//                        }
-//                    }
-//                    if isButtonPressed == true && settings.restrictions2 == "Keine" {
-//                        // Nichts anzeigen
-//                    } else if isButtonPressed == true && settings.restrictions2 != "Keine" {
-//                        Section(header: Text("Einschränkungen").fontWeight(.semibold)) {
-//                            Picker ("Einschränkungen", selection: $settings.restrictions2) {
-//                                Text("Keine").tag("Keine")
-//                                Text("Schnabelbecher").tag("Schnabelbecher")
-//                                Text("Schmieren").tag("Schmieren")
-//                                Text("Schnabelbecher & Schmieren").tag("Schnabelbecher & Schmieren")
-//                            }
-//                        }
-//                    }
-//                }
-//
-//                if patientSelection.patientSelection == 3 {
-//                    if isButtonPressed == false {
-//                        Section(header: Text("Einschränkungen").fontWeight(.semibold)) {
-//                            Picker ("Einschränkungen", selection: $settings.restrictions3) {
-//                                Text("Keine").tag("Keine")
-//                                Text("Schnabelbecher").tag("Schnabelbecher")
-//                                Text("Schmieren").tag("Schmieren")
-//                                Text("Schnabelbecher & Schmieren").tag("Schnabelbecher & Schmieren")
-//                            }
-//                        }
-//                    }
-//                    if isButtonPressed == true && settings.restrictions3 == "Keine" {
-//                        // Nichts anzeigen
-//                    } else if isButtonPressed == true && settings.restrictions3 != "Keine" {
-//                        Section(header: Text("Einschränkungen").fontWeight(.semibold)) {
-//                            Picker ("Einschränkungen", selection: $settings.restrictions3) {
-//                                Text("Keine").tag("Keine")
-//                                Text("Schnabelbecher").tag("Schnabelbecher")
-//                                Text("Schmieren").tag("Schmieren")
-//                                Text("Schnabelbecher & Schmieren").tag("Schnabelbecher & Schmieren")
-//                            }
-//                        }
-//                    }
-//                }
-//
-//                if patientSelection.patientSelection == 4 {
-//                    if isButtonPressed == false {
-//                        Section(header: Text("Einschränkungen").fontWeight(.semibold)) {
-//                            Picker ("Einschränkungen", selection: $settings.restrictions4) {
-//                                Text("Keine").tag("Keine")
-//                                Text("Schnabelbecher").tag("Schnabelbecher")
-//                                Text("Schmieren").tag("Schmieren")
-//                                Text("Schnabelbecher & Schmieren").tag("Schnabelbecher & Schmieren")
-//                            }
-//                        }
-//                    }
-//                    if isButtonPressed == true && settings.restrictions4 == "Keine" {
-//                        // Nichts anzeigen
-//                    } else if isButtonPressed == true && settings.restrictions4 != "Keine" {
-//                        Section(header: Text("Einschränkungen").fontWeight(.semibold)) {
-//                            Picker ("Einschränkungen", selection: $settings.restrictions4) {
-//                                Text("Keine").tag("Keine")
-//                                Text("Schnabelbecher").tag("Schnabelbecher")
-//                                Text("Schmieren").tag("Schmieren")
-//                                Text("Schnabelbecher & Schmieren").tag("Schnabelbecher & Schmieren")
-//                            }
-//                        }
-//                    }
-//                }
-//            }
             
             if patientSelection.patientSelection == 1 {
                 createRestrictionsSection(restrictionSelection: $settings.restrictions1)
@@ -157,12 +54,12 @@ struct OrderFormView2: View {
                     
                 } else {
                     Section {
-                        Text("Getränke und Obst ")
+                        Text("Getränke und Obst")
                             .font(.headline)
                             .bold()
                             .padding(.leading)
                             .frame(alignment: .center)
-                        Picker("Getränk und oder Obst auswählen", selection: $settings.drinkSelection) {
+                        Picker("Getränk und Obst", selection: $settings.drinkSelection) {
                             Text("Nichts").tag("Nichts")
                             Text("Tee").tag("Tee")
                             if settings.coffeeSelected == true {
@@ -447,6 +344,9 @@ struct OrderFormView2: View {
                     .fontWeight(counts.wrappedValue[option] ?? 0 >= 1 ? .semibold : .regular)
                     .onAppear(perform: determineColor)
                     .foregroundColor(counts.wrappedValue[option] ?? 0 >= 1 ? color : .primary)
+                }
+                .onChange(of: counts.wrappedValue) { newValue in
+                    determineColor()
                 }
                 // Geht noch nicht
 //                if name == "Extras" {

@@ -353,10 +353,10 @@ public class Settings: ObservableObject {
         self.restrictions2 = UserDefaults.standard.string(forKey: "restrictions2") ?? "Keine"
         self.restrictions3 = UserDefaults.standard.string(forKey: "restrictions3") ?? "Keine"
         self.restrictions4 = UserDefaults.standard.string(forKey: "restrictions4") ?? "Keine"
-        self.breadOptions = UserDefaults.standard.stringArray(forKey: "breadOptions") ?? ["Weizen", "Grau", "Körner", "Brötchen"]
+        self.breadOptions = UserDefaults.standard.stringArray(forKey: "breadOptions") ?? ["Weizen", "Grau", "Körner", "Brötchen Normal", "Brötchen Grau", "Brötchen Körner"]
         self.spreadsOptions = UserDefaults.standard.stringArray(forKey: "spreadsOptions") ?? ["Butter", "Margarine", "Käse", "Pute", "Fleischwurst", "Schinken", "Salami"]
-        self.spreadsOptions2 = UserDefaults.standard.stringArray(forKey: "spreadsOptions2") ?? ["Frischkäse Natur", "Frischkäse Kräuter", "Quark", "Schmelzkäse", "Leberwurst", "Mettwurst", "Marmelade", "Honig"]
-        self.specialsOptions = UserDefaults.standard.stringArray(forKey: "specialsOptions") ?? ["Frucht Joghurt", "Natur Joghurt", "Grießpudding", "Milchreis", "Brühe" , "Brühe vegetarisch"]
+        self.spreadsOptions2 = UserDefaults.standard.stringArray(forKey: "spreadsOptions2") ?? ["Frischkäse Natur", "Frischkäse Kräuter", "Quark", "Schmelzkäse", "Schmelzkäse Pikant", "Leberwurst", "Schinkencreme", "Marmelade", "Honig", "Vegetarischer Aufstrich Tomate", "Vegetarischer Aufstrich Kräuter", "Nuss-Nougat Creme"]
+        self.specialsOptions = UserDefaults.standard.stringArray(forKey: "specialsOptions") ?? ["Frucht Joghurt", "Natur Joghurt", "Brühe", "Brühe vegetarisch",  "Milchreis", "Grieß"]
         self.selectedBreadCounts = UserDefaults.standard.dictionary(forKey: "selectedBreadCounts") as? [String: Int] ?? [:]
         self.selectedBreadCounts2 = UserDefaults.standard.dictionary(forKey: "selectedBreadCounts2") as? [String: Int] ?? [:]
         self.selectedBreadCounts3 = UserDefaults.standard.dictionary(forKey: "selectedBreadCounts3") as? [String: Int] ?? [:]
@@ -400,7 +400,7 @@ public class Settings: ObservableObject {
         self.teaOptions = UserDefaults.standard.stringArray(forKey: "teaOptions") ?? ["Nichts", "Kamille", "Kräuter/ Grüner Tee", "Schwarzer Tee", "Früchte Tee", "Fenchel", "Pfefferminz"]
         self.coffeeOptions = UserDefaults.standard.stringArray(forKey: "coffeeOptions") ?? ["Nichts", "Kaffee", "Kaffee mit Milch", "Kaffee mit Zucker", "Kaffee mit Milch und Zucker"]
         self.fruitOptions = UserDefaults.standard.stringArray(forKey: "fruitOptions") ?? ["Nichts", "Apfel", "Banane", "Birne"]
-        self.extrasOptions = UserDefaults.standard.stringArray(forKey: "extrasOptions") ?? ["Zucker", "Süßstoff", "Milch", "Salz", "Pfeffer", "Gurke", "Tomate", "Suppe"]
+        self.extrasOptions = UserDefaults.standard.stringArray(forKey: "extrasOptions") ?? ["Zucker", "Süßstoff", "Milch", "Salz", "Pfeffer", "Gewürzgurke", "Gurke", "Tomate", "Suppe", "Gemüse", "Kakao"]
         self.extras = UserDefaults.standard.string(forKey: "extras") ?? ""
         self.extras2 = UserDefaults.standard.string(forKey: "extras2") ?? ""
         self.extras3 = UserDefaults.standard.string(forKey: "extras3") ?? ""

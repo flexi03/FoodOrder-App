@@ -28,13 +28,13 @@ func resetOptions() {
 
     print("Reset")
         
-    Settings.init().breadOptions.replace(Settings.init().breadOptions, with: ["Weizen", "Grau", "Körner", "Brötchen"])
+    Settings.init().breadOptions.replace(Settings.init().breadOptions, with: ["Weizen", "Grau", "Körner", "Brötchen Normal", "Brötchen Grau", "Brötchen Körner"])
     
     Settings.init().spreadsOptions.replace(Settings.init().spreadsOptions, with: ["Butter", "Margarine", "Käse", "Pute", "Fleischwurst", "Schinken", "Salami"])
     
-    Settings.init().spreadsOptions2.replace(Settings.init().spreadsOptions2, with: ["Frischkäse Natur", "Frischkäse Kräuter", "Quark", "Schmelzkäse", "Leberwurst", "Mettwurst", "Marmelade", "Honig"])
+    Settings.init().spreadsOptions2.replace(Settings.init().spreadsOptions2, with: ["Frischkäse Natur", "Frischkäse Kräuter", "Quark", "Schmelzkäse", "Schmelzkäse Pikant", "Leberwurst", "Schinkencreme", "Marmelade", "Honig", "Vegetarischer Aufstrich Tomate", "Vegetarischer Aufstrich Kräuter", "Nuss-Nougat Creme"])
     
-    Settings.init().specialsOptions.replace(Settings.init().specialsOptions, with: ["Frucht Joghurt", "Natur Joghurt", "Grießpudding", "Milchreis", "Brühe" , "Brühe vegetarisch"])
+    Settings.init().specialsOptions.replace(Settings.init().specialsOptions, with: ["Frucht Joghurt", "Natur Joghurt", "Brühe", "Brühe vegetarisch",  "Milchreis", "Grieß"])
     
     Settings.init().teaOptions.replace(Settings.init().teaOptions, with: ["Nichts", "Kamille", "Kräuter/ Grüner Tee", "Schwarzer Tee", "Früchte Tee", "Fenchel", "Pfefferminz"])
     
@@ -42,7 +42,7 @@ func resetOptions() {
     
     Settings.init().fruitOptions.replace(Settings.init().fruitOptions, with: ["Nichts", "Apfel", "Banane", "Birne"])
     
-    Settings.init().extrasOptions.replace(Settings.init().extrasOptions, with: ["Zucker", "Süßstoff", "Milch", "Salz", "Pfeffer", "Gurke", "Tomate", "Suppe"])
+    Settings.init().extrasOptions.replace(Settings.init().extrasOptions, with: ["Zucker", "Süßstoff", "Milch", "Salz", "Pfeffer", "Gewürzgurke", "Gurke", "Tomate", "Suppe", "Gemüse", "Kakao"])
     
 //    exit(0)
 }
@@ -91,8 +91,8 @@ struct ContentView: View {
             .toolbar(.hidden, for: .tabBar)
         }
         .navigationViewStyle(StackNavigationViewStyle())
-        .colorScheme(getColorScheme())
-        //        .preferredColorScheme(getColorScheme())
+//        .colorScheme(getColorScheme())
+        .preferredColorScheme(getColorScheme())
         .overlay(CustomTabBar(), alignment: .bottom)
         .tint(Color.accentColor)
         //                .animation(.interactiveSpring(response: 0.6, dampingFraction: 0.7, blendDuration: 0.7), value: Tab.allCases)
@@ -109,7 +109,7 @@ struct ContentView: View {
         }
     }
     
-    // Custom Tab Bar
+    // MARK: Custom Tab Bar
     @ViewBuilder
     func CustomTabBar(_ tint: Color = .accentColor, _ inactiveTint: Color = .accentColor) -> some View {
         HStack(alignment: .bottom ,spacing: 0) {
