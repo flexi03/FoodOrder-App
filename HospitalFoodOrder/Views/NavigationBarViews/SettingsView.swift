@@ -7,58 +7,69 @@
 
 import SwiftUI
 
+import SwiftUI
+
 struct SettingsView: View {
-    //    @State var colorScheme
     @ObservedObject var colorScheme: ColorSchemeModel
     @ObservedObject var settings: Settings
-    @AppStorage("showWorkingTime") var showWorkingTime: Bool = true
     
     var body: some View {
-        VStack {
-            Form {
-                Section("App Farbe") {
-                    Picker("Color", selection: $colorScheme.mode) {
-                        Text("Dunkel").tag("Dunkel")
-                        Text("Hell").tag("Hell")
-                    }
-                    .pickerStyle(.segmented)
-                    .frame(height: 50)
+        Form {
+            Section(header: Text("Aussehen")) {
+                Picker("Farbschema", selection: $colorScheme.mode) {
+                    Text("Dunkel").tag("Dunkel")
+                    Text("Hell").tag("Hell")
                 }
-                Section(header: Text("Optionen")) {
-                    Toggle(isOn: $settings.coffeeSelected) {
-                        Text("Kaffee auswählbar")
-                    }
-                    Toggle(isOn: $settings.showRestrictions) {
-                        Text("Einschränkungen anzeigen")
-                    }
-                    NavigationLink("Auswahl Optionen", destination: OptionView(settings: Settings()))
+                .pickerStyle(.segmented)
+            }
+            
+            Section(header: Text("Bestelloptionen")) {
+                Toggle(isOn: $settings.coffeeSelected) {
+                    Text("Kaffee auswählbar")
                 }
-                
-                Section(header: Text("Entwickler")) {
-                    //                Toggle(isOn: $showWorkingTime, label: {
-                    //                    Text("Arbeitszeiterfassung")
-                    //                })
-                    NavigationLink("Entwickler", destination: DeveloperSettingsView())
+                Toggle(isOn: $settings.showRestrictions) {
+                    Text("Einschränkungen anzeigen")
                 }
+//                HStack {
+//                    Text("Standardanzahl Patienten")
+//                    Spacer()
+//                    Picker("", selection: $settings.numberOfPatients) {
+//                        ForEach(1...100, id: \.self) { number in
+//                            Text("\(number)").tag(number)
+//                        }
+//                    }
+//                    .pickerStyle(.wheel)
+//                    .frame(width: 100, height: 100)
+//                    .clipped()
+//                }
+                NavigationLink("Auswahl Optionen anpassen", destination: OptionView(settings: settings))
+            }
+            
+            Section(header: Text("Über")) {
+                NavigationLink("Feedback geben", destination: FeedbackView())
+                Link("Datenschutzerklärung", destination: URL(string: "https://example.com/privacy")!)
+                Link("Nutzungsbedingungen", destination: URL(string: "https://example.com/terms")!)
+                // Version number and Build
+                let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String
+                let buildNumber = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as! String
+                Text("Version \(version) (Build \(buildNumber))")
+                    .font(.footnote)
+                    .foregroundColor(.secondary)
+                    .padding()
+            }
+            Section("") {
                 
             }
-            .navigationTitle("Einstellungen")
-            .navigationBarItems(trailing: NavigationLink(destination: FeedbackView()) {
-                Image(systemName: "bubble.left.and.exclamationmark.bubble.right")
-                    .fontWeight(.bold)
-            })
-            
-            // Version number and Build
-            let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String
-            let buildNumber = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as! String
-            Text("Version \(version) Build \(buildNumber)")
-                .font(.footnote)
-                .frame(height: 120, alignment: .top)
-            
+            .frame(height: 50)
         }
+        .navigationTitle("Einstellungen")
     }
 }
 
-#Preview {
-    SettingsView(colorScheme: ColorSchemeModel(), settings: Settings())
+struct SettingsView_Previews: PreviewProvider {
+    static var previews: some View {
+        NavigationView {
+            SettingsView(colorScheme: ColorSchemeModel(), settings: Settings())
+        }
+    }
 }

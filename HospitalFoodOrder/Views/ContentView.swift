@@ -6,8 +6,6 @@
 //
 
 import SwiftUI
-//import UIKit
-//import Lottie
 
 public class patientSelectionManager: ObservableObject {
     @Published var patientSelection: Int = 1 {
@@ -18,39 +16,23 @@ public class patientSelectionManager: ObservableObject {
     init() {
         self.patientSelection = UserDefaults.standard.object(forKey: "patientSelection") as? Int ?? 1
     }
-//    @Published var foodIntolerance1: String = "WK1"
-//    @Published var foodIntolerance2: String = "WK2"
-//    @Published var foodIntolerance3: String = "WK3"
-//    @Published var foodIntolerance4: String = "WK4"
 }
 
 func resetOptions() {
-
     print("Reset")
-        
-    Settings.init().breadOptions.replace(Settings.init().breadOptions, with: ["Weizen", "Grau", "Körner", "Brötchen Normal", "Brötchen Grau", "Brötchen Körner"])
-    
-    Settings.init().spreadsOptions.replace(Settings.init().spreadsOptions, with: ["Butter", "Margarine", "Käse", "Pute", "Fleischwurst", "Schinken", "Salami"])
-    
-    Settings.init().spreadsOptions2.replace(Settings.init().spreadsOptions2, with: ["Frischkäse Natur", "Frischkäse Kräuter", "Quark", "Schmelzkäse", "Schmelzkäse Pikant", "Leberwurst", "Schinkencreme", "Marmelade", "Honig", "Vegetarischer Aufstrich Tomate", "Vegetarischer Aufstrich Kräuter", "Nuss-Nougat Creme"])
-    
-    Settings.init().specialsOptions.replace(Settings.init().specialsOptions, with: ["Frucht Joghurt", "Natur Joghurt", "Brühe", "Brühe vegetarisch",  "Milchreis", "Grieß"])
-    
-    Settings.init().teaOptions.replace(Settings.init().teaOptions, with: ["Nichts", "Kamille", "Kräuter/ Grüner Tee", "Schwarzer Tee", "Früchte Tee", "Fenchel", "Pfefferminz"])
-    
-    Settings.init().coffeeOptions.replace(Settings.init().coffeeOptions, with: ["Nichts", "Kaffee", "Kaffee mit Milch", "Kaffee mit Zucker", "Kaffee mit Milch und Zucker"])
-    
-    Settings.init().fruitOptions.replace(Settings.init().fruitOptions, with: ["Nichts", "Apfel", "Banane", "Birne", "Apfel & Banane", "Apfel & Birne", "Banane & Birne", "Alles"])
-    
-    Settings.init().extrasOptions.replace(Settings.init().extrasOptions, with: ["Zucker", "Süßstoff", "Zitrone", "Milch", "Salz", "Pfeffer", "Gewürzgurke", "Gurke", "Tomate", "Suppe", "Gemüse", "Kakao"])
-    
-//    exit(0)
+    let settings = Settings()
+    settings.optionCategories["bread"] = ["Weizen", "Grau", "Körner", "Brötchen Normal", "Brötchen Grau", "Brötchen Körner"]
+    settings.optionCategories["spreads"] = ["Butter", "Margarine", "Käse", "Pute", "Fleischwurst", "Schinken", "Salami"]
+    settings.optionCategories["spreads2"] = ["Frischkäse Natur", "Frischkäse Kräuter", "Quark", "Schmelzkäse", "Schmelzkäse Pikant", "Leberwurst", "Schinkencreme", "Marmelade", "Honig", "Vegetarischer Aufstrich Tomate", "Vegetarischer Aufstrich Kräuter", "Nuss-Nougat Creme"]
+    settings.optionCategories["specials"] = ["Frucht Joghurt", "Natur Joghurt", "Brühe", "Brühe vegetarisch",  "Milchreis", "Grieß"]
+    settings.optionCategories["tea"] = ["Nichts", "Kamille", "Kräuter/ Grüner Tee", "Schwarzer Tee", "Früchte Tee", "Fenchel", "Pfefferminz"]
+    settings.optionCategories["coffee"] = ["Nichts", "Kaffee", "Kaffee mit Milch", "Kaffee mit Zucker", "Kaffee mit Milch und Zucker"]
+    settings.optionCategories["fruit"] = ["Nichts", "Apfel", "Banane", "Birne", "Apfel & Banane", "Apfel & Birne", "Banane & Birne", "Alles"]
+    settings.optionCategories["extras"] = ["Zucker", "Süßstoff", "Zitrone", "Milch", "Salz", "Pfeffer", "Gewürzgurke", "Gurke", "Tomate", "Suppe", "Gemüse", "Kakao"]
 }
-
-
 struct ContentView: View {
     
-    //    @State var selection = 1
+    @StateObject var settings = Settings()
     
     @State private var activeTab: Tab = .order
     
@@ -146,25 +128,24 @@ struct ContentView: View {
 
 @main
 struct OrderApp: App {
-    @ObservedObject var settings = Settings()
+    @StateObject var settings = Settings()
     
     @AppStorage("isFirstLaunch") var isFirstLaunch: Bool = true
     
     var body: some Scene {
         WindowGroup {
             if isFirstLaunch {
-                // Zeige den Splashscreen
                 SplashView(isFirstLaunch: $isFirstLaunch)
             } else {
-                // Zeige den Hauptinhalt der App
                 ContentView(colorScheme: ColorSchemeModel())
+                    .environmentObject(settings)
             }
         }
     }
 }
 
 // Preview
-#Preview() {
+#Preview {
     ContentView(colorScheme: ColorSchemeModel())
+        .environmentObject(Settings())
 }
-

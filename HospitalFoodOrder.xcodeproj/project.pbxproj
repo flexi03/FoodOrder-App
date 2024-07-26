@@ -7,12 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		DC19EEDC2B34946E003ABDCE /* ColorSchemeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC19EEDB2B34946E003ABDCE /* ColorSchemeModel.swift */; };
 		DC2ABDEE2AB50E3F00778F10 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2ABDED2AB50E3F00778F10 /* ContentView.swift */; };
 		DC2ABDF02AB50E4400778F10 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DC2ABDEF2AB50E4400778F10 /* Assets.xcassets */; };
-		DC2D04AD2B33DF0C009E8EAA /* TabPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2D04AA2B33DF0C009E8EAA /* TabPosition.swift */; };
 		DC2D04AE2B33DF0C009E8EAA /* Tabs.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2D04AB2B33DF0C009E8EAA /* Tabs.swift */; };
-		DC2D04AF2B33DF0C009E8EAA /* TabShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2D04AC2B33DF0C009E8EAA /* TabShape.swift */; };
 		DC44752C2B0C38B30012E3FB /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC44752B2B0C38B30012E3FB /* SettingsView.swift */; };
 		DC44752E2B0C39A10012E3FB /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC44752D2B0C39A10012E3FB /* InfoView.swift */; };
 		DC6C77B92B2913820080494A /* WorkingTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC6C77B82B2913820080494A /* WorkingTimeView.swift */; };
@@ -42,13 +39,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		DC19EEDB2B34946E003ABDCE /* ColorSchemeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSchemeModel.swift; sourceTree = "<group>"; };
 		DC2ABDE82AB50E3F00778F10 /* HospitalFoodOrder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HospitalFoodOrder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC2ABDED2AB50E3F00778F10 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		DC2ABDEF2AB50E4400778F10 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		DC2D04AA2B33DF0C009E8EAA /* TabPosition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabPosition.swift; sourceTree = "<group>"; };
 		DC2D04AB2B33DF0C009E8EAA /* Tabs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tabs.swift; sourceTree = "<group>"; };
-		DC2D04AC2B33DF0C009E8EAA /* TabShape.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabShape.swift; sourceTree = "<group>"; };
 		DC3DF3322AF18AE600A0856D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		DC3DF3392AF18B5000A0856D /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		DC3DF33B2AF18B5000A0856D /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
@@ -119,11 +113,8 @@
 		DC44752F2B0C3A460012E3FB /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				DC2D04AA2B33DF0C009E8EAA /* TabPosition.swift */,
 				DC2D04AB2B33DF0C009E8EAA /* Tabs.swift */,
-				DC2D04AC2B33DF0C009E8EAA /* TabShape.swift */,
 				DCF2FDB62B2E49AC00BFBE63 /* SettingsModel.swift */,
-				DC19EEDB2B34946E003ABDCE /* ColorSchemeModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -243,7 +234,6 @@
 			files = (
 				DCF2FDB72B2E49AC00BFBE63 /* SettingsModel.swift in Sources */,
 				DC44752E2B0C39A10012E3FB /* InfoView.swift in Sources */,
-				DC19EEDC2B34946E003ABDCE /* ColorSchemeModel.swift in Sources */,
 				DCC358912B0FA36000C7DD3A /* OrderFormView.swift in Sources */,
 				DC44752C2B0C38B30012E3FB /* SettingsView.swift in Sources */,
 				DCF2FDB32B2CDC3F00BFBE63 /* DeveloperSettingsView.swift in Sources */,
@@ -252,8 +242,6 @@
 				DC6C77B92B2913820080494A /* WorkingTimeView.swift in Sources */,
 				DC2ABDEE2AB50E3F00778F10 /* ContentView.swift in Sources */,
 				DC9113DC2B026A6900F51D16 /* OverViewView.swift in Sources */,
-				DC2D04AF2B33DF0C009E8EAA /* TabShape.swift in Sources */,
-				DC2D04AD2B33DF0C009E8EAA /* TabPosition.swift in Sources */,
 				DCB49BC12AFD912C003E450F /* Feedback.swift in Sources */,
 				DC8F09B62B1DFBD200F5EF3A /* ColorSettingsView.swift in Sources */,
 				DC8F09B42B1DF85B00F5EF3A /* OptionView.swift in Sources */,
@@ -392,7 +380,7 @@
 				CLANG_USE_OPTIMIZATION_PROFILE = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"HospitalFoodOrder/Preview Content\"";
 				DEVELOPMENT_TEAM = 6728DRMDL9;
 				ENABLE_PREVIEWS = YES;
@@ -411,7 +399,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.5;
+				MARKETING_VERSION = 1.6;
 				PRODUCT_BUNDLE_IDENTIFIER = PrivatFelix.HospitalFoodOrder;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -433,7 +421,7 @@
 				CLANG_USE_OPTIMIZATION_PROFILE = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"HospitalFoodOrder/Preview Content\"";
 				DEVELOPMENT_TEAM = 6728DRMDL9;
 				ENABLE_PREVIEWS = YES;
@@ -452,7 +440,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.5;
+				MARKETING_VERSION = 1.6;
 				PRODUCT_BUNDLE_IDENTIFIER = PrivatFelix.HospitalFoodOrder;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
