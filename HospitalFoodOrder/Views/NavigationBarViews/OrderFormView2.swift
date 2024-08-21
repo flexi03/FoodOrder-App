@@ -197,43 +197,41 @@ struct OrderFormView2: View {
         let teaQuantities = settings.teaQuantities[patientNumber] ?? [:]
         let coffeeQuantities = settings.coffeeQuantities[patientNumber] ?? [:]
         let fruitQuantities = settings.fruitQuantities[patientNumber] ?? [:]
-
-        Section(header: Text("Getränke und Obst")) {
-            // Tea Section
+        
+        // Tea Section
+        createQuantitySelectionPicker(
+            for: "tea",
+            quantities: Binding<[String: Int]>(
+                get: { teaQuantities },
+                set: { settings.teaQuantities[patientNumber] = $0 }
+            ),
+            title: "Tee auswählen",
+            isFiltered: isButtonPressed
+        )
+        
+        // Coffee Section (only if coffee is selected)
+        if settings.coffeeSelected {
             createQuantitySelectionPicker(
-                for: "tea",
+                for: "coffee",
                 quantities: Binding<[String: Int]>(
-                    get: { teaQuantities },
-                    set: { settings.teaQuantities[patientNumber] = $0 }
+                    get: { coffeeQuantities },
+                    set: { settings.coffeeQuantities[patientNumber] = $0 }
                 ),
-                title: "Tee auswählen",
-                isFiltered: isButtonPressed
-            )
-            
-            // Coffee Section (only if coffee is selected)
-            if settings.coffeeSelected {
-                createQuantitySelectionPicker(
-                    for: "coffee",
-                    quantities: Binding<[String: Int]>(
-                        get: { coffeeQuantities },
-                        set: { settings.coffeeQuantities[patientNumber] = $0 }
-                    ),
-                    title: "Kaffee auswählen",
-                    isFiltered: isButtonPressed
-                )
-            }
-            
-            // Fruit Section
-            createQuantitySelectionPicker(
-                for: "fruit",
-                quantities: Binding<[String: Int]>(
-                    get: { fruitQuantities },
-                    set: { settings.fruitQuantities[patientNumber] = $0 }
-                ),
-                title: "Obst auswählen",
+                title: "Kaffee auswählen",
                 isFiltered: isButtonPressed
             )
         }
+        
+        // Fruit Section
+        createQuantitySelectionPicker(
+            for: "fruit",
+            quantities: Binding<[String: Int]>(
+                get: { fruitQuantities },
+                set: { settings.fruitQuantities[patientNumber] = $0 }
+            ),
+            title: "Obst auswählen",
+            isFiltered: isButtonPressed
+        )
     }
 
     @ViewBuilder
@@ -242,31 +240,33 @@ struct OrderFormView2: View {
         let filteredOptions = isFiltered ? options.filter { quantities.wrappedValue[$0, default: 0] > 0 } : options
         
         if !isFiltered || !filteredOptions.isEmpty {
-            VStack(alignment: .leading) {
-                Text(title)
-                    .font(.headline)
-                ScrollView(.horizontal, showsIndicators: false) {
-                    HStack {
-                        ForEach(filteredOptions, id: \.self) { option in
-                            if option != "Nichts" {
-                                VStack {
-                                    Text(option)
-                                    Stepper(
-                                        onIncrement: {
-                                            updateDrinkAndFruitCount(for: option, in: category, patientNumber: patientSelection.patientSelection, increment: true)
-                                        },
-                                        onDecrement: {
-                                            updateDrinkAndFruitCount(for: option, in: category, patientNumber: patientSelection.patientSelection, increment: false)
+            Section(header: Text("Getränke und Obst")) {
+                VStack(alignment: .leading) {
+                    Text(title)
+                        .font(.headline)
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        HStack {
+                            ForEach(filteredOptions, id: \.self) { option in
+                                if option != "Nichts" {
+                                    VStack {
+                                        Text(option)
+                                        Stepper(
+                                            onIncrement: {
+                                                updateDrinkAndFruitCount(for: option, in: category, patientNumber: patientSelection.patientSelection, increment: true)
+                                            },
+                                            onDecrement: {
+                                                updateDrinkAndFruitCount(for: option, in: category, patientNumber: patientSelection.patientSelection, increment: false)
+                                            }
+                                        ) {
+                                            Text("\(quantities.wrappedValue[option, default: 0])")
                                         }
-                                    ) {
-                                        Text("\(quantities.wrappedValue[option, default: 0])")
                                     }
+                                    .padding(.horizontal, 10)
+                                    .padding(.vertical, 5)
+                                    .background(quantities.wrappedValue[option, default: 0] > 0 ? Color.accentColor : Color.secondary.opacity(0.2))
+                                    .foregroundColor(quantities.wrappedValue[option, default: 0] > 0 ? .white : .primary)
+                                    .cornerRadius(15)
                                 }
-                                .padding(.horizontal, 10)
-                                .padding(.vertical, 5)
-                                .background(quantities.wrappedValue[option, default: 0] > 0 ? Color.accentColor : Color.secondary.opacity(0.2))
-                                .foregroundColor(quantities.wrappedValue[option, default: 0] > 0 ? .white : .primary)
-                                .cornerRadius(15)
                             }
                         }
                     }

@@ -45,10 +45,11 @@ struct SettingsView: View {
                 NavigationLink("Auswahl Optionen anpassen", destination: OptionView(settings: settings))
             }
             
-            Section(header: Text("Über")) {
+            Section(header: Text("Mehr")) {
                 NavigationLink("Feedback geben", destination: FeedbackView())
-                Link("Datenschutzerklärung", destination: URL(string: "https://example.com/privacy")!)
-                Link("Nutzungsbedingungen", destination: URL(string: "https://example.com/terms")!)
+                Link("Datenschutzerklärung", destination: URL(string: "https://www.cinematicfelix.de/privacy-policy.html")!)
+                Link("Tritt der Beta bei und erhalte Testversionen", destination: URL(string: "https://testflight.apple.com/join/sf9qVu6A")!)
+//                Link("Nutzungsbedingungen", destination: URL(string: "https://example.com/terms")!)
                 // Version number and Build
                 let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String
                 let buildNumber = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as! String

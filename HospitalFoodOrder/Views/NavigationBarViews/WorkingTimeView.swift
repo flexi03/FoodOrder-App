@@ -104,16 +104,16 @@ struct WorkingTimeView: View {
                         .onChange(of: userName, perform: { _ in
                             saveUserName()
                         })
-//                        .cornerRadius(12)
+                    //                        .cornerRadius(12)
                     
                     
                     Text("Überstunden: \(String(format: "%01d h %02d min", overtimeHours, overtimeMinutes))")
                         .foregroundColor(overtimeHours < 0 || overtimeMinutes < 0 ? .red : .white)                    .padding()
                     Text("Reguläre Arbeitszeit: \(formattedRegularHours)")
                         .padding()
-                    
+                    Text("Überstunden diesen Monat: \(String(format: "%01d h %02d min", overtimeHours, overtimeMinutes))")
                     Spacer()
-//                    AnimatedChart() // MARK: Chart
+                    //                    AnimatedChart() // MARK: Chart
                     
                     Button(action: {
                         saveWorkingTime()
@@ -151,6 +151,8 @@ struct WorkingTimeView: View {
                         .padding(.vertical, 14)
                         .contentShape(Rectangle())
                         .cornerRadius(12)
+                        
+//                        calculateOvertimeMonth(filteredWorkingTimes: filteredWorkingTimes, month: selectedMonth)
                     }
                 }
                 
@@ -166,7 +168,6 @@ struct WorkingTimeView: View {
             loadUserName() // Benutzernamen beim Start laden
             loadNotes()
         }
-        //        }
         .navigationBarItems(
             leading:
                 Button(action: {
@@ -179,7 +180,6 @@ struct WorkingTimeView: View {
             trailing:
                 Button(action: {
                     isExportActionSheetPresented = true
-                    //                    print("Jetzt gehts zum Exportieren bzw der Auswahl.")
                 }) {
                     Image(systemName: "square.and.arrow.up")
                         .fontWeight(.bold)
@@ -246,7 +246,6 @@ struct WorkingTimeView: View {
                 
                 if selectedExportOption == .allEntries {
                     Spacer(minLength: 150)
-                    // @ChatGPT: Hier eine Liste von Monaten, die Einträge haben
                     List(generateMonthsForEntries(), id: \.date) { identifiableDate in
                         Text(formattedMonthOnly(identifiableDate.date))
                     }
@@ -319,6 +318,66 @@ struct WorkingTimeView: View {
         calculateOvertime()
     }
     
+    private func calculateOvertimeMonth(filteredWorkingTimes: [WorkingTime], selectedMonth: Date) {
+        // Calculate overtime in selected month
+        var overtimeHoursMonth = 0
+        var overtimeMinutesMonth = 0
+        
+        let calendar = Calendar.current
+        let monthComponents = calendar.dateComponents([.year, .month], from: selectedMonth)
+        let startOfMonth = calendar.date(from: monthComponents)!
+        
+        let filteredWorkingTimesInMonth = filteredWorkingTimes.filter { workingTime in
+            let startOfMonth = calendar.date(from: monthComponents)!
+            let endOfMonth = calendar.date(byAdding: DateComponents(month: 1, day: -1), to: startOfMonth)!
+            
+            return startOfMonth <= workingTime.date && workingTime.date <= endOfMonth
+        }
+        
+        for workingTime in filteredWorkingTimesInMonth {
+            let startTimeComponents = calendar.dateComponents([.hour, .minute], from: workingTime.startTime)
+            let endTimeComponents = calendar.dateComponents([.hour, .minute], from: workingTime.endTime)
+            
+            let startTimeHours = startTimeComponents.hour!
+            
+            let startTimeMinutes = startTimeComponents.minute!
+            let endTimeHours = endTimeComponents.hour!
+            let endTimeMinutes = endTimeComponents.minute!
+            
+            let regularHours = endTimeHours - startTimeHours
+            let overtimeHours = startTimeHours > 8 ? startTimeHours - 8 : 0
+            
+            let overtimeMinutes = startTimeMinutes > 45 ? startTimeMinutes - 45 : 0
+            
+            overtimeHoursMonth += overtimeHours
+            overtimeMinutesMonth += overtimeMinutes
+            
+            if overtimeHoursMonth > 8 {
+                overtimeHoursMonth -= 8
+                overtimeMinutesMonth += 60
+                
+                if overtimeMinutesMonth > 59 {
+                    overtimeHoursMonth += 1
+                    overtimeMinutesMonth -= 60
+                    
+                    
+                }
+            }
+            
+            if overtimeMinutesMonth > 59 {
+                overtimeHoursMonth += 1
+                overtimeMinutesMonth -= 60
+            }
+        }
+        
+        calculateOvertimeMonth(filteredWorkingTimes: workingTimes, selectedMonth: selectedMonth)
+        
+//        Text("\(formattedDate(selectedMonth)):  \(overtimeHoursMonth) h \(overtimeMinutesMonth) min")
+//            .foregroundColor(.red)
+//            .fontWeight(.bold)
+//            .frame(maxWidth: .infinity)
+//            .padding(.vertical, 14)
+    }
     
     private func saveWorkingTime() {
         let newWorkingTime = WorkingTime(

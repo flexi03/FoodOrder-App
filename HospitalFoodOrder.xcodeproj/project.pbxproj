@@ -56,6 +56,7 @@
 		DCB49BC02AFD912C003E450F /* Feedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feedback.swift; sourceTree = "<group>"; };
 		DCC358902B0FA36000C7DD3A /* OrderFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderFormView.swift; sourceTree = "<group>"; };
 		DCC5E08D2B855FC700D97826 /* OrderFormView2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderFormView2.swift; sourceTree = "<group>"; };
+		DCDAAD322C768A4B00D203E3 /* HospitalFoodOrder.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HospitalFoodOrder.entitlements; sourceTree = "<group>"; };
 		DCF2FDB22B2CDC3F00BFBE63 /* DeveloperSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeveloperSettingsView.swift; sourceTree = "<group>"; };
 		DCF2FDB62B2E49AC00BFBE63 /* SettingsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsModel.swift; sourceTree = "<group>"; };
 		DCF2FDB92B2E594700BFBE63 /* WorkingDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkingDetailView.swift; sourceTree = "<group>"; };
@@ -92,6 +93,7 @@
 		DC2ABDEA2AB50E3F00778F10 /* HospitalFoodOrder */ = {
 			isa = PBXGroup;
 			children = (
+				DCDAAD322C768A4B00D203E3 /* HospitalFoodOrder.entitlements */,
 				DC4475302B0C3A6D0012E3FB /* Views */,
 				DC44752F2B0C3A460012E3FB /* Models */,
 				DCF2FDB52B2E48AC00BFBE63 /* UnusedViews */,
@@ -375,12 +377,14 @@
 		DC2ABE0D2AB50E4400778F10 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIconBeta;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CLANG_USE_OPTIMIZATION_PROFILE = YES;
+				CODE_SIGN_ENTITLEMENTS = HospitalFoodOrder/HospitalFoodOrder.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "\"HospitalFoodOrder/Preview Content\"";
 				DEVELOPMENT_TEAM = 6728DRMDL9;
 				ENABLE_PREVIEWS = YES;
@@ -418,10 +422,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CLANG_USE_OPTIMIZATION_PROFILE = YES;
+				CODE_SIGN_ENTITLEMENTS = HospitalFoodOrder/HospitalFoodOrder.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "\"HospitalFoodOrder/Preview Content\"";
 				DEVELOPMENT_TEAM = 6728DRMDL9;
 				ENABLE_PREVIEWS = YES;
