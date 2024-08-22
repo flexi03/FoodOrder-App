@@ -29,6 +29,18 @@ struct OrderFormView2: View {
             }
             .padding()
 
+            if settings.showPatientTypePicker {
+                Picker("Patientenart", selection: $settings.isPrivatePatient) {
+                                Text("Normal").tag(false)
+                                Text("Privatpatient*in").tag(true)
+                            }
+                            .pickerStyle(SegmentedPickerStyle())
+                            .padding()
+//                patientTypeToggle
+//                    .padding(.horizontal)
+//                    .padding(.bottom)
+            }
+
             TabView(selection: $patientSelection.patientSelection) {
                 ForEach(1...settings.numberOfPatients, id: \.self) { patientNumber in
                     patientView(for: patientNumber)
@@ -47,6 +59,24 @@ struct OrderFormView2: View {
             PatientCountPickerView(numberOfPatients: $settings.numberOfPatients)
         }
     }
+    
+//    private var patientTypeToggle: some View {
+//        HStack {
+//            Text("Normal")
+//                .foregroundColor(settings.isPrivatePatient ? .secondary : .primary)
+//            
+//            Toggle("", isOn: $settings.isPrivatePatient)
+//                .labelsHidden()
+//                .toggleStyle(SwitchToggleStyle(tint: .accentColor))
+//            
+//            Text("Privatpatient*in")
+//                .foregroundColor(settings.isPrivatePatient ? .primary : .secondary)
+//        }
+//        .padding()
+//        .background(Color(.systemBackground))
+//        .cornerRadius(10)
+//        .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 2)
+//    }
     
     @ViewBuilder
     private func patientView(for patientNumber: Int) -> some View {
@@ -76,34 +106,32 @@ struct OrderFormView2: View {
         .background(validateBackgroundColor())
     }
     
-    
-    
-    @ViewBuilder
-    func createSection(name: String, category: String, patientNumber: Int) -> some View {
+    private func createSection(name: String, category: String, patientNumber: Int) -> some View {
+        let options = settings.isPrivatePatient ? settings.privateOptionCategories[category] ?? [:] : settings.optionCategories[category] ?? [:]
         let counts = getCounts(for: category, patientNumber: patientNumber)
-        let options = settings.optionCategories[category] ?? []
         let filteredOptions = isButtonPressed ? filterOptions(options: options, counts: counts) : options
         
-        if !isButtonPressed || !filteredOptions.isEmpty || (category == "extras" && !(settings.extras[patientNumber] ?? "").isEmpty) {
-            Section(header: Text(name).fontWeight(.semibold)) {
-                ForEach(filteredOptions, id: \.self) { option in
-                    createStepper(for: option, counts: counts, category: category, patientNumber: patientNumber)
+        return Group {
+            if !isButtonPressed || !filteredOptions.isEmpty || (category == "extras" && !(settings.extras[patientNumber] ?? "").isEmpty) {
+                Section(header: Text(name).fontWeight(.semibold)) {
+                    ForEach(Array(filteredOptions.keys.sorted()), id: \.self) { option in
+                        createStepper(for: option, counts: counts, category: category, patientNumber: patientNumber)
+                    }
+                    
+                    if category == "extras" {
+                        TextField("Bitte Extras eingeben", text: Binding<String>(
+                            get: { settings.extras[patientNumber] ?? "" },
+                            set: { newValue in
+                                settings.extras[patientNumber] = newValue
+                                settings.saveSelections()
+                            }
+                        ))
+                        .frame(height: 100, alignment: .top)
+                    }
                 }
-                
-                if category == "extras" {
-                    TextField("Bitte Extras eingeben", text: Binding<String>(
-                        get: { settings.extras[patientNumber] ?? "" },
-                        set: { newValue in
-                            settings.extras[patientNumber] = newValue
-                            settings.saveSelections()
-                        }
-                    ))
-                    .frame(height: 100, alignment: .top)
-//                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                }
+            } else {
+                EmptyView()
             }
-        } else {
-            EmptyView()
         }
     }
 
@@ -124,7 +152,6 @@ struct OrderFormView2: View {
         }
     }
 
-    
     @ViewBuilder
     func createStepper(for option: String, counts: [String: Int], category: String, patientNumber: Int) -> some View {
         let count = counts[option] ?? 0
@@ -190,7 +217,6 @@ struct OrderFormView2: View {
             }
         }
     }
-    
 
     @ViewBuilder
     func createDrinkAndFruitSection(patientNumber: Int) -> some View {
@@ -198,7 +224,6 @@ struct OrderFormView2: View {
         let coffeeQuantities = settings.coffeeQuantities[patientNumber] ?? [:]
         let fruitQuantities = settings.fruitQuantities[patientNumber] ?? [:]
         
-        // Tea Section
         createQuantitySelectionPicker(
             for: "tea",
             quantities: Binding<[String: Int]>(
@@ -209,7 +234,6 @@ struct OrderFormView2: View {
             isFiltered: isButtonPressed
         )
         
-        // Coffee Section (only if coffee is selected)
         if settings.coffeeSelected {
             createQuantitySelectionPicker(
                 for: "coffee",
@@ -222,7 +246,6 @@ struct OrderFormView2: View {
             )
         }
         
-        // Fruit Section
         createQuantitySelectionPicker(
             for: "fruit",
             quantities: Binding<[String: Int]>(
@@ -236,8 +259,8 @@ struct OrderFormView2: View {
 
     @ViewBuilder
     func createQuantitySelectionPicker(for category: String, quantities: Binding<[String: Int]>, title: String, isFiltered: Bool) -> some View {
-        let options = settings.optionCategories[category] ?? []
-        let filteredOptions = isFiltered ? options.filter { quantities.wrappedValue[$0, default: 0] > 0 } : options
+        let options = settings.optionCategories[category] ?? [:]
+        let filteredOptions = isFiltered ? options.filter { quantities.wrappedValue[$0.key, default: 0] > 0 } : options
         
         if !isFiltered || !filteredOptions.isEmpty {
             Section(header: Text("Getränke und Obst")) {
@@ -246,7 +269,7 @@ struct OrderFormView2: View {
                         .font(.headline)
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack {
-                            ForEach(filteredOptions, id: \.self) { option in
+                            ForEach(Array(filteredOptions.keys.sorted()), id: \.self) { option in
                                 if option != "Nichts" {
                                     VStack {
                                         Text(option)
@@ -304,35 +327,35 @@ struct OrderFormView2: View {
             counts[option] = max(currentCount - 1, 0)
         }
     }
-        @ViewBuilder
-        func createQuantitySummary(for quantities: [String: Int]) -> some View {
-            let selectedItems = quantities.filter { $0.value > 0 }
-            if !selectedItems.isEmpty {
-                VStack(alignment: .leading) {
-                    Text("Zusammenfassung:")
-                        .font(.subheadline)
-                        .fontWeight(.semibold)
-                    ForEach(selectedItems.sorted(by: { $0.key < $1.key }), id: \.key) { item, quantity in
-                        Text("\(item): \(quantity)")
-                            .font(.footnote)
-                    }
-                }
-                .padding(.top, 5)
-                .padding(.bottom, 10)
-            }
-        }
 
-    
+    @ViewBuilder
+    func createQuantitySummary(for quantities: [String: Int]) -> some View {
+        let selectedItems = quantities.filter { $0.value > 0 }
+        if !selectedItems.isEmpty {
+            VStack(alignment: .leading) {
+                Text("Zusammenfassung:")
+                    .font(.subheadline)
+                    .fontWeight(.semibold)
+                ForEach(selectedItems.sorted(by: { $0.key < $1.key }), id: \.key) { item, quantity in
+                    Text("\(item): \(quantity)")
+                        .font(.footnote)
+                }
+            }
+            .padding(.top, 5)
+            .padding(.bottom, 10)
+        }
+    }
+
     @ViewBuilder
     func createExtrasSection(patientNumber: Int) -> some View {
-        let options = settings.optionCategories["extras"] ?? []
+        let options = settings.optionCategories["extras"] ?? [:]
         let counts = settings.extrasCounts[patientNumber] ?? [:]
         let extraText = settings.extras[patientNumber] ?? ""
         let filteredOptions = isButtonPressed ? filterOptions(options: options, counts: counts) : options
         
         if !isButtonPressed || !filteredOptions.isEmpty || !extraText.isEmpty {
             Section(header: Text("Extras").fontWeight(.semibold)) {
-                ForEach(filteredOptions, id: \.self) { option in
+                ForEach(Array(filteredOptions.keys.sorted()), id: \.self) { option in
                     createStepper(for: option, counts: counts, category: "extras", patientNumber: patientNumber)
                 }
                 
@@ -373,79 +396,73 @@ struct OrderFormView2: View {
     }
     
     func resetButton() -> some View {
-        Button(action: {
-            isResetConfirmationPresented.toggle()
-        }) {
-            Image(systemName: "trash")
-                .fontWeight(.bold)
-        }
-    }
-    
-    func createResetActionSheet() -> ActionSheet {
-        var buttons: [ActionSheet.Button] = (1...settings.numberOfPatients).map { patientNumber in
-            .default(Text("Bestellung \(patientNumber)")) {
-                settings.resetSelections(for: patientNumber)
-                triggerHapticFeedback(.warning)
+            Button(action: {
+                isResetConfirmationPresented.toggle()
+            }) {
+                Image(systemName: "trash")
+                    .fontWeight(.bold)
             }
         }
-        buttons.append(.default(Text("Alle Bestellungen")) {
-            settings.resetAllSelections()
-            patientSelection.patientSelection = 1
-            isButtonPressed = false
-            triggerHapticFeedback(.warning)
-        })
-        buttons.append(.cancel(Text("Abbrechen")))
         
-        return ActionSheet(title: Text("Welche Bestellung möchtest Du zurücksetzen?"), buttons: buttons)
-    }
-    
-    func filterOptions(options: [String], counts: [String: Int]) -> [String] {
-        return options.filter { counts[$0] ?? 0 > 0 }
-    }
-    
-    func triggerHapticFeedback(_ style: UINotificationFeedbackGenerator.FeedbackType = .success) {
-        let generator = UINotificationFeedbackGenerator()
-        generator.notificationOccurred(style)
-    }
-    
-    func validateBackgroundColor() -> Color {
-        return settings.validateSelections() ? Color.purple.opacity(0.2) : Color.white
-    }
-    
-    @ViewBuilder
-    func createMultiSelectionPicker(for category: String, selection: Binding<[String]>, title: String) -> some View {
-        let options = settings.optionCategories[category] ?? []
+        func createResetActionSheet() -> ActionSheet {
+            var buttons: [ActionSheet.Button] = (1...settings.numberOfPatients).map { patientNumber in
+                .default(Text("Bestellung \(patientNumber)")) {
+                    settings.resetSelections(for: patientNumber)
+                    triggerHapticFeedback(.warning)
+                }
+            }
+            buttons.append(.default(Text("Alle Bestellungen")) {
+                settings.resetAllSelections()
+                patientSelection.patientSelection = 1
+                isButtonPressed = false
+                triggerHapticFeedback(.warning)
+            })
+            buttons.append(.cancel(Text("Abbrechen")))
+            
+            return ActionSheet(title: Text("Welche Bestellung möchtest Du zurücksetzen?"), buttons: buttons)
+        }
         
-        MultiSelectionPicker(title: title, options: options, selection: selection)
+        func filterOptions(options: [String: Int], counts: [String: Int]) -> [String: Int] {
+            return options.filter { counts[$0.key] ?? 0 > 0 }
+        }
+        
+        func triggerHapticFeedback(_ style: UINotificationFeedbackGenerator.FeedbackType = .success) {
+            let generator = UINotificationFeedbackGenerator()
+            generator.notificationOccurred(style)
+        }
+        
+        func validateBackgroundColor() -> Color {
+            return settings.validateSelections() ? Color.purple.opacity(0.2) : Color.white
+        }
     }
-}
 
-struct MultiSelectionPicker: View {
-    let title: String
-    let options: [String]
-    @Binding var selection: [String]
+    struct MultiSelectionPicker: View {
+        let title: String
+        let options: [String: Int]
+        @Binding var selection: [String]
 
-    var body: some View {
-        VStack(alignment: .leading) {
-            Text(title)
-                .font(.headline)
-            ScrollView(.horizontal, showsIndicators: false) {
-                HStack {
-                    ForEach(options, id: \.self) { option in
-                        if option != "Nichts" {
-                            Button(action: {
-                                if selection.contains(option) {
-                                    selection.removeAll { $0 == option }
-                                } else {
-                                    selection.append(option)
+        var body: some View {
+            VStack(alignment: .leading) {
+                Text(title)
+                    .font(.headline)
+                ScrollView(.horizontal, showsIndicators: false) {
+                    HStack {
+                        ForEach(Array(options.keys.sorted()), id: \.self) { option in
+                            if option != "Nichts" {
+                                Button(action: {
+                                    if selection.contains(option) {
+                                        selection.removeAll { $0 == option }
+                                    } else {
+                                        selection.append(option)
+                                    }
+                                }) {
+                                    Text(option)
+                                        .padding(.horizontal, 10)
+                                        .padding(.vertical, 5)
+                                        .background(selection.contains(option) ? Color.accentColor : Color.secondary.opacity(0.2))
+                                        .foregroundColor(selection.contains(option) ? .white : .primary)
+                                        .cornerRadius(15)
                                 }
-                            }) {
-                                Text(option)
-                                    .padding(.horizontal, 10)
-                                    .padding(.vertical, 5)
-                                    .background(selection.contains(option) ? Color.accentColor : Color.secondary.opacity(0.2))
-                                    .foregroundColor(selection.contains(option) ? .white : .primary)
-                                    .cornerRadius(15)
                             }
                         }
                     }
@@ -453,32 +470,31 @@ struct MultiSelectionPicker: View {
             }
         }
     }
-}
 
-struct PatientCountPickerView: View {
-    @Binding var numberOfPatients: Int
-    @Environment(\.presentationMode) var presentationMode
+    struct PatientCountPickerView: View {
+        @Binding var numberOfPatients: Int
+        @Environment(\.presentationMode) var presentationMode
 
-    var body: some View {
-        NavigationView {
-            Form {
-                Picker("Anzahl der Patienten", selection: $numberOfPatients) {
-                    ForEach(1...100, id: \.self) { number in
-                        Text("\(number)").tag(number)
+        var body: some View {
+            NavigationView {
+                Form {
+                    Picker("Anzahl der Patienten", selection: $numberOfPatients) {
+                        ForEach(1...100, id: \.self) { number in
+                            Text("\(number)").tag(number)
+                        }
                     }
+                    .pickerStyle(WheelPickerStyle())
                 }
-                .pickerStyle(WheelPickerStyle())
+                .navigationTitle("Patienten Anzahl")
+                .navigationBarItems(trailing: Button("Fertig") {
+                    presentationMode.wrappedValue.dismiss()
+                })
             }
-            .navigationTitle("Patienten Anzahl")
-            .navigationBarItems(trailing: Button("Fertig") {
-                presentationMode.wrappedValue.dismiss()
-            })
         }
     }
-}
 
-struct OrderFormView2_Previews: PreviewProvider {
-    static var previews: some View {
-        OrderFormView2(settings: Settings(), patientSelection: patientSelectionManager())
+    struct OrderFormView2_Previews: PreviewProvider {
+        static var previews: some View {
+            OrderFormView2(settings: Settings(), patientSelection: patientSelectionManager())
+        }
     }
-}
