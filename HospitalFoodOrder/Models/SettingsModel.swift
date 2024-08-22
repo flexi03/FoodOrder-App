@@ -15,8 +15,22 @@ public class Settings: ObservableObject {
         didSet { UserDefaults.standard.set(coffeeSelected, forKey: "Kaffee") }
     }
     
-    @Published var optionCategories: [String: [String]] {
+    @Published var optionCategories: [String: [String: Int]] {
         didSet { saveOptionCategories() }
+    }
+
+    @Published var privateOptionCategories: [String: [String: Int]] {
+        didSet { savePrivateOptionCategories() }
+    }
+
+    @Published var isPrivatePatient: Bool {
+        didSet { UserDefaults.standard.set(isPrivatePatient, forKey: "isPrivatePatient") }
+    }
+    
+    @Published var showPatientTypePicker: Bool {
+        didSet {
+            UserDefaults.standard.set(showPatientTypePicker, forKey: "showPatientTypePicker")
+        }
     }
     
     @Published var numberOfPatients: Int {
@@ -38,38 +52,54 @@ public class Settings: ObservableObject {
     init() {
         self.showRestrictions = UserDefaults.standard.bool(forKey: "showRestrictions")
         self.coffeeSelected = UserDefaults.standard.bool(forKey: "Kaffee")
+        self.showPatientTypePicker = UserDefaults.standard.bool(forKey: "showPatientTypePicker")
         
         self.optionCategories = [
-            "bread": ["Weizen", "Grau", "Körner", "Brötchen Normal", "Brötchen Grau", "Brötchen Körner"],
-            "spreads": ["Butter", "Margarine", "Käse", "Pute", "Fleischwurst", "Schinken", "Salami"],
-            "spreads2": ["Frischkäse Natur", "Frischkäse Kräuter", "Quark", "Schmelzkäse", "Schmelzkäse Pikant", "Leberwurst", "Schinkencreme", "Marmelade", "Honig", "Vegetarischer Aufstrich Tomate", "Vegetarischer Aufstrich Kräuter", "Nuss-Nougat Creme"],
-            "specials": ["Frucht Joghurt", "Natur Joghurt", "Brühe", "Brühe vegetarisch",  "Milchreis", "Grieß"],
-            "tea": ["Nichts", "Kamille", "Kräuter/ Grüner Tee", "Schwarzer Tee", "Früchte Tee", "Fenchel", "Pfefferminz"],
-            "coffee": ["Nichts", "Kaffee", "Kaffee mit Milch", "Kaffee mit Zucker", "Kaffee mit Milch und Zucker", "Kakao"],
-            "fruit": ["Nichts", "Apfel", "Banane", "Birne"],
-            "extras": ["Zucker", "Süßstoff", "Milch", "Salz", "Pfeffer", "Zitrone", "Gewürzgurke", "Salatgurke", "Tomate", "Suppe", "Gemüse"]
+                    "bread": ["Weizen": 0, "Grau": 0, "Körner": 0, "Brötchen Normal": 0, "Brötchen Grau": 0, "Brötchen Körner": 0],
+                    "spreads": ["Butter": 0, "Margarine": 0, "Käse": 0, "Pute": 0, "Fleischwurst": 0, "Schinken": 0, "Salami": 0],
+                    "spreads2": ["Frischkäse Natur": 0, "Frischkäse Kräuter": 0, "Quark": 0, "Schmelzkäse": 0, "Schmelzkäse Pikant": 0, "Leberwurst": 0, "Schinkencreme": 0, "Marmelade": 0, "Honig": 0, "Vegetarischer Aufstrich Tomate": 0, "Vegetarischer Aufstrich Kräuter": 0, "Nuss-Nougat Creme": 0],
+                    "specials": ["Frucht Joghurt": 0, "Natur Joghurt": 0, "Brühe": 0, "Brühe vegetarisch": 0, "Milchreis": 0, "Grieß": 0],
+                    "tea": ["Nichts": 0, "Kamille": 0, "Kräuter/ Grüner Tee": 0, "Schwarzer Tee": 0, "Früchte Tee": 0, "Fenchel": 0, "Pfefferminz": 0],
+                    "coffee": ["Nichts": 0, "Kaffee": 0, "Kaffee mit Milch": 0, "Kaffee mit Zucker": 0, "Kaffee mit Milch und Zucker": 0, "Kakao": 0],
+                    "fruit": ["Nichts": 0, "Apfel": 0, "Banane": 0, "Birne": 0],
+                    "extras": ["Zucker": 0, "Süßstoff": 0, "Milch": 0, "Salz": 0, "Pfeffer": 0, "Zitrone": 0, "Gewürzgurke": 0, "Salatgurke": 0, "Tomate": 0, "Suppe": 0, "Gemüse": 0]
+                ]
+        
+        self.privateOptionCategories = [
+            "bread": ["Weizen": 0, "Grau": 0, "Körner": 0, "Brötchen Normal": 0, "Brötchen Grau": 0, "Brötchen Körner": 0, "Ciabatta": 0, "Vollkornbrot": 0],
+            "spreads": ["Butter": 0, "Margarine": 0, "Käse": 0, "Pute": 0, "Fleischwurst": 0, "Schinken": 0, "Salami": 0, "Lachs": 0],
+            "spreads2": ["Frischkäse Natur": 0, "Frischkäse Kräuter": 0, "Quark": 0, "Schmelzkäse": 0, "Schmelzkäse Pikant": 0, "Leberwurst": 0, "Schinkencreme": 0, "Marmelade": 0, "Honig": 0, "Vegetarischer Aufstrich Tomate": 0, "Vegetarischer Aufstrich Kräuter": 0, "Nuss-Nougat Creme": 0, "Hummus": 0],
+            "specials": ["Frucht Joghurt": 0, "Natur Joghurt": 0, "Brühe": 0, "Brühe vegetarisch": 0,  "Milchreis": 0, "Grieß": 0, "Müsli": 0],
+            "tea": ["Nichts": 0, "Kamille": 0, "Kräuter/ Grüner Tee": 0, "Schwarzer Tee": 0, "Früchte Tee": 0, "Fenchel": 0, "Pfefferminz": 0, "Earl Grey": 0],
+            "coffee": ["Nichts": 0, "Kaffee": 0, "Kaffee mit Milch": 0, "Kaffee mit Zucker": 0, "Kaffee mit Milch und Zucker": 0, "Kakao": 0, "Espresso": 0, "Cappuccino": 0],
+            "fruit": ["Nichts": 0, "Apfel": 0, "Banane": 0, "Birne": 0, "Orange": 0, "Trauben": 0],
+            "extras": ["Zucker": 0, "Süßstoff": 0, "Milch": 0, "Salz": 0, "Pfeffer": 0, "Zitrone": 0, "Gewürzgurke": 0, "Salatgurke": 0, "Tomate": 0, "Suppe": 0, "Gemüse": 0, "Obstsalat": 0]
         ]
+
+        self.isPrivatePatient = UserDefaults.standard.bool(forKey: "isPrivatePatient")
+        
         
         self.numberOfPatients = UserDefaults.standard.integer(forKey: "numberOfPatients")
         if self.numberOfPatients == 0 {
             self.numberOfPatients = 4
         }
         
+        loadPrivateOptionCategories()
         loadOptionCategories()
         loadSelections()
     }
     
     private func saveOptionCategories() {
-        let encodedData = try? JSONEncoder().encode(optionCategories)
-        UserDefaults.standard.set(encodedData, forKey: "optionCategories")
-    }
-    
-    private func loadOptionCategories() {
-        if let savedCategories = UserDefaults.standard.data(forKey: "optionCategories"),
-           let decodedCategories = try? JSONDecoder().decode([String: [String]].self, from: savedCategories) {
-            optionCategories = decodedCategories
+            let encodedData = try? JSONEncoder().encode(optionCategories)
+            UserDefaults.standard.set(encodedData, forKey: "optionCategories")
         }
-    }
+
+        private func loadOptionCategories() {
+            if let savedCategories = UserDefaults.standard.data(forKey: "optionCategories"),
+               let decodedCategories = try? JSONDecoder().decode([String: [String: Int]].self, from: savedCategories) {
+                optionCategories = decodedCategories
+            }
+        }
     
     func saveSelections() {
         let encoder = JSONEncoder()
@@ -163,6 +193,18 @@ public class Settings: ObservableObject {
             }
         }
         return false
+    }
+    
+    private func savePrivateOptionCategories() {
+        let encodedData = try? JSONEncoder().encode(privateOptionCategories)
+        UserDefaults.standard.set(encodedData, forKey: "privateOptionCategories")
+    }
+
+    private func loadPrivateOptionCategories() {
+        if let savedCategories = UserDefaults.standard.data(forKey: "privateOptionCategories"),
+           let decodedCategories = try? JSONDecoder().decode([String: [String: Int]].self, from: savedCategories) {
+            privateOptionCategories = decodedCategories
+        }
     }
 }
 

@@ -7,8 +7,6 @@
 
 import SwiftUI
 
-import SwiftUI
-
 struct SettingsView: View {
     @ObservedObject var colorScheme: ColorSchemeModel
     @ObservedObject var settings: Settings
@@ -30,18 +28,9 @@ struct SettingsView: View {
                 Toggle(isOn: $settings.showRestrictions) {
                     Text("Einschränkungen anzeigen")
                 }
-//                HStack {
-//                    Text("Standardanzahl Patienten")
-//                    Spacer()
-//                    Picker("", selection: $settings.numberOfPatients) {
-//                        ForEach(1...100, id: \.self) { number in
-//                            Text("\(number)").tag(number)
-//                        }
-//                    }
-//                    .pickerStyle(.wheel)
-//                    .frame(width: 100, height: 100)
-//                    .clipped()
-//                }
+                Toggle(isOn: $settings.showPatientTypePicker) {
+                    Text("Patientenart-Auswahl anzeigen")
+                }
                 NavigationLink("Auswahl Optionen anpassen", destination: OptionView(settings: settings))
             }
             
@@ -49,7 +38,6 @@ struct SettingsView: View {
                 NavigationLink("Feedback geben", destination: FeedbackView())
                 Link("Datenschutzerklärung", destination: URL(string: "https://www.cinematicfelix.de/privacy-policy.html")!)
                 Link("Tritt der Beta bei und erhalte Testversionen", destination: URL(string: "https://testflight.apple.com/join/sf9qVu6A")!)
-//                Link("Nutzungsbedingungen", destination: URL(string: "https://example.com/terms")!)
                 // Version number and Build
                 let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String
                 let buildNumber = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as! String
