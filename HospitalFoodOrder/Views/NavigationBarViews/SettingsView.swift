@@ -21,6 +21,17 @@ struct SettingsView: View {
                 .pickerStyle(.segmented)
             }
             
+            Section(header: Text("Aussehen 2")) {
+                Toggle(isOn: $settings.NewTabBarSelection) {
+                    Text("Neue TabBar")
+                }
+                if settings.NewTabBarSelection {
+                    Toggle(isOn: $settings.RainbowMode) {
+                        Text("Rainbow Mode")
+                    }
+                }
+            }
+            
             Section(header: Text("Bestelloptionen")) {
                 Toggle(isOn: $settings.coffeeSelected) {
                     Text("Kaffee auswählbar")
@@ -47,9 +58,12 @@ struct SettingsView: View {
                     .padding()
             }
             Section("") {
-                
+                NavigationLink("Entwickler", destination: DeveloperSettingsView())
             }
-            .frame(height: 50)
+            
+            Section("") {
+            }
+            .frame(height: 40)
         }
         .navigationTitle("Einstellungen")
     }

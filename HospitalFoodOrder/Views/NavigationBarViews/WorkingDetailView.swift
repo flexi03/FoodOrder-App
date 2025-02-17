@@ -11,45 +11,46 @@ struct WorkingTimeDetailsView: View {
     var workingTime: WorkingTime
     
     var onDelete: () -> Void // Closure für Löschaktion
-        @State private var isDeleteAlertPresented = false
-
+    @State private var isDeleteAlertPresented = false
 
     var body: some View {
         Form {
             ScrollView {
                 Text("Startzeit: \(formattedTime(workingTime.startTime))")
                     .padding()
+                
                 Text("Endzeit: \(formattedTime(workingTime.endTime))")
                     .padding()
+                
                 Text("Reguläre Arbeitszeit: \(workingTime.regularHours, specifier: "%.1f") Stunden")
                     .padding()
+                
                 Text("Überstunden: \(workingTime.overtimeHours) h \(workingTime.overtimeMinutes) min")
                     .foregroundColor(workingTime.overtimeHours < 0 || workingTime.overtimeMinutes < 0 ? .red : .primary)
                     .padding()
                 
                 Button(action: {
-                               isDeleteAlertPresented = true
-                           }, label: {
-                               Text("Auswahl löschen")
-                                   .fontWeight(.bold)
-                                   .foregroundColor(.white)
-                                   .frame(maxWidth: .infinity)
-                                   .padding(.vertical, 14)
-                                   .background(Color.red)
-                                   .contentShape(Rectangle())
-                                   .cornerRadius(12)
-                           })
-                           .alert(isPresented: $isDeleteAlertPresented) {
-                               Alert(
-                                   title: Text("Arbeitszeit löschen"),
-                                   message: Text("Möchten Sie diese Arbeitszeit wirklich löschen?"),
-                                   primaryButton: .destructive(Text("Löschen")) {
-                                       onDelete() // Aufruf der Löschaktion
-                                   },
-                                   secondaryButton: .cancel()
-                               )
-                           }
-                
+                    isDeleteAlertPresented = true
+                }, label: {
+                    Text("Auswahl löschen")
+                        .fontWeight(.bold)
+                        .foregroundColor(.white)
+                        .frame(maxWidth: .infinity)
+                        .padding(.vertical, 14)
+                        .background(Color.red)
+                        .contentShape(Rectangle())
+                        .cornerRadius(12)
+                })
+                .alert(isPresented: $isDeleteAlertPresented) {
+                    Alert(
+                        title: Text("Arbeitszeit löschen"),
+                        message: Text("Möchten Sie diese Arbeitszeit wirklich löschen? (Diese Aktion kann noch zu Problemen führen! Ein App Neustart kann helfen!)"),
+                        primaryButton: .destructive(Text("Löschen")) {
+                            onDelete() // Aufruf der Löschaktion
+                        },
+                        secondaryButton: .cancel()
+                    )
+                }
             }
             .navigationTitle("Details zum \(formattedDate(workingTime.date))")
 //            .padding()

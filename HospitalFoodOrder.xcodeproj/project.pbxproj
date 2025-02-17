@@ -10,16 +10,19 @@
 		DC2ABDEE2AB50E3F00778F10 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2ABDED2AB50E3F00778F10 /* ContentView.swift */; };
 		DC2ABDF02AB50E4400778F10 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DC2ABDEF2AB50E4400778F10 /* Assets.xcassets */; };
 		DC2D04AE2B33DF0C009E8EAA /* Tabs.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2D04AB2B33DF0C009E8EAA /* Tabs.swift */; };
+		DC308B5D2D44065D001CBB9D /* SplashViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC308B5C2D44065D001CBB9D /* SplashViewModel.swift */; };
 		DC44752C2B0C38B30012E3FB /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC44752B2B0C38B30012E3FB /* SettingsView.swift */; };
 		DC44752E2B0C39A10012E3FB /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC44752D2B0C39A10012E3FB /* InfoView.swift */; };
+		DC6642092C8719EC0060609C /* CustomTabBar2.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC6642082C8719E60060609C /* CustomTabBar2.swift */; };
 		DC6C77B92B2913820080494A /* WorkingTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC6C77B82B2913820080494A /* WorkingTimeView.swift */; };
 		DC6C77BD2B2A74AC0080494A /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC6C77BC2B2A74AC0080494A /* SplashView.swift */; };
 		DC8F09B42B1DF85B00F5EF3A /* OptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8F09B32B1DF85B00F5EF3A /* OptionView.swift */; };
 		DC8F09B62B1DFBD200F5EF3A /* ColorPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8F09B52B1DFBD200F5EF3A /* ColorPickerView.swift */; };
 		DC9113DC2B026A6900F51D16 /* OverViewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9113DB2B026A6900F51D16 /* OverViewView.swift */; };
 		DCB49BC12AFD912C003E450F /* Feedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB49BC02AFD912C003E450F /* Feedback.swift */; };
-		DCC358912B0FA36000C7DD3A /* OrderFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCC358902B0FA36000C7DD3A /* OrderFormView.swift */; };
-		DCC5E08E2B855FC700D97826 /* OrderFormView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCC5E08D2B855FC700D97826 /* OrderFormView2.swift */; };
+		DCC358912B0FA36000C7DD3A /* OrderFormView_old.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCC358902B0FA36000C7DD3A /* OrderFormView_old.swift */; };
+		DCC5E08E2B855FC700D97826 /* OrderFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCC5E08D2B855FC700D97826 /* OrderFormView.swift */; };
+		DCD88B692C9116DF0087A9D0 /* AnimatedColorWheelOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCD88B682C9116D50087A9D0 /* AnimatedColorWheelOverlay.swift */; };
 		DCF2FDB32B2CDC3F00BFBE63 /* DeveloperSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF2FDB22B2CDC3F00BFBE63 /* DeveloperSettingsView.swift */; };
 		DCF2FDB72B2E49AC00BFBE63 /* SettingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF2FDB62B2E49AC00BFBE63 /* SettingsModel.swift */; };
 		DCF2FDBA2B2E594700BFBE63 /* WorkingDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF2FDB92B2E594700BFBE63 /* WorkingDetailView.swift */; };
@@ -43,20 +46,22 @@
 		DC2ABDED2AB50E3F00778F10 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		DC2ABDEF2AB50E4400778F10 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DC2D04AB2B33DF0C009E8EAA /* Tabs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tabs.swift; sourceTree = "<group>"; };
+		DC308B5C2D44065D001CBB9D /* SplashViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewModel.swift; sourceTree = "<group>"; };
 		DC3DF3322AF18AE600A0856D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		DC3DF3392AF18B5000A0856D /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		DC3DF33B2AF18B5000A0856D /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		DC44752B2B0C38B30012E3FB /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		DC44752D2B0C39A10012E3FB /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
+		DC6642082C8719E60060609C /* CustomTabBar2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBar2.swift; sourceTree = "<group>"; };
 		DC6C77B82B2913820080494A /* WorkingTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkingTimeView.swift; sourceTree = "<group>"; };
 		DC6C77BC2B2A74AC0080494A /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		DC8F09B32B1DF85B00F5EF3A /* OptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionView.swift; sourceTree = "<group>"; };
 		DC8F09B52B1DFBD200F5EF3A /* ColorPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerView.swift; sourceTree = "<group>"; };
 		DC9113DB2B026A6900F51D16 /* OverViewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverViewView.swift; sourceTree = "<group>"; };
 		DCB49BC02AFD912C003E450F /* Feedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feedback.swift; sourceTree = "<group>"; };
-		DCC358902B0FA36000C7DD3A /* OrderFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderFormView.swift; sourceTree = "<group>"; };
-		DCC5E08D2B855FC700D97826 /* OrderFormView2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderFormView2.swift; sourceTree = "<group>"; };
-		DCDAAD322C768A4B00D203E3 /* HospitalFoodOrder.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HospitalFoodOrder.entitlements; sourceTree = "<group>"; };
+		DCC358902B0FA36000C7DD3A /* OrderFormView_old.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderFormView_old.swift; sourceTree = "<group>"; };
+		DCC5E08D2B855FC700D97826 /* OrderFormView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderFormView.swift; sourceTree = "<group>"; };
+		DCD88B682C9116D50087A9D0 /* AnimatedColorWheelOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedColorWheelOverlay.swift; sourceTree = "<group>"; };
 		DCF2FDB22B2CDC3F00BFBE63 /* DeveloperSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeveloperSettingsView.swift; sourceTree = "<group>"; };
 		DCF2FDB62B2E49AC00BFBE63 /* SettingsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsModel.swift; sourceTree = "<group>"; };
 		DCF2FDB92B2E594700BFBE63 /* WorkingDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkingDetailView.swift; sourceTree = "<group>"; };
@@ -93,7 +98,6 @@
 		DC2ABDEA2AB50E3F00778F10 /* HospitalFoodOrder */ = {
 			isa = PBXGroup;
 			children = (
-				DCDAAD322C768A4B00D203E3 /* HospitalFoodOrder.entitlements */,
 				DC4475302B0C3A6D0012E3FB /* Views */,
 				DC44752F2B0C3A460012E3FB /* Models */,
 				DCF2FDB52B2E48AC00BFBE63 /* UnusedViews */,
@@ -116,6 +120,8 @@
 			isa = PBXGroup;
 			children = (
 				DC2D04AB2B33DF0C009E8EAA /* Tabs.swift */,
+				DC6642082C8719E60060609C /* CustomTabBar2.swift */,
+				DCD88B682C9116D50087A9D0 /* AnimatedColorWheelOverlay.swift */,
 				DCF2FDB62B2E49AC00BFBE63 /* SettingsModel.swift */,
 			);
 			path = Models;
@@ -126,6 +132,7 @@
 			children = (
 				DC2ABDED2AB50E3F00778F10 /* ContentView.swift */,
 				DC6C77BC2B2A74AC0080494A /* SplashView.swift */,
+				DC308B5C2D44065D001CBB9D /* SplashViewModel.swift */,
 				DCF2FDB42B2E487400BFBE63 /* NavigationBarViews */,
 				DC44752D2B0C39A10012E3FB /* InfoView.swift */,
 			);
@@ -135,8 +142,8 @@
 		DCF2FDB42B2E487400BFBE63 /* NavigationBarViews */ = {
 			isa = PBXGroup;
 			children = (
-				DCC358902B0FA36000C7DD3A /* OrderFormView.swift */,
-				DCC5E08D2B855FC700D97826 /* OrderFormView2.swift */,
+				DCC358902B0FA36000C7DD3A /* OrderFormView_old.swift */,
+				DCC5E08D2B855FC700D97826 /* OrderFormView.swift */,
 				DC6C77B82B2913820080494A /* WorkingTimeView.swift */,
 				DCF2FDB92B2E594700BFBE63 /* WorkingDetailView.swift */,
 				DC44752B2B0C38B30012E3FB /* SettingsView.swift */,
@@ -236,17 +243,20 @@
 			files = (
 				DCF2FDB72B2E49AC00BFBE63 /* SettingsModel.swift in Sources */,
 				DC44752E2B0C39A10012E3FB /* InfoView.swift in Sources */,
-				DCC358912B0FA36000C7DD3A /* OrderFormView.swift in Sources */,
+				DCC358912B0FA36000C7DD3A /* OrderFormView_old.swift in Sources */,
+				DC308B5D2D44065D001CBB9D /* SplashViewModel.swift in Sources */,
 				DC44752C2B0C38B30012E3FB /* SettingsView.swift in Sources */,
 				DCF2FDB32B2CDC3F00BFBE63 /* DeveloperSettingsView.swift in Sources */,
 				DC2D04AE2B33DF0C009E8EAA /* Tabs.swift in Sources */,
-				DCC5E08E2B855FC700D97826 /* OrderFormView2.swift in Sources */,
+				DCC5E08E2B855FC700D97826 /* OrderFormView.swift in Sources */,
+				DC6642092C8719EC0060609C /* CustomTabBar2.swift in Sources */,
 				DC6C77B92B2913820080494A /* WorkingTimeView.swift in Sources */,
 				DC2ABDEE2AB50E3F00778F10 /* ContentView.swift in Sources */,
 				DC9113DC2B026A6900F51D16 /* OverViewView.swift in Sources */,
 				DCB49BC12AFD912C003E450F /* Feedback.swift in Sources */,
 				DC8F09B62B1DFBD200F5EF3A /* ColorPickerView.swift in Sources */,
 				DC8F09B42B1DF85B00F5EF3A /* OptionView.swift in Sources */,
+				DCD88B692C9116DF0087A9D0 /* AnimatedColorWheelOverlay.swift in Sources */,
 				DCF2FDBA2B2E594700BFBE63 /* WorkingDetailView.swift in Sources */,
 				DC6C77BD2B2A74AC0080494A /* SplashView.swift in Sources */,
 			);
@@ -384,7 +394,7 @@
 				CODE_SIGN_ENTITLEMENTS = HospitalFoodOrder/HospitalFoodOrder.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"HospitalFoodOrder/Preview Content\"";
 				DEVELOPMENT_TEAM = 6728DRMDL9;
 				ENABLE_PREVIEWS = YES;
@@ -403,14 +413,14 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.6;
+				MARKETING_VERSION = 2.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = PrivatFelix.HospitalFoodOrder;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
-				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -427,7 +437,7 @@
 				CODE_SIGN_ENTITLEMENTS = HospitalFoodOrder/HospitalFoodOrder.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"HospitalFoodOrder/Preview Content\"";
 				DEVELOPMENT_TEAM = 6728DRMDL9;
 				ENABLE_PREVIEWS = YES;
@@ -446,14 +456,14 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.6;
+				MARKETING_VERSION = 2.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = PrivatFelix.HospitalFoodOrder;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
-				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

@@ -56,7 +56,7 @@ struct WorkingTimeView: View {
     
     var body: some View {
         Form {
-            //            ScrollView {
+//            ScrollView {
             Section {
                 ScrollView {
                     DatePicker("Datum", selection: $selectedDate, displayedComponents: [.date])
@@ -89,7 +89,7 @@ struct WorkingTimeView: View {
                         .padding(.trailing, 5)
                     if isNoteSelected {
                         TextEditor(text: $notes)
-                        //                                   .padding()
+//                            .padding()
                             .frame(height: 150)
                             .cornerRadius(12)
                             .onChange(of: notes, perform: { _ in
@@ -104,7 +104,7 @@ struct WorkingTimeView: View {
                         .onChange(of: userName, perform: { _ in
                             saveUserName()
                         })
-                    //                        .cornerRadius(12)
+//                        .cornerRadius(12)
                     
                     
                     Text("Überstunden: \(String(format: "%01d h %02d min", overtimeHours, overtimeMinutes))")
@@ -113,7 +113,7 @@ struct WorkingTimeView: View {
                         .padding()
                     Text("Überstunden diesen Monat: \(String(format: "%01d h %02d min", overtimeHours, overtimeMinutes))")
                     Spacer()
-                    //                    AnimatedChart() // MARK: Chart
+//                    AnimatedChart() // MARK: Chart
                     
                     Button(action: {
                         saveWorkingTime()
@@ -141,6 +141,8 @@ struct WorkingTimeView: View {
                         calculateOvertime()
                     }
                     
+                    //Text("Überstunden gesamt: \(String(describing: calculateOverTimeFullMonth))")
+                    
                     ForEach(filteredWorkingTimes, id: \.id) { workingTime in
                         NavigationLink(destination: WorkingTimeDetailsView(workingTime: workingTime, onDelete: { deleteWorkingTime(workingTime) })) {
                             Text("\(formattedDate(workingTime.date)):  \(workingTime.overtimeHours) h \(workingTime.overtimeMinutes) min")
@@ -159,7 +161,7 @@ struct WorkingTimeView: View {
             }
             Section("") {
             }
-            .frame(height: 50)
+            .frame(height: 40)
         }
         .onAppear {
             UIDatePicker.appearance().minuteInterval = 5
@@ -318,6 +320,18 @@ struct WorkingTimeView: View {
         calculateOvertime()
     }
     
+//    private func calculateOverTimeFullMonth() -> (Int, Int) {
+//        let overtimeHoursFullMonth = 0
+//        let overtimeMinutesFullMonth = 0
+//        
+//        for workingTime in workingTimes {
+//            let calendar = Calendar.current
+//            let monthComponents = calendar.dateComponents([.year, .month], from: workingTime.date)
+//            _ = calendar.date(from: monthComponents)!
+//        }
+//        return (overtimeHoursFullMonth, overtimeMinutesFullMonth)
+//    }
+    
     private func calculateOvertimeMonth(filteredWorkingTimes: [WorkingTime], selectedMonth: Date) {
         // Calculate overtime in selected month
         var overtimeHoursMonth = 0
@@ -325,7 +339,7 @@ struct WorkingTimeView: View {
         
         let calendar = Calendar.current
         let monthComponents = calendar.dateComponents([.year, .month], from: selectedMonth)
-        let startOfMonth = calendar.date(from: monthComponents)!
+        _ = calendar.date(from: monthComponents)!
         
         let filteredWorkingTimesInMonth = filteredWorkingTimes.filter { workingTime in
             let startOfMonth = calendar.date(from: monthComponents)!
@@ -342,9 +356,9 @@ struct WorkingTimeView: View {
             
             let startTimeMinutes = startTimeComponents.minute!
             let endTimeHours = endTimeComponents.hour!
-            let endTimeMinutes = endTimeComponents.minute!
+            _ = endTimeComponents.minute!
             
-            let regularHours = endTimeHours - startTimeHours
+            _ = endTimeHours - startTimeHours
             let overtimeHours = startTimeHours > 8 ? startTimeHours - 8 : 0
             
             let overtimeMinutes = startTimeMinutes > 45 ? startTimeMinutes - 45 : 0
@@ -562,8 +576,6 @@ struct WorkingTimeView: View {
     
     
 }
-
-
 
 struct WorkingTime: Identifiable, Encodable, Decodable {
     var id: UUID

@@ -18,5 +18,9 @@
 	<true/>
 	<key>com.apple.runningboard.trustedtarget</key>
 	<true/>
+	<key>NSUserTrackingUsageDescription</key>
+	<string>Diese App verwendet keine Tracking-Funktionen</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Zum Speichern von PDF-Exporten wird Zugriff auf Ihre Fotos benötigt</string>
 </dict>
 </plist>
