@@ -24,9 +24,9 @@ enum Tab: String, CaseIterable {
         }
     }
     
-    var index: Int {
-        return Tab.allCases.firstIndex(of: self) ?? 0
-    }
+//    var index: Int {
+//        return Tab.allCases.firstIndex(of: self) ?? 0
+//    }
 }
 
 struct TabItem: View {
