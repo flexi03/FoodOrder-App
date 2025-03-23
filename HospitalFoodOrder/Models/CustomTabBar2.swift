@@ -61,11 +61,20 @@ struct CustomTabBar2: View {
         .background(
             Group {
                 if useAnimatedOverlay {
-                    AnimatedColorWheelOverlay()
-                        .mask(
-                            Capsule()
-                        )
-                        .blur(radius: 10)
+                    ZStack { // Stack two for more blur and less distortion on the inside
+                        AnimatedColorWheelOverlay()
+                            .mask(
+                                Capsule()
+                            )
+                            .blur(radius: 12)
+                        
+                        AnimatedColorWheelOverlay()
+                            .mask(
+                                Capsule()
+                            )
+                            .blur(radius: 20)
+                    }
+                    
                 } else {
                     Color.clear // or any other background you want when not using the animated overlay
                 }

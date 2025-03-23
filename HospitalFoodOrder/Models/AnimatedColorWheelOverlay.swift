@@ -38,7 +38,7 @@ struct AnimatedColorWheelOverlay: View {
                 let angle = Angle.degrees(timeInterval.remainder(dividingBy: 5) / 5 * 360)
                 
                 // Update color phase for smooth transitions
-//                colorPhase = timeInterval.remainder(dividingBy: 10) / 10
+                colorPhase = timeInterval.remainder(dividingBy: 10) / 100000
                 
                 context.translateBy(x: size.width / 2, y: size.height / 2)
                 context.rotate(by: angle)
@@ -90,8 +90,8 @@ struct AnimatedColorWheelOverlay: View {
     }
 }
 
-//struct AnimatedColorWheelOverlay_Previews: PreviewProvider {
-//    static var previews: some View {
-//        AnimatedColorWheelOverlay()
-//    }
-//}
+struct AnimatedColorWheelOverlay_Previews: PreviewProvider {
+    static var previews: some View {
+        AnimatedColorWheelOverlay()
+    }
+}
