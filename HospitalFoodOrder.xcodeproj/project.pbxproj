@@ -27,6 +27,7 @@
 		DCF2FDB72B2E49AC00BFBE63 /* SettingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF2FDB62B2E49AC00BFBE63 /* SettingsModel.swift */; };
 		DCF2FDBA2B2E594700BFBE63 /* WorkingDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF2FDB92B2E594700BFBE63 /* WorkingDetailView.swift */; };
 		DCFC56322DF31C7100CF1439 /* iPadContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCFC56312DF31C6B00CF1439 /* iPadContentView.swift */; };
+		DCFC56342DF3239E00CF1439 /* OrderFormViewIPad.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCFC56332DF3239E00CF1439 /* OrderFormViewIPad.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -67,6 +68,7 @@
 		DCF2FDB62B2E49AC00BFBE63 /* SettingsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsModel.swift; sourceTree = "<group>"; };
 		DCF2FDB92B2E594700BFBE63 /* WorkingDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkingDetailView.swift; sourceTree = "<group>"; };
 		DCFC56312DF31C6B00CF1439 /* iPadContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iPadContentView.swift; sourceTree = "<group>"; };
+		DCFC56332DF3239E00CF1439 /* OrderFormViewIPad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderFormViewIPad.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,6 +149,7 @@
 			children = (
 				DCC358902B0FA36000C7DD3A /* OrderFormView_old.swift */,
 				DCC5E08D2B855FC700D97826 /* OrderFormView.swift */,
+				DCFC56332DF3239E00CF1439 /* OrderFormViewIPad.swift */,
 				DC6C77B82B2913820080494A /* WorkingTimeView.swift */,
 				DCF2FDB92B2E594700BFBE63 /* WorkingDetailView.swift */,
 				DC44752B2B0C38B30012E3FB /* SettingsView.swift */,
@@ -249,6 +252,7 @@
 				DCC358912B0FA36000C7DD3A /* OrderFormView_old.swift in Sources */,
 				DC308B5D2D44065D001CBB9D /* SplashViewModel.swift in Sources */,
 				DC44752C2B0C38B30012E3FB /* SettingsView.swift in Sources */,
+				DCFC56342DF3239E00CF1439 /* OrderFormViewIPad.swift in Sources */,
 				DCF2FDB32B2CDC3F00BFBE63 /* DeveloperSettingsView.swift in Sources */,
 				DC2D04AE2B33DF0C009E8EAA /* Tabs.swift in Sources */,
 				DCC5E08E2B855FC700D97826 /* OrderFormView.swift in Sources */,
@@ -417,7 +421,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.0.2;
+				MARKETING_VERSION = 2.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = PrivatFelix.HospitalFoodOrder;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -460,7 +464,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.0.2;
+				MARKETING_VERSION = 2.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = PrivatFelix.HospitalFoodOrder;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

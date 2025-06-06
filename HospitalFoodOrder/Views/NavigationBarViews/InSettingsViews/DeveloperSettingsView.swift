@@ -10,31 +10,39 @@ import SwiftUI
 struct DeveloperSettingsView: View {
     
     @StateObject var settings = Settings()
-
+    
     @AppStorage("isFirstLaunch") var isFirstLaunch: Bool = false
     
     var body: some View {
-        ScrollView {
+        Form {
+            NavigationLink(destination: WorkingTimeView()) {
+                Text("Arbeitszeiterfassung")
+                
+            }
+            
             Button(action: {
                 isFirstLaunch = true
             }, label: {
                 Text("SplashScreen")
-                    .fontWeight(.bold)
-                    .foregroundColor(.white)
-                    .frame(maxWidth: .infinity)
-                    .padding(.vertical, 14)
-                    .background(Color.accentColor)
-                    .contentShape(Rectangle())
-                    .cornerRadius(12)
             })
-            .padding()
             
-            Toggle("Change iPad to iPhone", isOn: $settings.forceiPhoneLayout)
+            Toggle("iPhone Layout", isOn: $settings.forceiPhoneLayout)
+            Toggle("iPad Layout", isOn: $settings.forceiPadLayout)
         }
         .navigationTitle("Entwickler")
     }
 }
 
 #Preview {
-    DeveloperSettingsView()
+    NavigationView {
+        DeveloperSettingsView()
+    }
+    .navigationViewStyle(.stack)
+}
+
+#Preview {
+    NavigationView {
+        SettingsView(colorScheme: ColorSchemeModel(), settings: Settings())
+    }
+    .navigationViewStyle(.stack)
 }

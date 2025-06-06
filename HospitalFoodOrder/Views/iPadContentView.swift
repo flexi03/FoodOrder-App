@@ -11,65 +11,80 @@ import SwiftUI
 /// Handles patient selection, settings, and working time tracking
 struct iPadContentView: View {
     // MARK: - Properties
-    @StateObject var settings = Settings()
-    @State private var activeTab: Tab = .order
-    @ObservedObject var colorScheme: ColorSchemeModel
-    @Namespace private var animation
-    @State private var tabShapePosition: CGPoint = .zero
-    
-    // MARK: - Body
-    var body: some View {
-        TabView(selection: $activeTab) {
-            // Order Form Tab
-            OrderFormView(settings: settings, patientSelection: patientSelectionManager())
-                .tabItem {
-                    Label("Bestellung", systemImage: "cart.badge.plus")
-                }
-                .tag(Tab.order)
-                .toolbar(.hidden, for: .tabBar)
-                .accessibilityLabel("Bestellungen aufnehmen")
-                .accessibilityHint("Tippen Sie hier, um Essensbestellungen aufzunehmen")
-            
-            // Working Time Tab
-            NavigationView {
-                WorkingTimeView()
-            }
-            .tabItem {
-                Label("Arbeitszeit", systemImage: "clock.arrow.circlepath")
-            }
-            .tag(Tab.workingtime)
-            .toolbar(.hidden, for: .tabBar)
-                .accessibilityLabel("Arbeitszeit erfassen")
-                .accessibilityHint("Tippen Sie hier, um Ihre Arbeitszeiten zu erfassen und zu verwalten")
-            
-            // Settings Tab
-            NavigationView {
-                SettingsView(colorScheme: colorScheme, settings: settings)
-            }
-            .tabItem {
-                Label("Einstellungen", systemImage: "gear.badge")
-            }
-            .tag(Tab.settings)
-            .toolbar(.hidden, for: .tabBar)
-                .accessibilityLabel("Einstellungen")
-                .accessibilityHint("Tippen Sie hier, um App-Einstellungen anzupassen")
-        }
-        .navigationViewStyle(StackNavigationViewStyle())
-        .preferredColorScheme(getColorScheme())
-        .safeAreaInset(edge: .bottom) {
-            if settings.NewTabBarSelection {
-                CustomTabBar2(
-                    useAnimatedOverlay: settings.RainbowMode,
-                    activeTab: $activeTab,
-                    settings: Settings()
-                )
-            } else {
-                CustomTabBar()
-            }
-        }
-        .tint(Color.accentColor)
-    }
-}
+     @StateObject var settings = Settings()
+     @State private var activeTab: Tab = .order
+     @ObservedObject var colorScheme: ColorSchemeModel
+     @Namespace private var animation
+     @State private var tabShapePosition: CGPoint = .zero
+     @ObservedObject var patientSelection: patientSelectionManager
+     
+     // MARK: - Body
+     var body: some View {
+         NavigationView {
+             // Order Form Tab
+             ZStack {
+                 OrderFormViewIPad(settings: settings, patientSelection: patientSelectionManager())
+                 
+                 if patientSelection.patientSelection >= 2 {
+                     FloatingButton(systemImage: "arrow.left", action: {
+                         patientSelection.patientSelection-=1
+ //                        print(patientSelection.patientSelection)
+                     }, alignment: .bottomLeading)
+                 }
+                 
+                 if patientSelection.patientSelection < settings.numberOfPatients {
+                     FloatingButton(systemImage:"arrow.right", action: {
+                         patientSelection.patientSelection+=1
+ //                        print(patientSelection.patientSelection)
+                     }, alignment: .bottomTrailing)
+                 }
+                     
+                     //            // Working Time Tab
+                     //            NavigationView {
+                     //                WorkingTimeView()
+                     //            }
+                     //            .tabItem {
+                     //                Label("Arbeitszeit", systemImage: "clock.arrow.circlepath")
+                     //            }
+                     //            .tag(Tab.workingtime)
+                     //            .toolbar(.hidden, for: .tabBar)
+                     //                .accessibilityLabel("Arbeitszeit erfassen")
+                     //                .accessibilityHint("Tippen Sie hier, um Ihre Arbeitszeiten zu erfassen und zu verwalten")
+                     //
+                     //            // Settings Tab
+                     //            NavigationView {
+                     //                SettingsView(colorScheme: colorScheme, settings: settings)
+                     //            }
+                     //            .tabItem {
+                     //                Label("Einstellungen", systemImage: "gear.badge")
+                     //            }
+                     //            .tag(Tab.settings)
+                     //            .toolbar(.hidden, for: .tabBar)
+                     //                .accessibilityLabel("Einstellungen")
+                     //                .accessibilityHint("Tippen Sie hier, um App-Einstellungen anzupassen")
+                     
+                     //        .navigationViewStyle(StackNavigationViewStyle())
+                     //        .safeAreaInset(edge: .bottom) {
+                     //            if settings.NewTabBarSelection {
+                     //                CustomTabBar2(
+                     //                    useAnimatedOverlay: settings.RainbowMode,
+                     //                    activeTab: $activeTab,
+                     //                    settings: Settings()
+                     //                )
+                     //            } else {
+                     //                CustomTabBar()
+                     //            }
+                     //        }
+ //                    .tint(Color.accentColor)
+                 }
+             .preferredColorScheme(getColorScheme())
+
+             
+         }
+         .navigationViewStyle(.stack)
+
+     }
+ }
 
 
 // MARK: - Helper Functions
@@ -120,4 +135,21 @@ extension iPadContentView {
             generator.impactOccurred()
         }
     }
+}
+
+func FloatingButton(systemImage: String, action: @escaping () -> Void, alignment: Alignment) -> some View {
+    return VStack {
+        Button(action: action) {
+            Image(systemName: systemImage)
+                .font(.title2)
+                .fontWeight(.semibold)
+                .foregroundColor(.white)
+                .frame(width: 80, height: 80)
+                .background(.accent)
+                .clipShape(Circle())
+                .shadow(radius: 4, y: 2)
+        }
+    }
+    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: alignment)
+    .padding()
 }

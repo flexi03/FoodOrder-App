@@ -9,7 +9,13 @@ import SwiftUI
 
 public class Settings: ObservableObject {
     
-    @Published var forceiPhoneLayout: Bool = false
+    @Published var forceiPhoneLayout: Bool {
+        didSet { UserDefaults.standard.set(forceiPhoneLayout, forKey: "forceiPhoneLayout") }
+    }
+    
+    @Published var forceiPadLayout: Bool {
+        didSet { UserDefaults.standard.set(forceiPadLayout, forKey: "forceiPadLayout") }
+    }
     
     @Published var toggleSummary: Bool {
         didSet { UserDefaults.standard.set(toggleSummary, forKey: "toggleSummary") }
@@ -75,6 +81,8 @@ public class Settings: ObservableObject {
     @Published var extras: [Int: String] = [:]
     
     init() {
+        self.forceiPhoneLayout = UserDefaults.standard.bool(forKey: "forceiPhoneLayout") || false
+        self.forceiPadLayout = UserDefaults.standard.bool(forKey: "forceiPadLayout") || false
         self.toggleSummary = UserDefaults.standard.bool(forKey: "toggleSummary") || false
         self.showRestrictions = UserDefaults.standard.bool(forKey: "showRestrictions") || true
         self.coffeeSelected = UserDefaults.standard.bool(forKey: "Kaffee") || true

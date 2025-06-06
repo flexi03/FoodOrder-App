@@ -151,7 +151,10 @@ struct OrderApp: App {
                 SplashView(isFirstLaunch: $isFirstLaunch)
             } else {
                 if UIDevice.current.userInterfaceIdiom == .pad && !settings.forceiPhoneLayout {
-                    iPadContentView(colorScheme: ColorSchemeModel())
+                    iPadContentView(colorScheme: ColorSchemeModel(), patientSelection: patientSelectionManager())
+                        .environmentObject(settings)
+                } else if UIDevice.current.userInterfaceIdiom == .phone && settings.forceiPadLayout {
+                    iPadContentView(colorScheme: ColorSchemeModel(), patientSelection: patientSelectionManager())
                         .environmentObject(settings)
                 } else {
                     ContentView(colorScheme: ColorSchemeModel())
