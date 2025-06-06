@@ -1,4 +1,12 @@
 //
+//  OrderFormView 2.swift
+//  HospitalFoodOrder
+//
+//  Created by Felix Kircher on 06.06.25.
+//
+
+
+//
 //  OrderFormView.swift
 //  HospitalFoodOrder
 //
@@ -7,7 +15,7 @@
 
 import SwiftUI
 
-struct OrderFormView: View {
+struct OrderFormViewIPad: View {
     @ObservedObject var settings: Settings
     @ObservedObject var patientSelection: patientSelectionManager
     @State private var isResetConfirmationPresented: Bool = false
@@ -17,20 +25,35 @@ struct OrderFormView: View {
     var body: some View {
         VStack {
             HStack {
-                Text("Patient \(patientSelection.patientSelection) von \(settings.numberOfPatients)")
-                    .font(.headline)
-                Spacer()
+//                Text("Patient \(patientSelection.patientSelection) von \(settings.numberOfPatients)")
+//                    .font(.headline)
+//                Spacer()
                 Button(action: {
                     showingPatientCountPicker = true
                 }) {
-                    Image(systemName: "person.3")
+                    Image(systemName: "person.3.fill")
                     Text("Ändern")
                 }
+                Spacer()
+                
+                // Platzhalter für "saved for later"
+                NavigationLink(destination: patientView(for: 101).navigationBarItems(trailing: resetButton())) {
+                    Image(systemName: "bookmark.fill")
+                    Text("Für Später")
+                }
+                
+                Spacer()
+                
+                NavigationLink(destination: SettingsView(colorScheme: ColorSchemeModel(), settings: Settings())) {
+                    Image(systemName: "gearshape.fill")
+                    Text("Mehr")
+                }
+//                NavigationLink("Hallo", destination: SettingsView(colorScheme: ColorSchemeModel(), settings: Settings()))
             }
             .padding()
             
             HStack {
-                Spacer(minLength: 4)
+                Spacer().frame(width: 42)
                 Image(systemName: "trash")
                     .background {
                         RoundedRectangle(cornerRadius: 10).fill(Color.red)
@@ -43,7 +66,12 @@ struct OrderFormView: View {
                     }
                     .padding(.all)
                 
-                Spacer(minLength: 200)
+                Spacer()
+                
+                Text("\(patientSelection.patientSelection) von \(settings.numberOfPatients)")
+                    .font(.title.bold())
+                
+                Spacer()
                 Image(systemName: "checkmark.circle")
                     .background {
                         RoundedRectangle(cornerRadius: 10).fill(Color.green)
@@ -56,7 +84,7 @@ struct OrderFormView: View {
                     }
                     .padding(.all)
                 
-                Spacer(minLength: 4)
+                Spacer().frame(width: 42)
             }
 //            if settings.showPatientTypePicker {
 //                Picker("Patientenart", selection: $settings.isPrivatePatient) {
@@ -70,14 +98,20 @@ struct OrderFormView: View {
 //                //                    .padding(.bottom)
 //            }
             
-            TabView(selection: $patientSelection.patientSelection) {
-                ForEach(1...settings.numberOfPatients, id: \.self) { patientNumber in
-                    patientView(for: patientNumber)
-                        .tag(patientNumber)
-                }
-            }
-            .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
-            .indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .always))
+//            TabView(selection: $patientSelection.patientSelection) {
+//                ForEach(1...settings.numberOfPatients, id: \.self) { patientNumber in
+//                    patientView(for: patientNumber)
+//                        .tag(patientNumber)
+//                }
+//            }
+//            .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
+//            .indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .never))
+            
+            patientView(for: patientSelection.patientSelection)
+            
+        }
+        .actionSheet(isPresented: $isResetConfirmationPresented) {
+            createResetActionSheet()
         }
         .ignoresSafeArea(edges: .bottom)
         .onChange(of: settings.numberOfPatients) { newValue in
@@ -86,7 +120,7 @@ struct OrderFormView: View {
             }
         }
         .sheet(isPresented: $showingPatientCountPicker) {
-            PatientCountPickerView(numberOfPatients: $settings.numberOfPatients)
+            iPadPatientCountPickerView(numberOfPatients: $settings.numberOfPatients)
         }
     }
     
@@ -130,10 +164,8 @@ struct OrderFormView: View {
             }
             .frame(height: 240)
         }
-        .navigationBarItems(leading: orderSummaryButton(), trailing: resetButton())
-        .actionSheet(isPresented: $isResetConfirmationPresented) {
-            createResetActionSheet()
-        }
+//        .navigationBarItems(leading: orderSummaryButton(), trailing: resetButton())
+       
         .onChange(of: patientSelection.patientSelection) { _ in
             triggerHapticFeedback(.medium)
         }
@@ -269,8 +301,9 @@ struct OrderFormView: View {
                         Text("Keine").tag("Keine")
                         Text("Schnabelbecher").tag("Schnabelbecher")
                         Text("Schmieren").tag("Schmieren")
-                        Text("Schnabelbecher & Schmieren").tag("Schnabelbecher & Schmieren")
+                        Text("SB & Schmieren").tag("Schnabelbecher & Schmieren")
                     }
+                    .pickerStyle(SegmentedPickerStyle())
                 }
             }
         }
@@ -453,7 +486,21 @@ struct OrderFormView: View {
                     .foregroundColor(.white)
                     .frame(maxWidth: .infinity)
                     .padding(.vertical, 25)
-                    .background(settings.toggleSummary ? Color.red : Color.accentColor)
+                    .background(settings.toggleSummary ? Color.red : Color.green)
+                    .contentShape(Rectangle())
+                    .cornerRadius(12)
+            })
+        } else {
+            Button(action: {
+                settings.toggleSummary.toggle()
+                triggerHapticFeedback(.light)
+            }, label: {
+                Text("Klicke um die Bestellübersicht einzublenden")
+                    .fontWeight(.bold)
+                    .foregroundColor(.white)
+                    .frame(maxWidth: .infinity)
+                    .padding(.vertical, 25)
+                    .background(settings.toggleSummary ? Color.red : Color.green)
                     .contentShape(Rectangle())
                     .cornerRadius(12)
             })
@@ -487,6 +534,10 @@ struct OrderFormView: View {
                     triggerHapticFeedback(.rigid)
                 }
         }
+        buttons.append(.default(Text("Für Später Bestellung")) {
+            settings.resetSelections(for: 101)
+        })
+        
         buttons.append(.default(Text("Alle Bestellungen")) {
             settings.resetAllSelections()
             patientSelection.patientSelection = 1
@@ -512,7 +563,7 @@ struct OrderFormView: View {
     }
 }
 
-struct MultiSelectionPicker: View {
+struct iPadMultiSelectionPicker: View {
     let title: String
     let options: [String: Int]
     @Binding var selection: [String]
@@ -547,7 +598,7 @@ struct MultiSelectionPicker: View {
     }
 }
 
-struct PatientCountPickerView: View {
+struct iPadPatientCountPickerView: View {
     @Binding var numberOfPatients: Int
     @Environment(\.presentationMode) var presentationMode
     
@@ -569,7 +620,7 @@ struct PatientCountPickerView: View {
     }
 }
 
-struct OrderFormView2_Previews: PreviewProvider {
+struct OrderFormView_Previews: PreviewProvider {
     static var previews: some View {
         OrderFormView(settings: Settings(), patientSelection: patientSelectionManager())
     }

@@ -17,7 +17,48 @@ struct ContentView: View {
     @Namespace private var animation
     @State private var tabShapePosition: CGPoint = .zero
     
+    // MARK: - Computed Properties
+    /// Determines which layout to use based on device and settings
+    private var shouldUseiPadLayout: Bool {
+        let isiPad = UIDevice.current.userInterfaceIdiom == .pad
+        
+        // Wenn force iPad Layout aktiviert ist, immer iPad Layout verwenden
+        if settings.forceiPadLayout {
+            return true
+        }
+        
+        // Wenn force iPhone Layout aktiviert ist, immer iPhone Layout verwenden
+        if settings.forceiPhoneLayout {
+            return false
+        }
+        
+        // Ansonsten basierend auf Gerät entscheiden
+        return isiPad
+    }
+    
     // MARK: - Body
+    var body: some View {
+        Group {
+            if shouldUseiPadLayout {
+                iPadContentView(colorScheme: colorScheme, patientSelection: patientSelectionManager())
+                    .environmentObject(settings)
+            } else {
+                iPhoneContentView(colorScheme: colorScheme)
+                    .environmentObject(settings)
+            }
+        }
+        .animation(.easeInOut(duration: 0.3), value: shouldUseiPadLayout)
+    }
+}
+
+/// iPhone-specific content view
+struct iPhoneContentView: View {
+    @EnvironmentObject var settings: Settings
+    @State private var activeTab: Tab = .order
+    @ObservedObject var colorScheme: ColorSchemeModel
+    @Namespace private var animation
+    @State private var tabShapePosition: CGPoint = .zero
+    
     var body: some View {
         TabView(selection: $activeTab) {
             // Order Form Tab
@@ -69,26 +110,9 @@ struct ContentView: View {
         }
         .tint(Color.accentColor)
     }
-}
-
-// MARK: - Patient Selection Manager
-/// Manages the currently selected patient and persists the selection
-public class patientSelectionManager: ObservableObject {
-    @Published var patientSelection: Int = 1 {
-        didSet {
-            UserDefaults.standard.set(patientSelection, forKey: "patientSelection")
-        }
-    }
     
-    init() {
-        self.patientSelection = UserDefaults.standard.object(forKey: "patientSelection") as? Int ?? 1
-    }
-}
-
-// MARK: - Helper Functions
-extension ContentView {
     /// Returns the appropriate color scheme based on user settings
-    public func getColorScheme() -> ColorScheme {
+    private func getColorScheme() -> ColorScheme {
         switch colorScheme.mode {
         case "Dunkel":
             return .dark
@@ -101,7 +125,7 @@ extension ContentView {
     
     /// Creates a custom tab bar with the specified appearance
     @ViewBuilder
-    func CustomTabBar(_ tint: Color = .accentColor, _ inactiveTint: Color = .accentColor) -> some View {
+    private func CustomTabBar(_ tint: Color = .accentColor, _ inactiveTint: Color = .accentColor) -> some View {
         HStack(alignment: .bottom, spacing: 0) {
             ForEach(Tab.allCases, id: \.rawValue) {
                 TabItem(
@@ -135,6 +159,20 @@ extension ContentView {
     }
 }
 
+// MARK: - Patient Selection Manager
+/// Manages the currently selected patient and persists the selection
+public class patientSelectionManager: ObservableObject {
+    @Published var patientSelection: Int = 1 {
+        didSet {
+            UserDefaults.standard.set(patientSelection, forKey: "patientSelection")
+        }
+    }
+    
+    init() {
+        self.patientSelection = UserDefaults.standard.object(forKey: "patientSelection") as? Int ?? 1
+    }
+}
+
 @main
 struct OrderApp: App {
     @StateObject var settings = Settings()
@@ -147,11 +185,6 @@ struct OrderApp: App {
             } else {
                 ContentView(colorScheme: ColorSchemeModel())
                     .environmentObject(settings)
-                //                    .safeAreaInset(edge: .bottom) {
-                //                        RoundedRectangle(cornerRadius: 10)
-                //                            .frame(height: 70)
-                //                            
-                //                    }
             }
         }
     }
