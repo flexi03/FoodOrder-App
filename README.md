@@ -4,7 +4,6 @@ Eine moderne iOS-Anwendung, die den Essensbestellungsprozess in Krankenhäusern 
 
 ## 🌟 Hauptfunktionen
 
-- **Dynamic Island Integration**: Moderne iOS-Funktionen mit Dynamic Island Animationen
 - **Bestellungsverwaltung**: Einfache Benutzeroberfläche für die Verwaltung von Essensbestellungen
 - **Servicewagen-Integration**: Optimierter Arbeitsablauf für Serviceassistenten
 - **Schöne Animationen**: Ansprechende Benutzererfahrung mit Lottie-Animationen
@@ -14,14 +13,10 @@ Eine moderne iOS-Anwendung, die den Essensbestellungsprozess in Krankenhäusern 
 - **Lokale Datenspeicherung**: Alle Daten werden nur lokal auf dem Gerät gespeichert
 - **Keine Cloud-Synchronisation**: Maximale Datensicherheit durch lokale Speicherung
 - **Temporäre Daten**: Bestellungen werden nur temporär gespeichert
-- **DSGVO-konform**: Vollständige Einhaltung der Datenschutzrichtlinien
 
 ## 🛠️ Technischer Stack
 
 - SwiftUI für moderne UI-Entwicklung
-- Dynamic Island Unterstützung für iOS 16+
-- Lottie-Animationen für ansprechende Benutzererfahrung
-- Core Data für lokale Datenspeicherung
 
 ## 📱 Anforderungen
 
@@ -50,7 +45,6 @@ HospitalFoodOrder/
 
 ### iPhone
 - Optimiert für alle iPhone-Modelle
-- Dynamic Island Unterstützung für iPhone 14 Pro und neuer
 - Angepasste Layouts für verschiedene Bildschirmgrößen
 
 ### iPad
@@ -63,11 +57,8 @@ HospitalFoodOrder/
 
 Fehlerberichte und Verbesserungsvorschläge sind willkommen!
 
-## 📄 Lizenz
-
-Dieses Projekt steht unter der MIT-Lizenz - siehe LICENSE-Datei für Details.
-
 ## 🙏 Danksagung
 
 - Inspiriert durch praktische Erfahrungen als Serviceassistent im Krankenhaus
 - Entwickelt mit Fokus auf Benutzerfreundlichkeit und Datenschutz
+- Danke auch an Claude, ChatGPT und co für die schnelle Entwicklung eines MVP und kleiner Features.

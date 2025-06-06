@@ -11,22 +11,15 @@
 
 ### Phase 1: Kernfunktionen (Aktuell)
 - [x] Grundlegende Bestellungsverwaltung
-- [x] Dynamic Island Integration
 - [x] Basis-UI-Komponenten
 - [x] Grundlegende Animationen
 
 ### Phase 2: Verbesserungen (Nächste Schritte)
 - [ ] Verbesserte Bestellungsübersicht
 - [ ] Optimierte Benutzeroberfläche für iPad
-- [ ] Erweiterte Suchfunktionen
-- [ ] Schnellzugriff auf häufig verwendete Bestellungen
-- [ ] Verbesserte Offline-Funktionalität
 
 ### Phase 3: Verfeinerungen (Zukunft)
-- [ ] Erweiterte Statistikfunktionen
-- [ ] Verbesserte Druckfunktionen
 - [ ] Zusätzliche Anpassungsmöglichkeiten
-- [ ] Erweiterte Filteroptionen
 
 ## 🏗️ Architekturverbesserungen
 
@@ -52,7 +45,6 @@
 ## 📱 Geräteoptimierung
 
 ### iPhone
-- [ ] Optimierte Dynamic Island Integration
 - [ ] Angepasste Layouts für verschiedene Bildschirmgrößen
 - [ ] Verbesserte Touch-Targets
 - [ ] Optimierte Navigation
@@ -65,16 +57,6 @@
 
 ## 🧪 Teststrategie
 
-### Unit Tests
-- [ ] Modell-Tests
-- [ ] ViewModel-Tests
-- [ ] Service-Tests
-
-### UI Tests
-- [ ] Kritische Benutzerabläufe
-- [ ] Edge Cases
-- [ ] Barrierefreiheitstests
-
 ### Performance Tests
 - [ ] Ladezeit-Optimierung
 - [ ] Speichernutzung
@@ -85,7 +67,6 @@
 ### Datenspeicherung
 - [ ] Lokale Speicherung optimieren
 - [ ] Automatische Datenbereinigung
-- [ ] Verschlüsselung sensibler Daten
 - [ ] DSGVO-Konformität sicherstellen
 
 ### Sicherheit
