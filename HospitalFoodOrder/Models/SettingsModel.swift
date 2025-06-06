@@ -8,6 +8,9 @@
 import SwiftUI
 
 public class Settings: ObservableObject {
+    
+    @Published var forceiPhoneLayout: Bool = false
+    
     @Published var toggleSummary: Bool {
         didSet { UserDefaults.standard.set(toggleSummary, forKey: "toggleSummary") }
     }

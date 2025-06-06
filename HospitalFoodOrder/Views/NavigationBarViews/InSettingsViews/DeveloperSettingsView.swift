@@ -9,6 +9,8 @@ import SwiftUI
 
 struct DeveloperSettingsView: View {
     
+    @StateObject var settings = Settings()
+
     @AppStorage("isFirstLaunch") var isFirstLaunch: Bool = false
     
     var body: some View {
@@ -26,6 +28,8 @@ struct DeveloperSettingsView: View {
                     .cornerRadius(12)
             })
             .padding()
+            
+            Toggle("Change iPad to iPhone", isOn: $settings.forceiPhoneLayout)
         }
         .navigationTitle("Entwickler")
     }

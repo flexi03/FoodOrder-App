@@ -26,6 +26,7 @@
 		DCF2FDB32B2CDC3F00BFBE63 /* DeveloperSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF2FDB22B2CDC3F00BFBE63 /* DeveloperSettingsView.swift */; };
 		DCF2FDB72B2E49AC00BFBE63 /* SettingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF2FDB62B2E49AC00BFBE63 /* SettingsModel.swift */; };
 		DCF2FDBA2B2E594700BFBE63 /* WorkingDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF2FDB92B2E594700BFBE63 /* WorkingDetailView.swift */; };
+		DCFC56322DF31C7100CF1439 /* iPadContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCFC56312DF31C6B00CF1439 /* iPadContentView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -65,6 +66,7 @@
 		DCF2FDB22B2CDC3F00BFBE63 /* DeveloperSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeveloperSettingsView.swift; sourceTree = "<group>"; };
 		DCF2FDB62B2E49AC00BFBE63 /* SettingsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsModel.swift; sourceTree = "<group>"; };
 		DCF2FDB92B2E594700BFBE63 /* WorkingDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkingDetailView.swift; sourceTree = "<group>"; };
+		DCFC56312DF31C6B00CF1439 /* iPadContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iPadContentView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +133,7 @@
 			isa = PBXGroup;
 			children = (
 				DC2ABDED2AB50E3F00778F10 /* ContentView.swift */,
+				DCFC56312DF31C6B00CF1439 /* iPadContentView.swift */,
 				DC6C77BC2B2A74AC0080494A /* SplashView.swift */,
 				DC308B5C2D44065D001CBB9D /* SplashViewModel.swift */,
 				DCF2FDB42B2E487400BFBE63 /* NavigationBarViews */,
@@ -250,6 +253,7 @@
 				DC2D04AE2B33DF0C009E8EAA /* Tabs.swift in Sources */,
 				DCC5E08E2B855FC700D97826 /* OrderFormView.swift in Sources */,
 				DC6642092C8719EC0060609C /* CustomTabBar2.swift in Sources */,
+				DCFC56322DF31C7100CF1439 /* iPadContentView.swift in Sources */,
 				DC6C77B92B2913820080494A /* WorkingTimeView.swift in Sources */,
 				DC2ABDEE2AB50E3F00778F10 /* ContentView.swift in Sources */,
 				DC9113DC2B026A6900F51D16 /* OverViewView.swift in Sources */,

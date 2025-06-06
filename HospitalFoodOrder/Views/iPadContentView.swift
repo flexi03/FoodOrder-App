@@ -1,15 +1,15 @@
 //
-//  ContentView.swift
+//  iPadContentView.swift
 //  HospitalFoodOrder
 //
-//  Created by Felix Kircher on 16.09.23.
+//  Created by Felix Kircher on 06.06.25.
 //
 
 import SwiftUI
 
 /// Main content view that manages the app's tab-based navigation and appearance
 /// Handles patient selection, settings, and working time tracking
-struct ContentView: View {
+struct iPadContentView: View {
     // MARK: - Properties
     @StateObject var settings = Settings()
     @State private var activeTab: Tab = .order
@@ -68,29 +68,12 @@ struct ContentView: View {
             }
         }
         .tint(Color.accentColor)
-        
-        .onAppear {
-            print("ContentView")
-        }
     }
 }
 
-// MARK: - Patient Selection Manager
-/// Manages the currently selected patient and persists the selection
-public class patientSelectionManager: ObservableObject {
-    @Published var patientSelection: Int = 1 {
-        didSet {
-            UserDefaults.standard.set(patientSelection, forKey: "patientSelection")
-        }
-    }
-    
-    init() {
-        self.patientSelection = UserDefaults.standard.object(forKey: "patientSelection") as? Int ?? 1
-    }
-}
 
 // MARK: - Helper Functions
-extension ContentView {
+extension iPadContentView {
     /// Returns the appropriate color scheme based on user settings
     public func getColorScheme() -> ColorScheme {
         switch colorScheme.mode {
@@ -137,61 +120,4 @@ extension ContentView {
             generator.impactOccurred()
         }
     }
-}
-
-@main
-struct OrderApp: App {
-    @StateObject var settings = Settings()
-    @AppStorage("isFirstLaunch") var isFirstLaunch: Bool = true
-    let isiPad = UIDevice.current.userInterfaceIdiom == .pad
-    
-    var body: some Scene {
-        WindowGroup {
-            if isFirstLaunch {
-                SplashView(isFirstLaunch: $isFirstLaunch)
-            } else {
-                if UIDevice.current.userInterfaceIdiom == .pad && !settings.forceiPhoneLayout {
-                    iPadContentView(colorScheme: ColorSchemeModel())
-                        .environmentObject(settings)
-                } else {
-                    ContentView(colorScheme: ColorSchemeModel())
-                        .environmentObject(settings)
-                }
-            }
-        }
-    }
-}
-
-// Preview
-#Preview {
-    ContentView(colorScheme: ColorSchemeModel())
-        .environmentObject(Settings())
-}
-
-/// Resets all food options to their default values
-func resetOptions() {
-    print("Resetting options to defaults")
-    let settings = Settings()
-    
-    // Define default food categories and options
-    settings.optionCategories = [
-        "bread": [
-            "Weizen": 0,
-            "Grau": 0,
-            "Körner": 0,
-            "Brötchen Normal": 0,
-            "Brötchen Grau": 0,
-            "Brötchen Körner": 0
-        ],
-        "spreads": [
-            "Butter": 0,
-            "Margarine": 0,
-            "Käse": 0,
-            "Pute": 0,
-            "Fleischwurst": 0,
-            "Schinken": 0,
-            "Salami": 0
-        ],
-        // ... other categories
-    ]
 }
