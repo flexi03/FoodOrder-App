@@ -18,7 +18,6 @@
 		DC6C77BD2B2A74AC0080494A /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC6C77BC2B2A74AC0080494A /* SplashView.swift */; };
 		DC8F09B42B1DF85B00F5EF3A /* OptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8F09B32B1DF85B00F5EF3A /* OptionView.swift */; };
 		DC8F09B62B1DFBD200F5EF3A /* ColorPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8F09B52B1DFBD200F5EF3A /* ColorPickerView.swift */; };
-		DC9113DC2B026A6900F51D16 /* OverViewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9113DB2B026A6900F51D16 /* OverViewView.swift */; };
 		DCB49BC12AFD912C003E450F /* Feedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB49BC02AFD912C003E450F /* Feedback.swift */; };
 		DCC358912B0FA36000C7DD3A /* OrderFormView_old.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCC358902B0FA36000C7DD3A /* OrderFormView_old.swift */; };
 		DCC5E08E2B855FC700D97826 /* OrderFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCC5E08D2B855FC700D97826 /* OrderFormView.swift */; };
@@ -28,6 +27,7 @@
 		DCF2FDBA2B2E594700BFBE63 /* WorkingDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF2FDB92B2E594700BFBE63 /* WorkingDetailView.swift */; };
 		DCFC56322DF31C7100CF1439 /* iPadContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCFC56312DF31C6B00CF1439 /* iPadContentView.swift */; };
 		DCFC56342DF3239E00CF1439 /* OrderFormViewIPad.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCFC56332DF3239E00CF1439 /* OrderFormViewIPad.swift */; };
+		DCFC57412DF3A53600CF1439 /* LayoutSettingsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCFC57402DF3A53600CF1439 /* LayoutSettingsSection.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -59,7 +59,6 @@
 		DC6C77BC2B2A74AC0080494A /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		DC8F09B32B1DF85B00F5EF3A /* OptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionView.swift; sourceTree = "<group>"; };
 		DC8F09B52B1DFBD200F5EF3A /* ColorPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerView.swift; sourceTree = "<group>"; };
-		DC9113DB2B026A6900F51D16 /* OverViewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverViewView.swift; sourceTree = "<group>"; };
 		DCB49BC02AFD912C003E450F /* Feedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feedback.swift; sourceTree = "<group>"; };
 		DCC358902B0FA36000C7DD3A /* OrderFormView_old.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderFormView_old.swift; sourceTree = "<group>"; };
 		DCC5E08D2B855FC700D97826 /* OrderFormView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderFormView.swift; sourceTree = "<group>"; };
@@ -69,6 +68,7 @@
 		DCF2FDB92B2E594700BFBE63 /* WorkingDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkingDetailView.swift; sourceTree = "<group>"; };
 		DCFC56312DF31C6B00CF1439 /* iPadContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iPadContentView.swift; sourceTree = "<group>"; };
 		DCFC56332DF3239E00CF1439 /* OrderFormViewIPad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderFormViewIPad.swift; sourceTree = "<group>"; };
+		DCFC57402DF3A53600CF1439 /* LayoutSettingsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutSettingsSection.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,7 +104,6 @@
 			children = (
 				DC4475302B0C3A6D0012E3FB /* Views */,
 				DC44752F2B0C3A460012E3FB /* Models */,
-				DCF2FDB52B2E48AC00BFBE63 /* UnusedViews */,
 				DC2ABDEF2AB50E4400778F10 /* Assets.xcassets */,
 				DC3DF3322AF18AE600A0856D /* Info.plist */,
 			);
@@ -123,6 +122,7 @@
 		DC44752F2B0C3A460012E3FB /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				DC308B5C2D44065D001CBB9D /* SplashViewModel.swift */,
 				DC2D04AB2B33DF0C009E8EAA /* Tabs.swift */,
 				DC6642082C8719E60060609C /* CustomTabBar2.swift */,
 				DCD88B682C9116D50087A9D0 /* AnimatedColorWheelOverlay.swift */,
@@ -137,9 +137,8 @@
 				DC2ABDED2AB50E3F00778F10 /* ContentView.swift */,
 				DCFC56312DF31C6B00CF1439 /* iPadContentView.swift */,
 				DC6C77BC2B2A74AC0080494A /* SplashView.swift */,
-				DC308B5C2D44065D001CBB9D /* SplashViewModel.swift */,
-				DCF2FDB42B2E487400BFBE63 /* NavigationBarViews */,
 				DC44752D2B0C39A10012E3FB /* InfoView.swift */,
+				DCF2FDB42B2E487400BFBE63 /* NavigationBarViews */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -158,17 +157,10 @@
 			path = NavigationBarViews;
 			sourceTree = "<group>";
 		};
-		DCF2FDB52B2E48AC00BFBE63 /* UnusedViews */ = {
-			isa = PBXGroup;
-			children = (
-				DC9113DB2B026A6900F51D16 /* OverViewView.swift */,
-			);
-			path = UnusedViews;
-			sourceTree = "<group>";
-		};
 		DCF2FDB82B2E4A3C00BFBE63 /* InSettingsViews */ = {
 			isa = PBXGroup;
 			children = (
+				DCFC57402DF3A53600CF1439 /* LayoutSettingsSection.swift */,
 				DC8F09B32B1DF85B00F5EF3A /* OptionView.swift */,
 				DC8F09B52B1DFBD200F5EF3A /* ColorPickerView.swift */,
 				DCF2FDB22B2CDC3F00BFBE63 /* DeveloperSettingsView.swift */,
@@ -260,8 +252,8 @@
 				DCFC56322DF31C7100CF1439 /* iPadContentView.swift in Sources */,
 				DC6C77B92B2913820080494A /* WorkingTimeView.swift in Sources */,
 				DC2ABDEE2AB50E3F00778F10 /* ContentView.swift in Sources */,
-				DC9113DC2B026A6900F51D16 /* OverViewView.swift in Sources */,
 				DCB49BC12AFD912C003E450F /* Feedback.swift in Sources */,
+				DCFC57412DF3A53600CF1439 /* LayoutSettingsSection.swift in Sources */,
 				DC8F09B62B1DFBD200F5EF3A /* ColorPickerView.swift in Sources */,
 				DC8F09B42B1DF85B00F5EF3A /* OptionView.swift in Sources */,
 				DCD88B692C9116DF0087A9D0 /* AnimatedColorWheelOverlay.swift in Sources */,
@@ -425,6 +417,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = PrivatFelix.HospitalFoodOrder;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				REGISTER_APP_GROUPS = YES;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
@@ -468,6 +461,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = PrivatFelix.HospitalFoodOrder;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				REGISTER_APP_GROUPS = YES;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;

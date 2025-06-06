@@ -1,3 +1,11 @@
+//
+//  LayoutSettingsSection.swift
+//  HospitalFoodOrder
+//
+//  Created by Felix Kircher on 07.06.25.
+//
+
+
 import SwiftUI
 
 struct LayoutSettingsSection: View {
@@ -83,8 +91,6 @@ struct LayoutSettingsSection: View {
             return "Mac"
         case .tv:
             return "Apple TV"
-        case .watch:
-            return "Apple Watch"
         case .carPlay:
             return "CarPlay"
         case .vision:
@@ -100,7 +106,7 @@ struct LayoutSettingsSection: View {
     private func layoutIcon(for mode: Settings.LayoutMode) -> String {
         switch mode {
         case .automatic:
-            return "iphone.and.ipad"
+            return "rectangle.2.swap"
         case .forceiPhone:
             return "iphone"
         case .forceiPad:

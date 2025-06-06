@@ -9,14 +9,46 @@ import SwiftUI
 
 public class Settings: ObservableObject {
     
-    @Published var forceiPhoneLayout: Bool {
-        didSet { UserDefaults.standard.set(forceiPhoneLayout, forKey: "forceiPhoneLayout") }
+    // MARK: - Layout Settings (Vereinfacht)
+    /// Enum für Layout-Modi
+    public enum LayoutMode: String, CaseIterable {
+        case automatic = "automatic"  // Basierend auf Gerät
+        case forceiPhone = "iPhone"   // Immer iPhone Layout
+        case forceiPad = "iPad"       // Immer iPad Layout
+        
+        var displayName: String {
+            switch self {
+            case .automatic:
+                return "Automatisch"
+            case .forceiPhone:
+                return "iPhone Layout"
+            case .forceiPad:
+                return "iPad Layout"
+            }
+        }
     }
     
-    @Published var forceiPadLayout: Bool {
-        didSet { UserDefaults.standard.set(forceiPadLayout, forKey: "forceiPadLayout") }
+    @Published var layoutMode: LayoutMode {
+        didSet {
+            UserDefaults.standard.set(layoutMode.rawValue, forKey: "layoutMode")
+            // Haptic Feedback für bessere UX
+            let generator = UIImpactFeedbackGenerator(style: .medium)
+            generator.impactOccurred()
+        }
     }
     
+    // MARK: - Computed Properties für Layout
+    /// Bestimmt ob iPhone Layout erzwungen werden soll
+    var forceiPhoneLayout: Bool {
+        return layoutMode == .forceiPhone
+    }
+    
+    /// Bestimmt ob iPad Layout erzwungen werden soll
+    var forceiPadLayout: Bool {
+        return layoutMode == .forceiPad
+    }
+    
+    // MARK: - Andere Einstellungen (unverändert)
     @Published var toggleSummary: Bool {
         didSet { UserDefaults.standard.set(toggleSummary, forKey: "toggleSummary") }
     }
@@ -81,8 +113,11 @@ public class Settings: ObservableObject {
     @Published var extras: [Int: String] = [:]
     
     init() {
-        self.forceiPhoneLayout = UserDefaults.standard.bool(forKey: "forceiPhoneLayout") || false
-        self.forceiPadLayout = UserDefaults.standard.bool(forKey: "forceiPadLayout") || false
+        // Layout Mode laden (mit Migration von alten Werten)
+        let savedLayoutMode = UserDefaults.standard.string(forKey: "layoutMode") ?? LayoutMode.automatic.rawValue
+        self.layoutMode = LayoutMode(rawValue: savedLayoutMode) ?? .automatic
+        
+        // Restliche Einstellungen laden
         self.toggleSummary = UserDefaults.standard.bool(forKey: "toggleSummary") || false
         self.showRestrictions = UserDefaults.standard.bool(forKey: "showRestrictions") || true
         self.coffeeSelected = UserDefaults.standard.bool(forKey: "Kaffee") || true
@@ -122,6 +157,27 @@ public class Settings: ObservableObject {
             self.numberOfPatients = 4
         }
         
+        // Migration: Alte Boolean-Werte in neuen Enum konvertieren
+        if UserDefaults.standard.object(forKey: "layoutMode") == nil {
+            let oldForceiPhone = UserDefaults.standard.bool(forKey: "forceiPhoneLayout")
+            let oldForceiPad = UserDefaults.standard.bool(forKey: "forceiPadLayout")
+            
+            if oldForceiPhone {
+                self.layoutMode = .forceiPhone
+            } else if oldForceiPad {
+                self.layoutMode = .forceiPad
+            } else {
+                self.layoutMode = .automatic
+            }
+            
+            // Alte Werte löschen
+            UserDefaults.standard.removeObject(forKey: "forceiPhoneLayout")
+            UserDefaults.standard.removeObject(forKey: "forceiPadLayout")
+            
+            // Neuen Wert speichern
+            UserDefaults.standard.set(self.layoutMode.rawValue, forKey: "layoutMode")
+        }
+        
         
         
         loadOptionCategories()
@@ -142,11 +198,10 @@ public class Settings: ObservableObject {
             }
         }
         
-        //        loadPrivateOptionCategories()
-        //        loadOptionCategories()
         loadSelections()
     }
     
+    // MARK: - Hilfsfunktionen
     func saveOptionCategories() {
         let encodedData = try? JSONEncoder().encode(optionCategories)
         UserDefaults.standard.set(encodedData, forKey: "optionCategories")
@@ -278,7 +333,6 @@ public class Settings: ObservableObject {
             optionOrder = savedOrder
         }
     }
-    
     
     private func loadPrivateOptionOrder() {
         if let savedOrder = UserDefaults.standard.object(forKey: "privateOptionOrder") as? [String: [String]] {

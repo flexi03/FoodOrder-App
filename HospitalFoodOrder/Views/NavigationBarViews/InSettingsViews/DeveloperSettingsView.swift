@@ -26,8 +26,7 @@ struct DeveloperSettingsView: View {
                 Text("SplashScreen")
             })
             
-            Toggle("iPhone Layout", isOn: $settings.forceiPhoneLayout)
-            Toggle("iPad Layout", isOn: $settings.forceiPadLayout)
+            LayoutSettingsSection(settings: settings)
         }
         .navigationTitle("Entwickler")
     }
