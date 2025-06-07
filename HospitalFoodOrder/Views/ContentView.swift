@@ -182,9 +182,11 @@ struct OrderApp: App {
         WindowGroup {
             if isFirstLaunch {
                 SplashView(isFirstLaunch: $isFirstLaunch)
+                    .withToasts()
             } else {
                 ContentView(colorScheme: ColorSchemeModel())
                     .environmentObject(settings)
+                    .withToasts()
             }
         }
     }

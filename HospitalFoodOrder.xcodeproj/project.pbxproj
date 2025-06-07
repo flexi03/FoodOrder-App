@@ -19,6 +19,7 @@
 		DC8F09B42B1DF85B00F5EF3A /* OptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8F09B32B1DF85B00F5EF3A /* OptionView.swift */; };
 		DC8F09B62B1DFBD200F5EF3A /* ColorPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8F09B52B1DFBD200F5EF3A /* ColorPickerView.swift */; };
 		DCB49BC12AFD912C003E450F /* Feedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB49BC02AFD912C003E450F /* Feedback.swift */; };
+		DCBB712C2DF3C04E00CB2EEE /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCBB712B2DF3C04800CB2EEE /* Toast.swift */; };
 		DCC358912B0FA36000C7DD3A /* OrderFormView_old.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCC358902B0FA36000C7DD3A /* OrderFormView_old.swift */; };
 		DCC5E08E2B855FC700D97826 /* OrderFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCC5E08D2B855FC700D97826 /* OrderFormView.swift */; };
 		DCD88B692C9116DF0087A9D0 /* AnimatedColorWheelOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCD88B682C9116D50087A9D0 /* AnimatedColorWheelOverlay.swift */; };
@@ -60,6 +61,7 @@
 		DC8F09B32B1DF85B00F5EF3A /* OptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionView.swift; sourceTree = "<group>"; };
 		DC8F09B52B1DFBD200F5EF3A /* ColorPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerView.swift; sourceTree = "<group>"; };
 		DCB49BC02AFD912C003E450F /* Feedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feedback.swift; sourceTree = "<group>"; };
+		DCBB712B2DF3C04800CB2EEE /* Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
 		DCC358902B0FA36000C7DD3A /* OrderFormView_old.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderFormView_old.swift; sourceTree = "<group>"; };
 		DCC5E08D2B855FC700D97826 /* OrderFormView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderFormView.swift; sourceTree = "<group>"; };
 		DCD88B682C9116D50087A9D0 /* AnimatedColorWheelOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedColorWheelOverlay.swift; sourceTree = "<group>"; };
@@ -122,6 +124,7 @@
 		DC44752F2B0C3A460012E3FB /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				DCBB712B2DF3C04800CB2EEE /* Toast.swift */,
 				DC308B5C2D44065D001CBB9D /* SplashViewModel.swift */,
 				DC2D04AB2B33DF0C009E8EAA /* Tabs.swift */,
 				DC6642082C8719E60060609C /* CustomTabBar2.swift */,
@@ -252,6 +255,7 @@
 				DCFC56322DF31C7100CF1439 /* iPadContentView.swift in Sources */,
 				DC6C77B92B2913820080494A /* WorkingTimeView.swift in Sources */,
 				DC2ABDEE2AB50E3F00778F10 /* ContentView.swift in Sources */,
+				DCBB712C2DF3C04E00CB2EEE /* Toast.swift in Sources */,
 				DCB49BC12AFD912C003E450F /* Feedback.swift in Sources */,
 				DCFC57412DF3A53600CF1439 /* LayoutSettingsSection.swift in Sources */,
 				DC8F09B62B1DFBD200F5EF3A /* ColorPickerView.swift in Sources */,

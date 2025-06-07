@@ -289,6 +289,9 @@ public class Settings: ObservableObject {
         extras = [:]
         
         saveSelections()
+        
+        ToastManager.shared.showSuccess("Alle Bestellungen wurden zurückgesetzt!")
+
     }
     
     func validateSelections() -> Bool {

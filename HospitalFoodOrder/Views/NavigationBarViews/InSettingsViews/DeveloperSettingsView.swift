@@ -26,6 +26,10 @@ struct DeveloperSettingsView: View {
                 Text("SplashScreen")
             })
             
+            
+            NavigationLink(destination: ToastTesterView()) {
+                Text("Toast Tester")
+            }
             LayoutSettingsSection(settings: settings)
         }
         .navigationTitle("Entwickler")
