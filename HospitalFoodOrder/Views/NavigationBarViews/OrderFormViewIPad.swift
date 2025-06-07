@@ -19,45 +19,61 @@ struct OrderFormViewIPad: View {
     @ObservedObject var settings: Settings
     @ObservedObject var patientSelection: patientSelectionManager
     @State private var isResetConfirmationPresented: Bool = false
-    //@State private var isButtonPressed = false
     @State private var showingPatientCountPicker = false
     
     var body: some View {
         VStack {
             HStack {
-//                Text("Patient \(patientSelection.patientSelection) von \(settings.numberOfPatients)")
-//                    .font(.headline)
-//                Spacer()
                 Button(action: {
                     showingPatientCountPicker = true
                 }) {
                     Image(systemName: "person.3.fill")
+                        .font(.system(size: 24))
                     Text("Ändern")
+                        .font(.title3)
                 }
+                .padding(.horizontal, 20)
+                .padding(.vertical, 12)
+                .background(Color.accentColor.opacity(0.1))
+                .cornerRadius(12)
+                
                 Spacer()
                 
                 // Platzhalter für "saved for later"
                 NavigationLink(destination: patientView(for: 101).navigationBarItems(trailing: resetButton())) {
                     Image(systemName: "bookmark.fill")
+                        .font(.system(size: 24))
                     Text("Für Später")
+                        .font(.title3)
                 }
+                .padding(.horizontal, 20)
+                .padding(.vertical, 12)
+                .background(Color.accentColor.opacity(0.1))
+                .cornerRadius(12)
                 
                 Spacer()
                 
                 NavigationLink(destination: SettingsView(colorScheme: ColorSchemeModel(), settings: Settings())) {
                     Image(systemName: "gearshape.fill")
+                        .font(.system(size: 24))
                     Text("Mehr")
+                        .font(.title3)
                 }
-//                NavigationLink("Hallo", destination: SettingsView(colorScheme: ColorSchemeModel(), settings: Settings()))
+                .padding(.horizontal, 20)
+                .padding(.vertical, 12)
+                .background(Color.accentColor.opacity(0.1))
+                .cornerRadius(12)
             }
             .padding()
             
             HStack {
-                Spacer().frame(width: 42)
+                Spacer().frame(width: 60)
                 Image(systemName: "trash")
+                    .font(.system(size: 32))
                     .background {
-                        RoundedRectangle(cornerRadius: 10).fill(Color.red)
-                            .frame(width: 100, height: 50)
+                        RoundedRectangle(cornerRadius: 15)
+                            .fill(Color.red)
+                            .frame(width: 160, height: 80)
                             .blur(radius: 2)
                             .padding(.horizontal)
                             .onTapGesture {
@@ -69,13 +85,15 @@ struct OrderFormViewIPad: View {
                 Spacer()
                 
                 Text("\(patientSelection.patientSelection) von \(settings.numberOfPatients)")
-                    .font(.title.bold())
+                    .font(.system(size: 40, weight: .bold))
                 
                 Spacer()
                 Image(systemName: "checkmark.circle")
+                    .font(.system(size: 32))
                     .background {
-                        RoundedRectangle(cornerRadius: 10).fill(Color.green)
-                            .frame(width: 100, height: 50)
+                        RoundedRectangle(cornerRadius: 15)
+                            .fill(Color.green)
+                            .frame(width: 160, height: 80)
                             .blur(radius: 2)
                             .padding(.horizontal)
                             .onTapGesture {
@@ -84,31 +102,10 @@ struct OrderFormViewIPad: View {
                     }
                     .padding(.all)
                 
-                Spacer().frame(width: 42)
+                Spacer().frame(width: 60)
             }
-//            if settings.showPatientTypePicker {
-//                Picker("Patientenart", selection: $settings.isPrivatePatient) {
-//                    Text("Normal").tag(false)
-//                    Text("Privatpatient*in").tag(true)
-//                }
-//                .pickerStyle(SegmentedPickerStyle())
-//                .padding()
-//                //                patientTypeToggle
-//                //                    .padding(.horizontal)
-//                //                    .padding(.bottom)
-//            }
-            
-//            TabView(selection: $patientSelection.patientSelection) {
-//                ForEach(1...settings.numberOfPatients, id: \.self) { patientNumber in
-//                    patientView(for: patientNumber)
-//                        .tag(patientNumber)
-//                }
-//            }
-//            .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
-//            .indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .never))
             
             patientView(for: patientSelection.patientSelection)
-            
         }
         .actionSheet(isPresented: $isResetConfirmationPresented) {
             createResetActionSheet()
@@ -123,24 +120,6 @@ struct OrderFormViewIPad: View {
             iPadPatientCountPickerView(numberOfPatients: $settings.numberOfPatients)
         }
     }
-    
-    //    private var patientTypeToggle: some View {
-    //        HStack {
-    //            Text("Normal")
-    //                .foregroundColor(settings.isPrivatePatient ? .secondary : .primary)
-    //
-    //            Toggle("", isOn: $settings.isPrivatePatient)
-    //                .labelsHidden()
-    //                .toggleStyle(SwitchToggleStyle(tint: .accentColor))
-    //
-    //            Text("Privatpatient*in")
-    //                .foregroundColor(settings.isPrivatePatient ? .primary : .secondary)
-    //        }
-    //        .padding()
-    //        .background(Color(.systemBackground))
-    //        .cornerRadius(10)
-    //        .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 2)
-    //    }
     
     @ViewBuilder
     private func patientView(for patientNumber: Int) -> some View {
@@ -164,8 +143,6 @@ struct OrderFormViewIPad: View {
             }
             .frame(height: 240)
         }
-//        .navigationBarItems(leading: orderSummaryButton(), trailing: resetButton())
-       
         .onChange(of: patientSelection.patientSelection) { _ in
             triggerHapticFeedback(.medium)
         }
@@ -243,18 +220,26 @@ struct OrderFormViewIPad: View {
     }
     
     @ViewBuilder
-        func createStepper(for option: String, counts: [String: Int], category: String, patientNumber: Int) -> some View {
-            let count = counts[option] ?? 0
+    func createStepper(for option: String, counts: [String: Int], category: String, patientNumber: Int) -> some View {
+        let count = counts[option] ?? 0
+        HStack {
             Stepper(onIncrement: {
                 updateCount(for: option, in: category, patientNumber: patientNumber, increment: true)
             }, onDecrement: {
                 updateCount(for: option, in: category, patientNumber: patientNumber, increment: false)
             }) {
                 Text("\(option) (\(count))")
+                    .font(.title3)
                     .fontWeight(count >= 1 ? .semibold : .regular)
-                    .foregroundColor(count >= 1 ? .accentColor : .primary)
             }
+            .padding(.vertical, 8)
+            .padding(.horizontal, 12)
+            .background(
+                RoundedRectangle(cornerRadius: 12)
+                    .fill(count >= 1 ? Color.accentColor.opacity(0.5) : Color.clear)
+            )
         }
+    }
     
     private func updateCount(for option: String, in category: String, patientNumber: Int, increment: Bool) {
         var counts = getCounts(for: category, patientNumber: patientNumber)
@@ -292,20 +277,53 @@ struct OrderFormViewIPad: View {
     func createRestrictionsSection(patientNumber: Int) -> some View {
         if settings.showRestrictions {
             let restriction = settings.restrictions[patientNumber] ?? "Keine"
-            if !settings.toggleSummary || restriction != "Keine" {
-                Section(header: Text("Einschränkungen").fontWeight(.semibold)) {
-                    Picker("Einschränkungen", selection: Binding<String>(
-                        get: { restriction },
-                        set: { settings.restrictions[patientNumber] = $0 }
-                    )) {
-                        Text("Keine").tag("Keine")
-                        Text("Schnabelbecher").tag("Schnabelbecher")
-                        Text("Schmieren").tag("Schmieren")
-                        Text("SB & Schmieren").tag("Schnabelbecher & Schmieren")
+                Section(header: Text("Einschränkungen").font(.title2.bold())) {
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        HStack {
+                            ForEach(["Keine", "Schnabelbecher", "Schmieren", "SB & Schmieren"], id: \.self) { option in
+                                Button(action: {
+                                    settings.restrictions[patientNumber] = option
+                                    triggerHapticFeedback(.light)
+                                }) {
+                                    VStack(spacing: 8) {
+                                        Image(systemName: iconForRestriction(option))
+                                            .font(.system(size: 32))
+                                        Text(option)
+                                            .font(.title3)
+                                    }
+                                    .frame(width: 155, height: 120)
+                                    .background(
+                                        RoundedRectangle(cornerRadius: 15)
+                                            .fill(restriction == option ? Color.accentColor : Color.secondary.opacity(0.2))
+                                    )
+                                    .foregroundColor(restriction == option ? .white : .primary)
+                                    .overlay(
+                                        RoundedRectangle(cornerRadius: 15)
+                                            .stroke(restriction == option ? Color.accentColor : Color.clear, lineWidth: 3)
+                                    )
+                                }
+                                .padding()
+                            }
+                        }
+//                        .padding(.horizontal)
                     }
-                    .pickerStyle(SegmentedPickerStyle())
                 }
-            }
+            
+        }
+    }
+    
+    private func iconForRestriction(_ restriction: String) -> String {
+        switch restriction {
+        case "Keine":
+            return "xmark.circle"
+        case "Schnabelbecher":
+            return "cup.and.heat.waves"
+        case "Schmieren":
+            return "hand.raised.fill"
+        case "SB & Schmieren":
+            return "takeoutbag.and.cup.and.straw"
+        default:
+            return "questionmark.circle"
         }
     }
     
@@ -369,13 +387,15 @@ struct OrderFormViewIPad: View {
         if !isFiltered || !filteredOptions.isEmpty {
             VStack(alignment: .leading) {
                 Text(title)
-                    .font(.headline)
+                    .font(.title2)
+                    .fontWeight(.semibold)
                 ScrollView(.horizontal, showsIndicators: false) {
-                    HStack {
+                    HStack(spacing: 20) {
                         ForEach(filteredOptions, id: \.0) { option, _ in
                             if option != "Nichts" {
                                 VStack {
                                     Text(option)
+                                        .font(.title3)
                                     Stepper(
                                         onIncrement: {
                                             updateDrinkAndFruitCount(for: option, in: category, patientNumber: patientSelection.patientSelection, increment: true)
@@ -385,18 +405,27 @@ struct OrderFormViewIPad: View {
                                         }
                                     ) {
                                         Text("\(quantities.wrappedValue[option, default: 0])")
+                                            .font(.title3)
                                     }
                                 }
-                                .padding(.horizontal, 10)
-                                .padding(.vertical, 5)
-                                .background(quantities.wrappedValue[option, default: 0] > 0 ? Color.accentColor : Color.secondary.opacity(0.2))
+                                .padding(.horizontal, 20)
+                                .padding(.vertical, 12)
+                                .background(
+                                    RoundedRectangle(cornerRadius: 15)
+                                        .fill(quantities.wrappedValue[option, default: 0] > 0 ? Color.accentColor : Color.secondary.opacity(0.2))
+                                )
                                 .foregroundColor(quantities.wrappedValue[option, default: 0] > 0 ? .white : .primary)
-                                .cornerRadius(15)
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 15)
+                                        .stroke(quantities.wrappedValue[option, default: 0] > 0 ? Color.accentColor : Color.clear, lineWidth: 3)
+                                )
                             }
                         }
                     }
+                    .padding()
                 }
             }
+            .padding(.vertical)
         }
     }
     
@@ -622,6 +651,6 @@ struct iPadPatientCountPickerView: View {
 
 struct OrderFormView_Previews: PreviewProvider {
     static var previews: some View {
-        OrderFormView(settings: Settings(), patientSelection: patientSelectionManager())
+        OrderFormViewIPad(settings: Settings(), patientSelection: patientSelectionManager())
     }
 }

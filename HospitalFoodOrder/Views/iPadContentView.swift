@@ -11,81 +11,65 @@ import SwiftUI
 /// Handles patient selection, settings, and working time tracking
 struct iPadContentView: View {
     // MARK: - Properties
-     @StateObject var settings = Settings()
-     @State private var activeTab: Tab = .order
-     @ObservedObject var colorScheme: ColorSchemeModel
-     @Namespace private var animation
-     @State private var tabShapePosition: CGPoint = .zero
-     @ObservedObject var patientSelection: patientSelectionManager
-     
-     // MARK: - Body
-     var body: some View {
-         NavigationView {
-             // Order Form Tab
-             ZStack {
-                 OrderFormViewIPad(settings: settings, patientSelection: patientSelectionManager())
-                 
-                 if patientSelection.patientSelection >= 2 {
-                     FloatingButton(systemImage: "arrow.left", action: {
-                         patientSelection.patientSelection-=1
- //                        print(patientSelection.patientSelection)
-                     }, alignment: .bottomLeading)
-                 }
-                 
-                 if patientSelection.patientSelection < settings.numberOfPatients {
-                     FloatingButton(systemImage:"arrow.right", action: {
-                         patientSelection.patientSelection+=1
- //                        print(patientSelection.patientSelection)
-                     }, alignment: .bottomTrailing)
-                 }
-                     
-                     //            // Working Time Tab
-                     //            NavigationView {
-                     //                WorkingTimeView()
-                     //            }
-                     //            .tabItem {
-                     //                Label("Arbeitszeit", systemImage: "clock.arrow.circlepath")
-                     //            }
-                     //            .tag(Tab.workingtime)
-                     //            .toolbar(.hidden, for: .tabBar)
-                     //                .accessibilityLabel("Arbeitszeit erfassen")
-                     //                .accessibilityHint("Tippen Sie hier, um Ihre Arbeitszeiten zu erfassen und zu verwalten")
-                     //
-                     //            // Settings Tab
-                     //            NavigationView {
-                     //                SettingsView(colorScheme: colorScheme, settings: settings)
-                     //            }
-                     //            .tabItem {
-                     //                Label("Einstellungen", systemImage: "gear.badge")
-                     //            }
-                     //            .tag(Tab.settings)
-                     //            .toolbar(.hidden, for: .tabBar)
-                     //                .accessibilityLabel("Einstellungen")
-                     //                .accessibilityHint("Tippen Sie hier, um App-Einstellungen anzupassen")
-                     
-                     //        .navigationViewStyle(StackNavigationViewStyle())
-                     //        .safeAreaInset(edge: .bottom) {
-                     //            if settings.NewTabBarSelection {
-                     //                CustomTabBar2(
-                     //                    useAnimatedOverlay: settings.RainbowMode,
-                     //                    activeTab: $activeTab,
-                     //                    settings: Settings()
-                     //                )
-                     //            } else {
-                     //                CustomTabBar()
-                     //            }
-                     //        }
- //                    .tint(Color.accentColor)
-                 }
-             .preferredColorScheme(getColorScheme())
-
-             
-         }
-         .navigationViewStyle(.stack)
-
-     }
- }
-
+    @StateObject var settings = Settings()
+    @State private var activeTab: Tab = .order
+    @ObservedObject var colorScheme: ColorSchemeModel
+    @Namespace private var animation
+    @State private var tabShapePosition: CGPoint = .zero
+    @ObservedObject var patientSelection: patientSelectionManager
+    
+    // MARK: - Body
+    var body: some View {
+        NavigationView {
+            // Order Form Tab
+            ZStack {
+                OrderFormViewIPad(settings: settings, patientSelection: patientSelectionManager())
+                
+                if patientSelection.patientSelection >= 2 {
+                    FloatingButton(systemImage: "arrow.left", action: {
+                        patientSelection.patientSelection-=1
+                    }, alignment: .bottomLeading)
+                }
+                
+                if patientSelection.patientSelection < settings.numberOfPatients {
+                    FloatingButton(systemImage:"arrow.right", action: {
+                        patientSelection.patientSelection+=1
+                    }, alignment: .bottomTrailing)
+                }
+            }
+            .preferredColorScheme(getColorScheme())
+        }
+        .navigationViewStyle(.stack)
+    }
+    
+    // MARK: - Helper Functions
+    private func createResetActionSheet() -> ActionSheet {
+        var buttons: [ActionSheet.Button] = (1...settings.numberOfPatients).map { patientNumber in
+            .default(Text("Bestellung \(patientNumber)")) {
+                settings.resetSelections(for: patientNumber)
+                triggerHapticFeedback(.rigid)
+            }
+        }
+        buttons.append(.default(Text("Für Später Bestellung")) {
+            settings.resetSelections(for: 101)
+        })
+        
+        buttons.append(.default(Text("Alle Bestellungen")) {
+            settings.resetAllSelections()
+            patientSelection.patientSelection = 1
+            settings.toggleSummary = false
+            triggerHapticFeedback(.heavy)
+        })
+        buttons.append(.cancel(Text("Abbrechen")))
+        
+        return ActionSheet(title: Text("Welche Bestellung möchtest Du zurücksetzen?"), buttons: buttons)
+    }
+    
+    private func triggerHapticFeedback(_ style: UIImpactFeedbackGenerator.FeedbackStyle) {
+        let generator = UIImpactFeedbackGenerator(style: style)
+        generator.impactOccurred()
+    }
+}
 
 // MARK: - Helper Functions
 extension iPadContentView {
@@ -141,15 +125,16 @@ func FloatingButton(systemImage: String, action: @escaping () -> Void, alignment
     return VStack {
         Button(action: action) {
             Image(systemName: systemImage)
-                .font(.title2)
+                .font(.system(size: 32)) // Größere Icons für iPad
                 .fontWeight(.semibold)
                 .foregroundColor(.white)
-                .frame(width: 80, height: 80)
+                .frame(width: 120, height: 120) // Größere Buttons für iPad
                 .background(.accent)
                 .clipShape(Circle())
-                .shadow(radius: 4, y: 2)
+                .shadow(radius: 6, y: 3) // Stärkerer Schatten für bessere Sichtbarkeit
         }
     }
     .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: alignment)
-    .padding()
+    .padding(.horizontal, 40) // Mehr Padding für bessere Erreichbarkeit
+    .padding(.vertical, 40)
 }

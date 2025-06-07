@@ -222,6 +222,13 @@ struct OrderFormView: View {
                     .fontWeight(count >= 1 ? .semibold : .regular)
                     .foregroundColor(count >= 1 ? .accentColor : .primary)
             }
+            .padding(.vertical, 2)
+            .background(
+                RoundedRectangle(cornerRadius: 12)
+                    .fill(count >= 1 ? Color.gray.opacity(0.5) : Color.clear)
+                    .padding(.horizontal, -8)
+
+            )
         }
     
     private func updateCount(for option: String, in category: String, patientNumber: Int, increment: Bool) {
