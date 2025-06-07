@@ -292,7 +292,7 @@ struct ToastView: View {
                     }
                     
                     HStack {
-                        Text("Time: \(DateFormatter.toastDetailTimeFormatter.string(from: toast.timestamp))")
+                        Text("Time: \(DateFormatter.toastTimeFormatter.string(from: toast.timestamp))")
                             .font(.caption2)
                             .foregroundColor(.secondary)
                         
@@ -346,7 +346,7 @@ struct ToastView: View {
     private var scaleForIndex: CGFloat {
         let baseScale: CGFloat = 1.0
         let scaleReduction: CGFloat = 0.05
-        return max(baseScale - (CGFloat(index) * scaleReduction), 0.8)
+        return baseScale - (CGFloat(index) * scaleReduction)
     }
     
     private var offsetForIndex: CGFloat {
@@ -358,7 +358,7 @@ struct ToastView: View {
     private var opacityForIndex: Double {
         let baseOpacity: Double = 1.0
         let opacityReduction: Double = 0.15
-        return max(baseOpacity - (Double(index) * opacityReduction), 0.3)
+        return baseOpacity - (Double(index) * opacityReduction)
     }
 }
 
@@ -426,13 +426,8 @@ extension ToastManager {
 
 // MARK: - Date Formatters
 extension DateFormatter {
+    // Time formatter for xx:xx:xx before seperated in normal (xx:xx) and detail (xx:xx:xx)
     static let toastTimeFormatter: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.timeStyle = .short
-        return formatter
-    }()
-    
-    static let toastDetailTimeFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateStyle = .none
         formatter.timeStyle = .medium
@@ -445,8 +440,8 @@ struct ToastTesterView: View {
     @StateObject private var toastManager = ToastManager.shared
     
     var body: some View {
-        NavigationView {
-            VStack(spacing: 15) {
+//        NavigationView {
+            ScrollView {
                 Button("Error Toast") {
                     toastManager.showError(
                         "Dies ist eine Fehlermeldung!",
@@ -516,9 +511,9 @@ struct ToastTesterView: View {
                 
                 Spacer()
             }
-            .padding()
-            .navigationTitle("Toast Demo")
-        }
+//            .padding()
+            .navigationTitle("Toast Demo Tester")
+//        }
         .withToasts()
     }
 }
@@ -540,6 +535,7 @@ struct ToastButtonStyle: ButtonStyle {
             )
             .scaleEffect(configuration.isPressed ? 0.95 : 1.0)
             .animation(.easeInOut(duration: 0.1), value: configuration.isPressed)
+            .padding(.horizontal)
     }
 }
 

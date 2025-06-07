@@ -620,12 +620,16 @@ struct PatientCountPickerView: View {
                     }
                 }
                 .pickerStyle(WheelPickerStyle())
+                .onChange(of: numberOfPatients) { _ in
+                    ToastManager.shared.showInfo("Anzahl der Patienten wurde auf \(numberOfPatients) geändert")
+                }
             }
             .navigationTitle("Patienten Anzahl")
             .navigationBarItems(trailing: Button("Fertig") {
                 presentationMode.wrappedValue.dismiss()
             })
         }
+        .withToasts()
     }
 }
 
