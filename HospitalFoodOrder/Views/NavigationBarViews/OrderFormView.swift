@@ -58,17 +58,17 @@ struct OrderFormView: View {
                 
                 Spacer(minLength: 4)
             }
-//            if settings.showPatientTypePicker {
-//                Picker("Patientenart", selection: $settings.isPrivatePatient) {
-//                    Text("Normal").tag(false)
-//                    Text("Privatpatient*in").tag(true)
-//                }
-//                .pickerStyle(SegmentedPickerStyle())
-//                .padding()
-//                //                patientTypeToggle
-//                //                    .padding(.horizontal)
-//                //                    .padding(.bottom)
-//            }
+            //            if settings.showPatientTypePicker {
+            //                Picker("Patientenart", selection: $settings.isPrivatePatient) {
+            //                    Text("Normal").tag(false)
+            //                    Text("Privatpatient*in").tag(true)
+            //                }
+            //                .pickerStyle(SegmentedPickerStyle())
+            //                .padding()
+            //                //                patientTypeToggle
+            //                //                    .padding(.horizontal)
+            //                //                    .padding(.bottom)
+            //            }
             
             TabView(selection: $patientSelection.patientSelection) {
                 ForEach(1...settings.numberOfPatients, id: \.self) { patientNumber in
@@ -144,7 +144,7 @@ struct OrderFormView: View {
         let sortedOptions = settings.getSortedOptions(for: category, isPrivate: settings.isPrivatePatient)
         let counts = getCounts(for: category, patientNumber: patientNumber)
         let filteredOptions = settings.toggleSummary ? filterOptions(options: sortedOptions, counts: counts) : sortedOptions
-
+        
         return Group {
             if !settings.toggleSummary || !filteredOptions.isEmpty || (category == "extras" && !(settings.extras[patientNumber] ?? "").isEmpty) {
                 Section(header: Text(name).fontWeight(.semibold)) {
@@ -195,42 +195,42 @@ struct OrderFormView: View {
     
     private func getCounts(for category: String, patientNumber: Int) -> [String: Int] {
         switch category {
-            case "bread":
-                return settings.breadCounts[patientNumber] ?? [:]
-            case "spreads":
-                return settings.spreadsCounts[patientNumber] ?? [:]
-            case "spreads2":
-                return settings.spreadsCounts2[patientNumber] ?? [:]
-            case "specials":
-                return settings.specialsCounts[patientNumber] ?? [:]
-            case "extras":
-                return settings.extrasCounts[patientNumber] ?? [:]
-            default:
-                return [:]
+        case "bread":
+            return settings.breadCounts[patientNumber] ?? [:]
+        case "spreads":
+            return settings.spreadsCounts[patientNumber] ?? [:]
+        case "spreads2":
+            return settings.spreadsCounts2[patientNumber] ?? [:]
+        case "specials":
+            return settings.specialsCounts[patientNumber] ?? [:]
+        case "extras":
+            return settings.extrasCounts[patientNumber] ?? [:]
+        default:
+            return [:]
         }
     }
     
     @ViewBuilder
-        func createStepper(for option: String, counts: [String: Int], category: String, patientNumber: Int) -> some View {
-            let count = counts[option] ?? 0
-            Stepper(onIncrement: {
-                updateCount(for: option, in: category, patientNumber: patientNumber, increment: true)
-            }, onDecrement: {
-                updateCount(for: option, in: category, patientNumber: patientNumber, increment: false)
-            }) {
-                Text("\(option) (\(count))")
-                    .fontWeight(count >= 1 ? .semibold : .regular)
-//                    .foregroundColor(count >= 1 ? .accentColor : .primary)
-            }
-            .padding(.vertical, 2)
-            .background(
-                RoundedRectangle(cornerRadius: 10)
-                    .fill(count >= 1 ? Color.accentColor.opacity(0.3) : Color.clear)
-                    .padding(.leading, -12)
-                    .padding(.trailing, -2)
-
-            )
+    func createStepper(for option: String, counts: [String: Int], category: String, patientNumber: Int) -> some View {
+        let count = counts[option] ?? 0
+        Stepper(onIncrement: {
+            updateCount(for: option, in: category, patientNumber: patientNumber, increment: true)
+        }, onDecrement: {
+            updateCount(for: option, in: category, patientNumber: patientNumber, increment: false)
+        }) {
+            Text("\(option) (\(count))")
+                .fontWeight(count >= 1 ? .semibold : .regular)
+            //                    .foregroundColor(count >= 1 ? .accentColor : .primary)
         }
+        .padding(.vertical, 2)
+        .background(
+            RoundedRectangle(cornerRadius: 10)
+                .fill(count >= 1 ? Color.accentColor.opacity(0.3) : Color.clear)
+                .padding(.leading, -12)
+                .padding(.trailing, -2)
+            
+        )
+    }
     
     private func updateCount(for option: String, in category: String, patientNumber: Int, increment: Bool) {
         var counts = getCounts(for: category, patientNumber: patientNumber)
@@ -248,18 +248,18 @@ struct OrderFormView: View {
     
     private func setCounts(_ counts: [String: Int], for category: String, patientNumber: Int) {
         switch category {
-            case "bread":
-                settings.breadCounts[patientNumber] = counts
-            case "spreads":
-                settings.spreadsCounts[patientNumber] = counts
-            case "spreads2":
-                settings.spreadsCounts2[patientNumber] = counts
-            case "specials":
-                settings.specialsCounts[patientNumber] = counts
-            case "extras":
-                settings.extrasCounts[patientNumber] = counts
-            default:
-                break
+        case "bread":
+            settings.breadCounts[patientNumber] = counts
+        case "spreads":
+            settings.spreadsCounts[patientNumber] = counts
+        case "spreads2":
+            settings.spreadsCounts2[patientNumber] = counts
+        case "specials":
+            settings.specialsCounts[patientNumber] = counts
+        case "extras":
+            settings.extrasCounts[patientNumber] = counts
+        default:
+            break
         }
         settings.saveSelections()
     }
@@ -269,18 +269,56 @@ struct OrderFormView: View {
         if settings.showRestrictions {
             let restriction = settings.restrictions[patientNumber] ?? "Keine"
             if !settings.toggleSummary || restriction != "Keine" {
-                Section(header: Text("Einschränkungen").fontWeight(.semibold)) {
-                    Picker("Einschränkungen", selection: Binding<String>(
-                        get: { restriction },
-                        set: { settings.restrictions[patientNumber] = $0 }
-                    )) {
-                        Text("Keine").tag("Keine")
-                        Text("Schnabelbecher").tag("Schnabelbecher")
-                        Text("Schmieren").tag("Schmieren")
-                        Text("Schnabelbecher & Schmieren").tag("Schnabelbecher & Schmieren")
+                Section(header: Text("Einschränkungen").bold()) {
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        HStack {
+                            ForEach(["Keine", "Schnabelbecher", "Schmieren", "SB & Schmieren"], id: \.self) { option in
+                                Button(action: {
+                                    settings.restrictions[patientNumber] = option
+                                    triggerHapticFeedback(.light)
+                                }) {
+                                    VStack(spacing: 8) {
+                                        Image(systemName: iconForRestriction(option))
+                                            .font(.system(size: 20))
+                                            .bold()
+                                        Text(option)
+                                            .multilineTextAlignment(.center)
+                                            .bold()
+                                            .font(.caption)
+                                    }
+                                    .frame(width: 70, height: 80)
+                                    .background(
+                                        RoundedRectangle(cornerRadius: 15)
+                                            .fill(restriction == option ? Color.accentColor : Color.secondary.opacity(0.2))
+                                    )
+                                    .foregroundColor(restriction == option ? .white : .primary)
+                                    .overlay(
+                                        RoundedRectangle(cornerRadius: 15)
+                                            .stroke(restriction == option ? Color.accentColor : Color.clear, lineWidth: 3)
+                                    )
+                                }
+                                .padding(3)
+                            }
+                        }
+                        //                        .padding(.horizontal)
                     }
                 }
             }
+        }
+    }
+    
+    private func iconForRestriction(_ restriction: String) -> String {
+        switch restriction {
+        case "Keine":
+            return "xmark.circle"
+        case "Schnabelbecher":
+            return "cup.and.heat.waves"
+        case "Schmieren":
+            return "hand.raised.fill"
+        case "SB & Schmieren":
+            return "takeoutbag.and.cup.and.straw"
+        default:
+            return "questionmark.circle"
         }
     }
     
@@ -377,20 +415,20 @@ struct OrderFormView: View {
     
     private func updateDrinkAndFruitCount(for option: String, in category: String, patientNumber: Int, increment: Bool) {
         switch category {
-            case "tea":
-                var counts = settings.teaQuantities[patientNumber] ?? [:]
-                updateCount(in: &counts, for: option, increment: increment)
-                settings.teaQuantities[patientNumber] = counts
-            case "coffee":
-                var counts = settings.coffeeQuantities[patientNumber] ?? [:]
-                updateCount(in: &counts, for: option, increment: increment)
-                settings.coffeeQuantities[patientNumber] = counts
-            case "fruit":
-                var counts = settings.fruitQuantities[patientNumber] ?? [:]
-                updateCount(in: &counts, for: option, increment: increment)
-                settings.fruitQuantities[patientNumber] = counts
-            default:
-                break
+        case "tea":
+            var counts = settings.teaQuantities[patientNumber] ?? [:]
+            updateCount(in: &counts, for: option, increment: increment)
+            settings.teaQuantities[patientNumber] = counts
+        case "coffee":
+            var counts = settings.coffeeQuantities[patientNumber] ?? [:]
+            updateCount(in: &counts, for: option, increment: increment)
+            settings.coffeeQuantities[patientNumber] = counts
+        case "fruit":
+            var counts = settings.fruitQuantities[patientNumber] ?? [:]
+            updateCount(in: &counts, for: option, increment: increment)
+            settings.fruitQuantities[patientNumber] = counts
+        default:
+            break
         }
         settings.saveSelections()
         triggerHapticFeedback(.light)
@@ -429,7 +467,7 @@ struct OrderFormView: View {
         let counts = settings.extrasCounts[patientNumber] ?? [:]
         let extraText = settings.extras[patientNumber] ?? ""
         let filteredOptions = settings.toggleSummary ? filterOptions(options: sortedOptions, counts: counts) : sortedOptions
-                
+        
         if !settings.toggleSummary || !filteredOptions.isEmpty || !extraText.isEmpty {
             Section(header: Text("Extras").fontWeight(.semibold)) {
                 ForEach(filteredOptions, id: \.0) { option, _ in
@@ -461,7 +499,21 @@ struct OrderFormView: View {
                     .foregroundColor(.white)
                     .frame(maxWidth: .infinity)
                     .padding(.vertical, 25)
-                    .background(settings.toggleSummary ? Color.red : Color.accentColor)
+                    .background(Color.red)
+                    .contentShape(Rectangle())
+                    .cornerRadius(12)
+            })
+        } else {
+            Button(action: {
+                settings.toggleSummary.toggle()
+                triggerHapticFeedback(.light)
+            }, label: {
+                Text("Klicke um die Bestellübersicht einzublenden")
+                    .fontWeight(.bold)
+                    .foregroundColor(.white)
+                    .frame(maxWidth: .infinity)
+                    .padding(.vertical, 25)
+                    .background(Color.green)
                     .contentShape(Rectangle())
                     .cornerRadius(12)
             })
