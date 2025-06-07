@@ -220,13 +220,14 @@ struct OrderFormView: View {
             }) {
                 Text("\(option) (\(count))")
                     .fontWeight(count >= 1 ? .semibold : .regular)
-                    .foregroundColor(count >= 1 ? .accentColor : .primary)
+//                    .foregroundColor(count >= 1 ? .accentColor : .primary)
             }
             .padding(.vertical, 2)
             .background(
-                RoundedRectangle(cornerRadius: 12)
-                    .fill(count >= 1 ? Color.gray.opacity(0.5) : Color.clear)
+                RoundedRectangle(cornerRadius: 10)
+                    .fill(count >= 1 ? Color.accentColor.opacity(0.3) : Color.clear)
                     .padding(.horizontal, -8)
+                    .padding(.trailing, 6)
 
             )
         }
