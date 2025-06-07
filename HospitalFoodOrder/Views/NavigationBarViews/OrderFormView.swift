@@ -494,7 +494,7 @@ struct OrderFormView: View {
                 settings.toggleSummary.toggle()
                 triggerHapticFeedback(.light)
             }, label: {
-                Text("Klicke um die Bestellübersicht auszublenden")
+                Text("Bestellübersicht ausblenden")
                     .fontWeight(.bold)
                     .foregroundColor(.white)
                     .frame(maxWidth: .infinity)
@@ -508,7 +508,7 @@ struct OrderFormView: View {
                 settings.toggleSummary.toggle()
                 triggerHapticFeedback(.light)
             }, label: {
-                Text("Klicke um die Bestellübersicht einzublenden")
+                Text("Bestellübersicht einblenden")
                     .fontWeight(.bold)
                     .foregroundColor(.white)
                     .frame(maxWidth: .infinity)

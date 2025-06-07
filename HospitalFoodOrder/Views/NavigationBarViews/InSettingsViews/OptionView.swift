@@ -56,6 +56,7 @@ struct OptionView: View {
                         ))
                         .onSubmit {
                             addNewOption(to: category.key)
+//                            ToastManager.shared.showSuccess("Eine Option wurde in \(category.name) hinzugefügt!")
                         }
                         Button(action: {
                             addNewOption(to: category.key)
@@ -84,6 +85,7 @@ struct OptionView: View {
         .alert(isPresented: $isResetConfirmationPresented) {
             resetConfirmationAlert
         }
+        .withToasts()
         .environment(\.editMode, .constant(.active))
     }
     
@@ -179,6 +181,8 @@ struct OptionView: View {
             newOptions[category] = ""
             settings.saveOptionCategories()
             settings.saveOptionOrder()
+            
+            ToastManager.shared.showSuccess("\(newOption) wurde erfolgreich hinzugefügt!")
         }
     }
     
@@ -193,6 +197,7 @@ struct OptionView: View {
                 settings.optionCategories[category]?.removeValue(forKey: optionToRemove)
                 settings.optionOrder[category]?.remove(at: index)
             }
+            ToastManager.shared.showWarning("\(optionToRemove) wurde entfernt!")
         }
         settings.saveOptionCategories()
         settings.saveOptionOrder()
@@ -206,6 +211,8 @@ struct OptionView: View {
                 settings.optionCategories[newOptionCategory] = [:]
             }
             newOptionCategory = ""
+            
+            ToastManager.shared.showSuccess("\(newOptionCategory) wurde erfolgreich hinzugefügt!")
         }
     }
     
@@ -242,6 +249,7 @@ struct OptionView: View {
                 "extras": ["Zucker": 0, "Süßstoff": 0, "Milch": 0, "Salz": 0, "Pfeffer": 0, "Zitrone": 0, "Gewürzgurke": 0, "Salatgurke": 0, "Tomate": 0, "Suppe": 0, "Gemüse": 0]
             ]
         }
+        ToastManager.shared.showWarning("Alle Optionen wurden zurückgesetzt!!!", details: "Die neuen Optionen sind nun \(settings.optionCategories)")
     }
 }
 
