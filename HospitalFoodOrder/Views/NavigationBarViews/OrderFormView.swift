@@ -226,8 +226,8 @@ struct OrderFormView: View {
             .background(
                 RoundedRectangle(cornerRadius: 10)
                     .fill(count >= 1 ? Color.accentColor.opacity(0.3) : Color.clear)
-                    .padding(.horizontal, -8)
-                    .padding(.trailing, 6)
+                    .padding(.leading, -12)
+                    .padding(.trailing, -2)
 
             )
         }
