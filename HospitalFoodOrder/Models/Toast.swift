@@ -248,8 +248,13 @@ struct ToastView: View {
                         toastManager.toggleExpanded(toast.id)
                     }) {
                         Image(systemName: isExpanded ? "chevron.up" : "chevron.down")
-                            .font(.caption)
+                            .font(.headline)
                             .foregroundColor(.secondary)
+                            .frame(width: 30, height: 30)
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 4)
+                                    .stroke(toast.type.color.opacity(0.3), lineWidth: isExpanded ? 2 : 1)
+                            )
                     }
                     .buttonStyle(PlainButtonStyle())
                 }
@@ -257,8 +262,13 @@ struct ToastView: View {
                 // Close Button
                 Button(action: onDismiss) {
                     Image(systemName: "xmark")
-                        .font(.caption)
+                        .font(.headline)
                         .foregroundColor(.secondary)
+                        .frame(width: 30, height: 30)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 4)
+                                .stroke(Color.red.opacity(0.3), lineWidth: isExpanded ? 2 : 1)
+                        )
                 }
                 .buttonStyle(PlainButtonStyle())
             }

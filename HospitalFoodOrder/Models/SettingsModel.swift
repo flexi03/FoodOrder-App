@@ -273,6 +273,9 @@ public class Settings: ObservableObject {
         extras[patientNumber] = nil
         
         saveSelections()
+        
+        // Benachrichtigung als Bestätigung
+        ToastManager.shared.showSuccess("Die Bestellung für Patient \(patientNumber) wurde zurückgesetzt!", details: "Du hast gerade die Bestellung für Patient \(patientNumber) zurückgesetzt. Mach mit der Information, was du willst.")
     }
     
     func resetAllSelections() {
@@ -290,7 +293,8 @@ public class Settings: ObservableObject {
         
         saveSelections()
         
-        ToastManager.shared.showSuccess("Alle Bestellungen wurden zurückgesetzt!")
+        // Benachrichtigung als Bestätigung
+        ToastManager.shared.showSuccess("Alle Bestellungen wurden zurückgesetzt!", details: "Du hast gerade alle Bestellungen zurückgesetzt. Mach mit der Information, was du willst.")
 
     }
     
