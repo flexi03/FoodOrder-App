@@ -632,7 +632,7 @@ struct iPadPatientCountPickerView: View {
     @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             Form {
                 Picker("Anzahl der Patienten", selection: $numberOfPatients) {
                     ForEach(1...100, id: \.self) { number in

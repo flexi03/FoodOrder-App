@@ -72,7 +72,7 @@ struct iPhoneContentView: View {
                 .accessibilityHint("Tippen Sie hier, um Essensbestellungen aufzunehmen")
             
             // Working Time Tab
-            NavigationView {
+            NavigationStack {
                 WorkingTimeView()
             }
             .tabItem {
@@ -84,7 +84,7 @@ struct iPhoneContentView: View {
                 .accessibilityHint("Tippen Sie hier, um Ihre Arbeitszeiten zu erfassen und zu verwalten")
             
             // Settings Tab
-            NavigationView {
+            NavigationStack {
                 SettingsView(colorScheme: colorScheme, settings: settings)
             }
             .tabItem {
@@ -95,7 +95,7 @@ struct iPhoneContentView: View {
                 .accessibilityLabel("Einstellungen")
                 .accessibilityHint("Tippen Sie hier, um App-Einstellungen anzupassen")
         }
-        .navigationViewStyle(StackNavigationViewStyle())
+//        .navigationViewStyle(StackNavigationViewStyle())
         .preferredColorScheme(getColorScheme())
         .safeAreaInset(edge: .bottom) {
             if settings.NewTabBarSelection {

@@ -37,15 +37,14 @@ struct DeveloperSettingsView: View {
 }
 
 #Preview {
-    NavigationView {
+    NavigationStack {
         DeveloperSettingsView()
     }
-    .navigationViewStyle(.stack)
 }
 
 #Preview {
-    NavigationView {
+    NavigationStack {
         SettingsView(colorScheme: ColorSchemeModel(), settings: Settings())
     }
-    .navigationViewStyle(.stack)
+//    .navigationViewStyle(.stack)
 }

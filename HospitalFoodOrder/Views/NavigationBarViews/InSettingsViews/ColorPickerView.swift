@@ -11,7 +11,7 @@ struct ContentView2: View {
     @State private var accentColor: Color = Color("AccentColor")
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             VStack {
                 Text("Hello, World!")
                     .padding()

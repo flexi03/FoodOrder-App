@@ -20,7 +20,7 @@ struct iPadContentView: View {
     
     // MARK: - Body
     var body: some View {
-        NavigationView {
+        NavigationStack {
             // Order Form Tab
             ZStack {
                 OrderFormViewIPad(settings: settings, patientSelection: patientSelectionManager())
@@ -39,7 +39,7 @@ struct iPadContentView: View {
             }
             .preferredColorScheme(getColorScheme())
         }
-        .navigationViewStyle(.stack)
+//        .navigationViewStyle(.stack)
     }
     
     // MARK: - Helper Functions
