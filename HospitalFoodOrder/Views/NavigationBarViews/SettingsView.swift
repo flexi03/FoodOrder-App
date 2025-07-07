@@ -21,13 +21,15 @@ struct SettingsView: View {
                 .pickerStyle(.segmented)
             }
             
-            Section(header: Text("Aussehen 2")) {
-                Toggle(isOn: $settings.NewTabBarSelection) {
-                    Text("Neue TabBar")
-                }
-                if settings.NewTabBarSelection {
-                    Toggle(isOn: $settings.RainbowMode) {
-                        Text("Rainbow Mode")
+            if UIDevice.current.userInterfaceIdiom == .phone || settings.layoutMode == .forceiPhone {
+                Section(header: Text("Aussehen TabBar")) {
+                    Toggle(isOn: $settings.NewTabBarSelection) {
+                        Text("Neue TabBar")
+                    }
+                    if settings.NewTabBarSelection {
+                        Toggle(isOn: $settings.RainbowMode) {
+                            Text("Rainbow Mode")
+                        }
                     }
                 }
             }
