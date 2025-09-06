@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DC2974F22E1D6B5B00B75C22 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC2974F12E1D6B5B00B75C22 /* StoreKit.framework */; };
 		DC2ABDEE2AB50E3F00778F10 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2ABDED2AB50E3F00778F10 /* ContentView.swift */; };
 		DC2ABDF02AB50E4400778F10 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DC2ABDEF2AB50E4400778F10 /* Assets.xcassets */; };
 		DC2D04AE2B33DF0C009E8EAA /* Tabs.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2D04AB2B33DF0C009E8EAA /* Tabs.swift */; };
@@ -45,6 +46,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		DC2974F12E1D6B5B00B75C22 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		DC2ABDE82AB50E3F00778F10 /* HospitalFoodOrder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HospitalFoodOrder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC2ABDED2AB50E3F00778F10 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		DC2ABDEF2AB50E4400778F10 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -78,6 +80,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DC2974F22E1D6B5B00B75C22 /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -115,6 +118,7 @@
 		DC3DF3382AF18B5000A0856D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				DC2974F12E1D6B5B00B75C22 /* StoreKit.framework */,
 				DC3DF3392AF18B5000A0856D /* WidgetKit.framework */,
 				DC3DF33B2AF18B5000A0856D /* SwiftUI.framework */,
 			);
@@ -201,7 +205,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1500;
-				LastUpgradeCheck = 1600;
+				LastUpgradeCheck = 2600;
 				TargetAttributes = {
 					DC2ABDE72AB50E3F00778F10 = {
 						CreatedOnToolsVersion = 15.0;
@@ -217,6 +221,8 @@
 				de,
 			);
 			mainGroup = DC2ABDDF2AB50E3F00778F10;
+			packageReferences = (
+			);
 			productRefGroup = DC2ABDE92AB50E3F00778F10 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -304,6 +310,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 6728DRMDL9;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -327,6 +334,7 @@
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -367,6 +375,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 6728DRMDL9;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -383,6 +392,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -400,7 +410,6 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"HospitalFoodOrder/Preview Content\"";
-				DEVELOPMENT_TEAM = 6728DRMDL9;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = HospitalFoodOrder/Info.plist;
@@ -417,7 +426,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.1.0;
+				MARKETING_VERSION = 2.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = PrivatFelix.HospitalFoodOrder;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -444,7 +453,6 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"HospitalFoodOrder/Preview Content\"";
-				DEVELOPMENT_TEAM = 6728DRMDL9;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = HospitalFoodOrder/Info.plist;
@@ -461,7 +469,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.1.0;
+				MARKETING_VERSION = 2.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = PrivatFelix.HospitalFoodOrder;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

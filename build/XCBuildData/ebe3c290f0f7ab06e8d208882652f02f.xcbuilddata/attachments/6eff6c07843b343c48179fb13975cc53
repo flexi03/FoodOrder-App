@@ -1,0 +1,229 @@
+{
+  "" : {
+    "diagnostics" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/HospitalFoodOrder-master.dia",
+    "emit-module-dependencies" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/HospitalFoodOrder-master-emit-module.d",
+    "emit-module-diagnostics" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/HospitalFoodOrder-master-emit-module.dia",
+    "pch" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/HospitalFoodOrder-master-Bridging-header.pch",
+    "swift-dependencies" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/HospitalFoodOrder-master.swiftdeps"
+  },
+  "/Users/felix/Xcode/HospitalFoodOrder2/HospitalFoodOrder/Models/AnimatedColorWheelOverlay.swift" : {
+    "const-values" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/AnimatedColorWheelOverlay.swiftconstvalues",
+    "dependencies" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/AnimatedColorWheelOverlay.d",
+    "diagnostics" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/AnimatedColorWheelOverlay.dia",
+    "index-unit-output-path" : "/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/AnimatedColorWheelOverlay.o",
+    "llvm-bc" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/AnimatedColorWheelOverlay.bc",
+    "object" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/AnimatedColorWheelOverlay.o",
+    "swift-dependencies" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/AnimatedColorWheelOverlay.swiftdeps",
+    "swiftmodule" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/AnimatedColorWheelOverlay~partial.swiftmodule"
+  },
+  "/Users/felix/Xcode/HospitalFoodOrder2/HospitalFoodOrder/Models/CustomTabBar2.swift" : {
+    "const-values" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/CustomTabBar2.swiftconstvalues",
+    "dependencies" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/CustomTabBar2.d",
+    "diagnostics" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/CustomTabBar2.dia",
+    "index-unit-output-path" : "/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/CustomTabBar2.o",
+    "llvm-bc" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/CustomTabBar2.bc",
+    "object" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/CustomTabBar2.o",
+    "swift-dependencies" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/CustomTabBar2.swiftdeps",
+    "swiftmodule" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/CustomTabBar2~partial.swiftmodule"
+  },
+  "/Users/felix/Xcode/HospitalFoodOrder2/HospitalFoodOrder/Models/SettingsModel.swift" : {
+    "const-values" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/SettingsModel.swiftconstvalues",
+    "dependencies" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/SettingsModel.d",
+    "diagnostics" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/SettingsModel.dia",
+    "index-unit-output-path" : "/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/SettingsModel.o",
+    "llvm-bc" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/SettingsModel.bc",
+    "object" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/SettingsModel.o",
+    "swift-dependencies" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/SettingsModel.swiftdeps",
+    "swiftmodule" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/SettingsModel~partial.swiftmodule"
+  },
+  "/Users/felix/Xcode/HospitalFoodOrder2/HospitalFoodOrder/Models/SplashViewModel.swift" : {
+    "const-values" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/SplashViewModel.swiftconstvalues",
+    "dependencies" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/SplashViewModel.d",
+    "diagnostics" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/SplashViewModel.dia",
+    "index-unit-output-path" : "/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/SplashViewModel.o",
+    "llvm-bc" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/SplashViewModel.bc",
+    "object" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/SplashViewModel.o",
+    "swift-dependencies" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/SplashViewModel.swiftdeps",
+    "swiftmodule" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/SplashViewModel~partial.swiftmodule"
+  },
+  "/Users/felix/Xcode/HospitalFoodOrder2/HospitalFoodOrder/Models/Tabs.swift" : {
+    "const-values" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/Tabs.swiftconstvalues",
+    "dependencies" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/Tabs.d",
+    "diagnostics" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/Tabs.dia",
+    "index-unit-output-path" : "/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/Tabs.o",
+    "llvm-bc" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/Tabs.bc",
+    "object" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/Tabs.o",
+    "swift-dependencies" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/Tabs.swiftdeps",
+    "swiftmodule" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/Tabs~partial.swiftmodule"
+  },
+  "/Users/felix/Xcode/HospitalFoodOrder2/HospitalFoodOrder/Models/Toast.swift" : {
+    "const-values" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/Toast.swiftconstvalues",
+    "dependencies" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/Toast.d",
+    "diagnostics" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/Toast.dia",
+    "index-unit-output-path" : "/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/Toast.o",
+    "llvm-bc" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/Toast.bc",
+    "object" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/Toast.o",
+    "swift-dependencies" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/Toast.swiftdeps",
+    "swiftmodule" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/Toast~partial.swiftmodule"
+  },
+  "/Users/felix/Xcode/HospitalFoodOrder2/HospitalFoodOrder/Views/ContentView.swift" : {
+    "const-values" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/ContentView.swiftconstvalues",
+    "dependencies" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/ContentView.d",
+    "diagnostics" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/ContentView.dia",
+    "index-unit-output-path" : "/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/ContentView.o",
+    "llvm-bc" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/ContentView.bc",
+    "object" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/ContentView.o",
+    "swift-dependencies" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/ContentView.swiftdeps",
+    "swiftmodule" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/ContentView~partial.swiftmodule"
+  },
+  "/Users/felix/Xcode/HospitalFoodOrder2/HospitalFoodOrder/Views/InfoView.swift" : {
+    "const-values" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/InfoView.swiftconstvalues",
+    "dependencies" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/InfoView.d",
+    "diagnostics" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/InfoView.dia",
+    "index-unit-output-path" : "/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/InfoView.o",
+    "llvm-bc" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/InfoView.bc",
+    "object" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/InfoView.o",
+    "swift-dependencies" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/InfoView.swiftdeps",
+    "swiftmodule" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/InfoView~partial.swiftmodule"
+  },
+  "/Users/felix/Xcode/HospitalFoodOrder2/HospitalFoodOrder/Views/NavigationBarViews/InSettingsViews/ColorPickerView.swift" : {
+    "const-values" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/ColorPickerView.swiftconstvalues",
+    "dependencies" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/ColorPickerView.d",
+    "diagnostics" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/ColorPickerView.dia",
+    "index-unit-output-path" : "/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/ColorPickerView.o",
+    "llvm-bc" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/ColorPickerView.bc",
+    "object" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/ColorPickerView.o",
+    "swift-dependencies" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/ColorPickerView.swiftdeps",
+    "swiftmodule" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/ColorPickerView~partial.swiftmodule"
+  },
+  "/Users/felix/Xcode/HospitalFoodOrder2/HospitalFoodOrder/Views/NavigationBarViews/InSettingsViews/DeveloperSettingsView.swift" : {
+    "const-values" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/DeveloperSettingsView.swiftconstvalues",
+    "dependencies" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/DeveloperSettingsView.d",
+    "diagnostics" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/DeveloperSettingsView.dia",
+    "index-unit-output-path" : "/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/DeveloperSettingsView.o",
+    "llvm-bc" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/DeveloperSettingsView.bc",
+    "object" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/DeveloperSettingsView.o",
+    "swift-dependencies" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/DeveloperSettingsView.swiftdeps",
+    "swiftmodule" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/DeveloperSettingsView~partial.swiftmodule"
+  },
+  "/Users/felix/Xcode/HospitalFoodOrder2/HospitalFoodOrder/Views/NavigationBarViews/InSettingsViews/Feedback.swift" : {
+    "const-values" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/Feedback.swiftconstvalues",
+    "dependencies" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/Feedback.d",
+    "diagnostics" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/Feedback.dia",
+    "index-unit-output-path" : "/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/Feedback.o",
+    "llvm-bc" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/Feedback.bc",
+    "object" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/Feedback.o",
+    "swift-dependencies" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/Feedback.swiftdeps",
+    "swiftmodule" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/Feedback~partial.swiftmodule"
+  },
+  "/Users/felix/Xcode/HospitalFoodOrder2/HospitalFoodOrder/Views/NavigationBarViews/InSettingsViews/LayoutSettingsSection.swift" : {
+    "const-values" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/LayoutSettingsSection.swiftconstvalues",
+    "dependencies" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/LayoutSettingsSection.d",
+    "diagnostics" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/LayoutSettingsSection.dia",
+    "index-unit-output-path" : "/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/LayoutSettingsSection.o",
+    "llvm-bc" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/LayoutSettingsSection.bc",
+    "object" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/LayoutSettingsSection.o",
+    "swift-dependencies" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/LayoutSettingsSection.swiftdeps",
+    "swiftmodule" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/LayoutSettingsSection~partial.swiftmodule"
+  },
+  "/Users/felix/Xcode/HospitalFoodOrder2/HospitalFoodOrder/Views/NavigationBarViews/InSettingsViews/OptionView.swift" : {
+    "const-values" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/OptionView.swiftconstvalues",
+    "dependencies" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/OptionView.d",
+    "diagnostics" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/OptionView.dia",
+    "index-unit-output-path" : "/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/OptionView.o",
+    "llvm-bc" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/OptionView.bc",
+    "object" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/OptionView.o",
+    "swift-dependencies" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/OptionView.swiftdeps",
+    "swiftmodule" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/OptionView~partial.swiftmodule"
+  },
+  "/Users/felix/Xcode/HospitalFoodOrder2/HospitalFoodOrder/Views/NavigationBarViews/OrderFormView.swift" : {
+    "const-values" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/OrderFormView.swiftconstvalues",
+    "dependencies" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/OrderFormView.d",
+    "diagnostics" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/OrderFormView.dia",
+    "index-unit-output-path" : "/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/OrderFormView.o",
+    "llvm-bc" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/OrderFormView.bc",
+    "object" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/OrderFormView.o",
+    "swift-dependencies" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/OrderFormView.swiftdeps",
+    "swiftmodule" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/OrderFormView~partial.swiftmodule"
+  },
+  "/Users/felix/Xcode/HospitalFoodOrder2/HospitalFoodOrder/Views/NavigationBarViews/OrderFormViewIPad.swift" : {
+    "const-values" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/OrderFormViewIPad.swiftconstvalues",
+    "dependencies" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/OrderFormViewIPad.d",
+    "diagnostics" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/OrderFormViewIPad.dia",
+    "index-unit-output-path" : "/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/OrderFormViewIPad.o",
+    "llvm-bc" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/OrderFormViewIPad.bc",
+    "object" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/OrderFormViewIPad.o",
+    "swift-dependencies" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/OrderFormViewIPad.swiftdeps",
+    "swiftmodule" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/OrderFormViewIPad~partial.swiftmodule"
+  },
+  "/Users/felix/Xcode/HospitalFoodOrder2/HospitalFoodOrder/Views/NavigationBarViews/OrderFormView_old.swift" : {
+    "const-values" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/OrderFormView_old.swiftconstvalues",
+    "dependencies" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/OrderFormView_old.d",
+    "diagnostics" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/OrderFormView_old.dia",
+    "index-unit-output-path" : "/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/OrderFormView_old.o",
+    "llvm-bc" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/OrderFormView_old.bc",
+    "object" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/OrderFormView_old.o",
+    "swift-dependencies" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/OrderFormView_old.swiftdeps",
+    "swiftmodule" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/OrderFormView_old~partial.swiftmodule"
+  },
+  "/Users/felix/Xcode/HospitalFoodOrder2/HospitalFoodOrder/Views/NavigationBarViews/SettingsView.swift" : {
+    "const-values" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/SettingsView.swiftconstvalues",
+    "dependencies" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/SettingsView.d",
+    "diagnostics" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/SettingsView.dia",
+    "index-unit-output-path" : "/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/SettingsView.o",
+    "llvm-bc" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/SettingsView.bc",
+    "object" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/SettingsView.o",
+    "swift-dependencies" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/SettingsView.swiftdeps",
+    "swiftmodule" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/SettingsView~partial.swiftmodule"
+  },
+  "/Users/felix/Xcode/HospitalFoodOrder2/HospitalFoodOrder/Views/NavigationBarViews/WorkingDetailView.swift" : {
+    "const-values" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/WorkingDetailView.swiftconstvalues",
+    "dependencies" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/WorkingDetailView.d",
+    "diagnostics" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/WorkingDetailView.dia",
+    "index-unit-output-path" : "/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/WorkingDetailView.o",
+    "llvm-bc" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/WorkingDetailView.bc",
+    "object" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/WorkingDetailView.o",
+    "swift-dependencies" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/WorkingDetailView.swiftdeps",
+    "swiftmodule" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/WorkingDetailView~partial.swiftmodule"
+  },
+  "/Users/felix/Xcode/HospitalFoodOrder2/HospitalFoodOrder/Views/NavigationBarViews/WorkingTimeView.swift" : {
+    "const-values" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/WorkingTimeView.swiftconstvalues",
+    "dependencies" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/WorkingTimeView.d",
+    "diagnostics" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/WorkingTimeView.dia",
+    "index-unit-output-path" : "/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/WorkingTimeView.o",
+    "llvm-bc" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/WorkingTimeView.bc",
+    "object" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/WorkingTimeView.o",
+    "swift-dependencies" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/WorkingTimeView.swiftdeps",
+    "swiftmodule" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/WorkingTimeView~partial.swiftmodule"
+  },
+  "/Users/felix/Xcode/HospitalFoodOrder2/HospitalFoodOrder/Views/SplashView.swift" : {
+    "const-values" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/SplashView.swiftconstvalues",
+    "dependencies" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/SplashView.d",
+    "diagnostics" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/SplashView.dia",
+    "index-unit-output-path" : "/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/SplashView.o",
+    "llvm-bc" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/SplashView.bc",
+    "object" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/SplashView.o",
+    "swift-dependencies" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/SplashView.swiftdeps",
+    "swiftmodule" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/SplashView~partial.swiftmodule"
+  },
+  "/Users/felix/Xcode/HospitalFoodOrder2/HospitalFoodOrder/Views/iPadContentView.swift" : {
+    "const-values" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/iPadContentView.swiftconstvalues",
+    "dependencies" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/iPadContentView.d",
+    "diagnostics" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/iPadContentView.dia",
+    "index-unit-output-path" : "/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/iPadContentView.o",
+    "llvm-bc" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/iPadContentView.bc",
+    "object" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/iPadContentView.o",
+    "swift-dependencies" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/iPadContentView.swiftdeps",
+    "swiftmodule" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/iPadContentView~partial.swiftmodule"
+  },
+  "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/DerivedSources/GeneratedAssetSymbols.swift" : {
+    "const-values" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/GeneratedAssetSymbols.swiftconstvalues",
+    "dependencies" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/GeneratedAssetSymbols.d",
+    "diagnostics" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/GeneratedAssetSymbols.dia",
+    "index-unit-output-path" : "/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/GeneratedAssetSymbols.o",
+    "llvm-bc" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/GeneratedAssetSymbols.bc",
+    "object" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/GeneratedAssetSymbols.o",
+    "swift-dependencies" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/GeneratedAssetSymbols.swiftdeps",
+    "swiftmodule" : "/Users/felix/Xcode/HospitalFoodOrder2/build/HospitalFoodOrder.build/Debug-iphoneos/HospitalFoodOrder.build/Objects-normal/arm64/GeneratedAssetSymbols~partial.swiftmodule"
+  }
+}

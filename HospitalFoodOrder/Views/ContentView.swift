@@ -11,7 +11,7 @@ import SwiftUI
 /// Handles patient selection, settings, and working time tracking
 struct ContentView: View {
     // MARK: - Properties
-    @StateObject var settings = Settings()
+	@StateObject var settings = Settings()
     @State private var activeTab: Tab = .order
     @ObservedObject var colorScheme: ColorSchemeModel
     @Namespace private var animation
@@ -67,21 +67,21 @@ struct iPhoneContentView: View {
                     Label("Bestellung", systemImage: "cart.badge.plus")
                 }
                 .tag(Tab.order)
-                .toolbar(.hidden, for: .tabBar)
+				.toolbar(settings.NewTabBarSelection ? .hidden : .visible, for: .tabBar)
                 .accessibilityLabel("Bestellungen aufnehmen")
                 .accessibilityHint("Tippen Sie hier, um Essensbestellungen aufzunehmen")
             
-            // Working Time Tab
-            NavigationStack {
-                WorkingTimeView()
-            }
-            .tabItem {
-                Label("Arbeitszeit", systemImage: "clock.arrow.circlepath")
-            }
-            .tag(Tab.workingtime)
-            .toolbar(.hidden, for: .tabBar)
-                .accessibilityLabel("Arbeitszeit erfassen")
-                .accessibilityHint("Tippen Sie hier, um Ihre Arbeitszeiten zu erfassen und zu verwalten")
+//            // Working Time Tab
+//            NavigationStack {
+//                WorkingTimeView()
+//            }
+//            .tabItem {
+//                Label("Arbeitszeit", systemImage: "clock.arrow.circlepath")
+//            }
+//            .tag(Tab.workingtime)
+//			.toolbar(settings.NewTabBarSelection ? .hidden : .visible, for: .tabBar)
+//			.accessibilityLabel("Arbeitszeit erfassen")
+//                .accessibilityHint("Tippen Sie hier, um Ihre Arbeitszeiten zu erfassen und zu verwalten")
             
             // Settings Tab
             NavigationStack {
@@ -91,7 +91,7 @@ struct iPhoneContentView: View {
                 Label("Einstellungen", systemImage: "gear.badge")
             }
             .tag(Tab.settings)
-            .toolbar(.hidden, for: .tabBar)
+			.toolbar(settings.NewTabBarSelection ? .hidden : .visible, for: .tabBar)
                 .accessibilityLabel("Einstellungen")
                 .accessibilityHint("Tippen Sie hier, um App-Einstellungen anzupassen")
         }
@@ -105,7 +105,7 @@ struct iPhoneContentView: View {
                     settings: Settings()
                 )
             } else {
-                CustomTabBar()
+//                CustomTabBar()
             }
         }
         .tint(Color.accentColor)
@@ -187,6 +187,16 @@ struct OrderApp: App {
                 ContentView(colorScheme: ColorSchemeModel())
                     .environmentObject(settings)
                     .withToasts()
+//                    .presentPaywallIfNeeded(
+//                        requiredEntitlementIdentifier: "ofrnge907150907",
+//                        purchaseCompleted: { customerInfo in
+//                            print("Purchase completed: \(customerInfo.entitlements)")
+//                        },
+//                        restoreCompleted: { customerInfo in
+//                            // Paywall will be dismissed automatically if the entitlement is now active.
+//                            print("Purchases restored: \(customerInfo.entitlements)")
+//                        }
+//                    )
             }
         }
     }
@@ -205,23 +215,13 @@ func resetOptions() {
     
     // Define default food categories and options
     settings.optionCategories = [
-        "bread": [
-            "Weizen": 0,
-            "Grau": 0,
-            "Körner": 0,
-            "Brötchen Normal": 0,
-            "Brötchen Grau": 0,
-            "Brötchen Körner": 0
-        ],
-        "spreads": [
-            "Butter": 0,
-            "Margarine": 0,
-            "Käse": 0,
-            "Pute": 0,
-            "Fleischwurst": 0,
-            "Schinken": 0,
-            "Salami": 0
-        ],
-        // ... other categories
+		"bread": ["Weizen": 0, "Grau": 0, "Körner": 0, "Brötchen Normal": 0, "Brötchen Grau": 0, "Brötchen Körner": 0],
+		"spreads": ["Butter": 0, "Margarine": 0, "Käse": 0, "Pute": 0, "Fleischwurst": 0, "Schinken": 0, "Salami": 0],
+		"spreads2": ["Frischkäse Natur": 0, "Frischkäse Kräuter": 0, "Quark": 0, "Schmelzkäse": 0, "Schmelzkäse Pikant": 0, "Honig": 0, "Marmelade": 0, "Leberwurst": 0, "Schinkencreme": 0, "Vegetarischer Aufstrich Tomate": 0, "Vegetarischer Aufstrich Kräuter": 0, "Nuss-Nougat Creme": 0],
+		"specials": ["Frucht Joghurt": 0, "Natur Joghurt": 0, "Milchreis": 0, "Grieß": 0, "Brühe": 0, "Brühe vegetarisch": 0, "Brotaufstrich Hering" : 0, "Brotaufstrich Geflügel" : 0, "Brotaufstrich Eiersalat" : 0],
+		"tea": ["Pfefferminz": 0, "Früchte Tee": 0, "Fenchel": 0, "Schwarzer Tee": 0, "Kamille": 0, "Kräuter/ Grüner Tee": 0],
+		"coffee": ["Kaffee": 0, "Kaffee mit Milch": 0, "Kaffee mit Zucker": 0, "Kaffee mit Milch und Zucker": 0, "Kakao": 0],
+		"fruit": ["Apfel": 0, "Banane": 0, "Birne": 0],
+		"extras": ["Zucker": 0, "Süßstoff": 0, "Milch": 0, "Salz": 0, "Pfeffer": 0, "Zitrone": 0, "Suppe": 0, "Salatgurke": 0, "Gewürzgurke": 0, "Tomate": 0, "Gemüse": 0, "Salat" : 0]
     ]
 }

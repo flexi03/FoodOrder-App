@@ -1,0 +1,104 @@
+{
+  "appPolicies" : {
+    "eula" : "",
+    "policies" : [
+      {
+        "locale" : "en_US",
+        "policyText" : "",
+        "policyURL" : ""
+      }
+    ]
+  },
+  "identifier" : "D31E9FE7",
+  "nonRenewingSubscriptions" : [
+
+  ],
+  "products" : [
+    {
+      "displayPrice" : "89.99",
+      "familyShareable" : false,
+      "internalID" : "6748353199",
+      "localizations" : [
+        {
+          "description" : "Hiermit erhältst du FoodOrder lebenslänglich.",
+          "displayName" : "Lebenslang",
+          "locale" : "de"
+        },
+        {
+          "description" : "You'll get lifetime access to the app.",
+          "displayName" : "lifetime",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "PrivatFelix.HospitalFoodOrder.Lifetime",
+      "referenceName" : "Lifetime",
+      "type" : "NonConsumable"
+    }
+  ],
+  "settings" : {
+    "_applicationInternalID" : "6471869122",
+    "_developerTeamID" : "6728DRMDL9",
+    "_failTransactionsEnabled" : false,
+    "_lastSynchronizedDate" : 773683211.78090096,
+    "_locale" : "de",
+    "_storefront" : "DEU",
+    "_storeKitErrors" : [
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Load Products"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Purchase"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Verification"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "App Store Sync"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Subscription Status"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "App Transaction"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Manage Subscriptions Sheet"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Refund Request Sheet"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Offer Code Redeem Sheet"
+      }
+    ]
+  },
+  "subscriptionGroups" : [
+
+  ],
+  "subscriptionOffersKeyPair" : {
+    "id" : "B6B39F4A",
+    "privateKey" : "MIGTAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBHkwdwIBAQQgx12KJJn2l8DdDVlHgYn2o6oD06ClxwN/IGeGTXhWOLOgCgYIKoZIzj0DAQehRANCAASDbAQtRPhSWwxqfFvInqiYS9/cYMXuu/NzuJJ4FLAckirh2N2ptp1U06DsuvKBYVf7kjFeslcZQ35p0Ki3o+KL"
+  },
+  "version" : {
+    "major" : 4,
+    "minor" : 0
+  }
+}

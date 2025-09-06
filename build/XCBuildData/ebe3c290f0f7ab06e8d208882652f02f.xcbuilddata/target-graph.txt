@@ -1,0 +1,18 @@
+Target dependency graph (7 targets)
+Target 'HospitalFoodOrder' in project 'HospitalFoodOrder'
+➜ Explicit dependency on target 'RevenueCatUI' in project 'RevenueCat'
+➜ Explicit dependency on target 'RevenueCat' in project 'RevenueCat'
+Target 'RevenueCat' in project 'RevenueCat'
+➜ Explicit dependency on target 'RevenueCat' in project 'RevenueCat'
+➜ Explicit dependency on target 'RevenueCat_RevenueCat' in project 'RevenueCat'
+Target 'RevenueCatUI' in project 'RevenueCat'
+➜ Explicit dependency on target 'RevenueCatUI' in project 'RevenueCat'
+➜ Explicit dependency on target 'RevenueCat_RevenueCatUI' in project 'RevenueCat'
+➜ Explicit dependency on target 'RevenueCat' in project 'RevenueCat'
+Target 'RevenueCatUI' in project 'RevenueCat'
+➜ Explicit dependency on target 'RevenueCat_RevenueCatUI' in project 'RevenueCat'
+➜ Explicit dependency on target 'RevenueCat' in project 'RevenueCat'
+Target 'RevenueCat' in project 'RevenueCat'
+➜ Explicit dependency on target 'RevenueCat_RevenueCat' in project 'RevenueCat'
+Target 'RevenueCat_RevenueCat' in project 'RevenueCat' (no dependencies)
+Target 'RevenueCat_RevenueCatUI' in project 'RevenueCat' (no dependencies)

@@ -13,28 +13,68 @@ struct OrderFormView: View {
     @State private var isResetConfirmationPresented: Bool = false
     //@State private var isButtonPressed = false
     @State private var showingPatientCountPicker = false
+    @State private var restrictionRingRotation: Double = 0
+    @State private var isDeleteAllConfirmationPresented: Bool = false
     
     var body: some View {
+        let _ = Self._printChanges()
         VStack {
             HStack {
                 Text("Patient \(patientSelection.patientSelection) von \(settings.numberOfPatients)")
                     .font(.headline)
+                    .multilineTextAlignment(.leading)
+                    .frame(width: 160)
+                    .background {
+                        ZStack {
+                            // Animated color wheel, masked to rounded rect like the tab bar
+                            AnimatedColorWheelOverlay()
+                                .mask(
+                                    RoundedRectangle(cornerRadius: 30)
+                                        .frame(width: 160, height: 50)
+                                )
+                                .blur(radius: 10)
+                            // Add a subtle material over it to match the tab bar layering
+                            RoundedRectangle(cornerRadius: 30)
+                                .fill(.ultraThinMaterial)
+                                .frame(width: 160, height: 50)
+                                .blur(radius: 2)
+                        }
+                    }
                 Spacer()
                 Button(action: {
                     showingPatientCountPicker = true
                 }) {
-                    Image(systemName: "person.3")
-                    Text("Ändern")
+                    HStack {
+                        Image(systemName: "person.3")
+                        Text("Ändern")
+                    }
+                    .multilineTextAlignment(.leading)
+                    .frame(width: 160)
+                    .background {
+                        ZStack {
+                            AnimatedColorWheelOverlay()
+                                .mask(
+                                    RoundedRectangle(cornerRadius: 30)
+                                        .frame(width: 160, height: 50)
+                                )
+                                .blur(radius: 10)
+                            RoundedRectangle(cornerRadius: 30)
+                                .fill(.ultraThinMaterial)
+                                .frame(width: 160, height: 50)
+                                .blur(radius: 2)
+                        }
+                    }
                 }
             }
             .padding()
+            .padding(.horizontal, 4)
             
             HStack {
-                Spacer(minLength: 4)
+                Spacer(minLength: 1)
                 Image(systemName: "trash")
                     .background {
-                        RoundedRectangle(cornerRadius: 10).fill(Color.red)
-                            .frame(width: 100, height: 50)
+                        RoundedRectangle(cornerRadius: 30).fill(Color.red)
+                            .frame(width: 160, height: 50)
                             .blur(radius: 2)
                             .padding(.horizontal)
                             .onTapGesture {
@@ -42,33 +82,36 @@ struct OrderFormView: View {
                             }
                     }
                     .padding(.all)
+                    .actionSheet(isPresented: $isResetConfirmationPresented) {
+                        createResetActionSheet()
+                    }
                 
-                Spacer(minLength: 200)
+                Spacer(minLength: 145)
                 Image(systemName: "checkmark.circle")
                     .background {
-                        RoundedRectangle(cornerRadius: 10).fill(Color.green)
-                            .frame(width: 100, height: 50)
+                        RoundedRectangle(cornerRadius: 30).fill(Color.green)
+                            .frame(width: 160, height: 50)
                             .blur(radius: 2)
                             .padding(.horizontal)
                             .onTapGesture {
+                                // When toggling summary, ensure any pending delete confirmation is cleared
+                                isDeleteAllConfirmationPresented = false
                                 settings.toggleSummary.toggle()
                             }
                     }
                     .padding(.all)
                 
-                Spacer(minLength: 4)
+                Spacer(minLength: 1)
             }
-            //            if settings.showPatientTypePicker {
-            //                Picker("Patientenart", selection: $settings.isPrivatePatient) {
-            //                    Text("Normal").tag(false)
-            //                    Text("Privatpatient*in").tag(true)
-            //                }
-            //                .pickerStyle(SegmentedPickerStyle())
-            //                .padding()
-            //                //                patientTypeToggle
-            //                //                    .padding(.horizontal)
-            //                //                    .padding(.bottom)
-            //            }
+            .padding()
+            if settings.showPatientTypePicker {
+                Picker("Patientenart", selection: $settings.isPrivatePatient) {
+                    Text("Normal").tag(false)
+                    Text("Privatpatient*in").tag(true)
+                }
+                .pickerStyle(SegmentedPickerStyle())
+                .padding()
+            }
             
             TabView(selection: $patientSelection.patientSelection) {
                 ForEach(1...settings.numberOfPatients, id: \.self) { patientNumber in
@@ -88,25 +131,14 @@ struct OrderFormView: View {
         .sheet(isPresented: $showingPatientCountPicker) {
             PatientCountPickerView(numberOfPatients: $settings.numberOfPatients)
         }
+        .onAppear {
+            // drive continuous rotation
+            restrictionRingRotation = 0
+            withAnimation(.linear(duration: 2.0).repeatForever(autoreverses: false)) {
+                restrictionRingRotation = 360
+            }
+        }
     }
-    
-    //    private var patientTypeToggle: some View {
-    //        HStack {
-    //            Text("Normal")
-    //                .foregroundColor(settings.isPrivatePatient ? .secondary : .primary)
-    //
-    //            Toggle("", isOn: $settings.isPrivatePatient)
-    //                .labelsHidden()
-    //                .toggleStyle(SwitchToggleStyle(tint: .accentColor))
-    //
-    //            Text("Privatpatient*in")
-    //                .foregroundColor(settings.isPrivatePatient ? .primary : .secondary)
-    //        }
-    //        .padding()
-    //        .background(Color(.systemBackground))
-    //        .cornerRadius(10)
-    //        .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 2)
-    //    }
     
     @ViewBuilder
     private func patientView(for patientNumber: Int) -> some View {
@@ -114,7 +146,7 @@ struct OrderFormView: View {
             createRestrictionsSection(patientNumber: patientNumber)
             createSection(name: "Brot", category: "bread", patientNumber: patientNumber)
             if settings.isPrivatePatient {
-                createSection(name: "Vorbestellungen", category: "preorderd", patientNumber: patientNumber)
+                createSection(name: "Vorbestellungen", category: "preordered", patientNumber: patientNumber)
             }
             createSection(name: "Aufstrich", category: "spreads", patientNumber: patientNumber)
             createSection(name: "Aufstrich 2", category: "spreads2", patientNumber: patientNumber)
@@ -130,10 +162,7 @@ struct OrderFormView: View {
             }
             .frame(height: 240)
         }
-        .navigationBarItems(leading: orderSummaryButton(), trailing: resetButton())
-        .actionSheet(isPresented: $isResetConfirmationPresented) {
-            createResetActionSheet()
-        }
+        //        .navigationBarItems(leading: orderSummaryButton(), trailing: resetButton())
         .onChange(of: patientSelection.patientSelection) { _ in
             triggerHapticFeedback(.medium)
         }
@@ -167,12 +196,12 @@ struct OrderFormView: View {
                                         .foregroundColor(Color(.placeholderText))
                                         .padding(.horizontal, 4)
                                         .padding(.vertical, 8)
-                                        .allowsHitTesting(false) // Prevents text from being selected
+                                        .allowsHitTesting(false)
                                 }
                             },
                             alignment: .topLeading
                         )
-                        .autocorrectionDisabled(true) // Disables autocorrection
+                        .autocorrectionDisabled(true)
                         .toolbar {
                             ToolbarItemGroup(placement: .keyboard) {
                                 Spacer()
@@ -184,7 +213,6 @@ struct OrderFormView: View {
                                 }
                             }
                         }
-                        
                     }
                 }
             } else {
@@ -213,22 +241,28 @@ struct OrderFormView: View {
     @ViewBuilder
     func createStepper(for option: String, counts: [String: Int], category: String, patientNumber: Int) -> some View {
         let count = counts[option] ?? 0
-        Stepper(onIncrement: {
-            updateCount(for: option, in: category, patientNumber: patientNumber, increment: true)
-        }, onDecrement: {
-            updateCount(for: option, in: category, patientNumber: patientNumber, increment: false)
-        }) {
+        let minValue = 0
+        let maxValue = 10
+        
+        Stepper(
+            onIncrement: count < maxValue ? {
+                updateCount(for: option, in: category, patientNumber: patientNumber, increment: true)
+            } : nil,
+            onDecrement: count > minValue ? {
+                updateCount(for: option, in: category, patientNumber: patientNumber, increment: false)
+            } : nil
+        ) {
             Text("\(option) (\(count))")
                 .fontWeight(count >= 1 ? .semibold : .regular)
-            //                    .foregroundColor(count >= 1 ? .accentColor : .primary)
         }
         .padding(.vertical, 2)
         .background(
-            RoundedRectangle(cornerRadius: 10)
-                .fill(count >= 1 ? Color.accentColor.opacity(0.3) : Color.clear)
-                .padding(.leading, -12)
-                .padding(.trailing, -2)
-            
+            Group {
+                RoundedRectangle(cornerRadius: 20)
+                    .fill(count >= 1 ? Color.accentColor.opacity(0.3) : Color.clear)
+                    .padding(-10)
+                    .padding(.trailing, 1)
+            }
         )
     }
     
@@ -277,30 +311,59 @@ struct OrderFormView: View {
                                     settings.restrictions[patientNumber] = option
                                     triggerHapticFeedback(.light)
                                 }) {
-                                    VStack(spacing: 8) {
-                                        Image(systemName: iconForRestriction(option))
-                                            .font(.system(size: 20))
-                                            .bold()
-                                        Text(option)
-                                            .multilineTextAlignment(.center)
-                                            .bold()
-                                            .font(.caption)
+                                    if settings.toggleSummary {
+                                        VStack(spacing: 8) {
+                                            Image(systemName: iconForRestriction(option))
+                                                .font(.system(size: 20))
+                                                .bold()
+                                            Text(option == "Schnabelbecher" ? "Schnabel-becher" : option)
+                                                .multilineTextAlignment(.center)
+                                                .bold()
+                                                .font(.caption)
+                                        }
+                                        .frame(width: 70, height: 80)
+                                        .background(
+                                            RoundedRectangle(cornerRadius: 15)
+                                                .fill(restriction == option ? .red.opacity(0.25) : Color.secondary.opacity(0.2))
+                                        )
+                                        .foregroundColor(restriction == option ? .white : .white.opacity(0.2))
+                                        .overlay(
+                                            // Base red border (as before) only for selected & not "Keine"
+                                            RoundedRectangle(cornerRadius: 15)
+                                                .stroke(
+                                                    (restriction == option && option != "Keine") ? Color.red : Color.clear,
+                                                    lineWidth: 3
+                                                )
+                                        )
+                                    } else {
+                                        VStack(spacing: 8) {
+                                            Image(systemName: iconForRestriction(option))
+                                                .font(.system(size: 20))
+                                                .bold()
+                                            Text(option == "Schnabelbecher" ? "Schnabel-becher" : option)
+                                                .multilineTextAlignment(.center)
+                                                .bold()
+                                                .font(.caption)
+                                        }
+                                        .frame(width: 70, height: 80)
+                                        .background(
+                                            RoundedRectangle(cornerRadius: 15)
+                                                .fill(Color.secondary.opacity(0.2))
+                                        )
+                                        .foregroundColor(restriction == option ? .white : .primary)
+                                        .overlay(
+                                            // Keep the non-summary border behavior minimal (no spinning)
+                                            RoundedRectangle(cornerRadius: 15)
+                                                .stroke(
+                                                    (restriction == option) ? Color.accentColor : Color.clear,
+                                                    lineWidth: 3
+                                                )
+                                        )
                                     }
-                                    .frame(width: 70, height: 80)
-                                    .background(
-                                        RoundedRectangle(cornerRadius: 15)
-                                            .fill(restriction == option ? Color.accentColor : Color.secondary.opacity(0.2))
-                                    )
-                                    .foregroundColor(restriction == option ? .white : .primary)
-                                    .overlay(
-                                        RoundedRectangle(cornerRadius: 15)
-                                            .stroke(restriction == option ? Color.accentColor : Color.clear, lineWidth: 3)
-                                    )
                                 }
                                 .padding(3)
                             }
                         }
-                        //                        .padding(.horizontal)
                     }
                 }
             }
@@ -333,7 +396,7 @@ struct OrderFormView: View {
         let fruitQuantities = settings.fruitQuantities[patientNumber] ?? [:]
         
         if settings.toggleSummary && !teaQuantities.contains(where: { $0.value > 0 }) && !coffeeQuantities.contains(where: { $0.value > 0 }) && !fruitQuantities.contains(where: { $0.value > 0 }) {
-            // Wenn keine Getränke oder Obst ausgewählt sind und der Button gedrückt wurde, zeigen wir nichts an
+            // nothing in summary
         } else {
             Section(header: Text("Getränke und Obst")) {
                 createQuantitySelectionPicker(
@@ -386,26 +449,30 @@ struct OrderFormView: View {
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack {
                         ForEach(filteredOptions, id: \.0) { option, _ in
-                            if option != "Nichts" {
-                                VStack {
-                                    Text(option)
-                                    Stepper(
-                                        onIncrement: {
-                                            updateDrinkAndFruitCount(for: option, in: category, patientNumber: patientSelection.patientSelection, increment: true)
-                                        },
-                                        onDecrement: {
-                                            updateDrinkAndFruitCount(for: option, in: category, patientNumber: patientSelection.patientSelection, increment: false)
-                                        }
-                                    ) {
-                                        Text("\(quantities.wrappedValue[option, default: 0])")
-                                    }
+                            VStack {
+                                Text(option)
+                                    .bold(quantities.wrappedValue[option, default: 0] > 0 ? true : false)
+                                let count = quantities.wrappedValue[option, default: 0]
+                                let minValue = 0
+                                let maxValue = 10
+                                
+                                Stepper(
+                                    onIncrement: count < maxValue ? {
+                                        updateDrinkAndFruitCount(for: option, in: category, patientNumber: patientSelection.patientSelection, increment: true)
+                                    } : nil,
+                                    onDecrement: count > minValue ? {
+                                        updateDrinkAndFruitCount(for: option, in: category, patientNumber: patientSelection.patientSelection, increment: false)
+                                    } : nil
+                                ) {
+                                    Text("\(quantities.wrappedValue[option, default: 0])")
+                                        .bold(quantities.wrappedValue[option, default: 0] > 0 ? true : false)
                                 }
-                                .padding(.horizontal, 10)
-                                .padding(.vertical, 5)
-                                .background(quantities.wrappedValue[option, default: 0] > 0 ? Color.accentColor : Color.secondary.opacity(0.2))
-                                .foregroundColor(quantities.wrappedValue[option, default: 0] > 0 ? .white : .primary)
-                                .cornerRadius(15)
                             }
+                            .padding(.horizontal, 10)
+                            .padding(.vertical, 5)
+                            .background(quantities.wrappedValue[option, default: 0] > 0 ? Color.accentColor.opacity(0.3) : Color.secondary.opacity(0.2))
+                            .foregroundColor(.white)
+                            .cornerRadius(20)
                         }
                     }
                 }
@@ -490,21 +557,52 @@ struct OrderFormView: View {
     @ViewBuilder
     func toggleOrderSummaryButton() -> some View {
         if settings.toggleSummary {
-            Button(action: {
-                settings.toggleSummary.toggle()
-                triggerHapticFeedback(.light)
-            }, label: {
-                Text("Bestellübersicht ausblenden")
-                    .fontWeight(.bold)
-                    .foregroundColor(.white)
-                    .frame(maxWidth: .infinity)
-                    .padding(.vertical, 25)
-                    .background(Color.red)
-                    .contentShape(Rectangle())
-                    .cornerRadius(12)
-            })
+            HStack(spacing: 12) {
+                // "Alle löschen" with a scoped alert
+//                Button(action: {
+//                    isDeleteAllConfirmationPresented = true
+//                }, label: {
+//                    Text("Alle löschen")
+//                        .fontWeight(.bold)
+//                        .foregroundColor(.white)
+//                        .frame(maxWidth: .infinity)
+//                        .padding(.vertical, 25)
+//                        .background(Color.red)
+//                        .contentShape(Rectangle())
+//                        .cornerRadius(12)
+//                })
+//                .alert("Alle Bestellungen löschen?", isPresented: $isDeleteAllConfirmationPresented) {
+//                    Button("Abbrechen", role: .cancel) { }
+//                    Button("Löschen", role: .destructive) {
+//                        settings.resetAllSelections()
+//                        patientSelection.patientSelection = 1
+//                        settings.toggleSummary = false
+//                        triggerHapticFeedback(.heavy)
+//                    }
+//                } message: {
+//                    Text("Diese Aktion setzt alle Bestellungen zurück. Fortfahren?")
+//                }
+//                
+                Button(action: {
+                    // Hide summary and clear any pending alert
+                    isDeleteAllConfirmationPresented = false
+                    settings.toggleSummary = false
+                    triggerHapticFeedback(.light)
+                }, label: {
+                    Text("Übersicht aus")
+                        .fontWeight(.bold)
+                        .foregroundColor(.white)
+                        .frame(maxWidth: .infinity)
+                        .padding(.vertical, 25)
+                        .background(Color.orange)
+                        .contentShape(Rectangle())
+                        .cornerRadius(12)
+                })
+            }
         } else {
             Button(action: {
+                // Show summary and clear any pending alert state first
+                isDeleteAllConfirmationPresented = false
                 settings.toggleSummary.toggle()
                 triggerHapticFeedback(.light)
             }, label: {

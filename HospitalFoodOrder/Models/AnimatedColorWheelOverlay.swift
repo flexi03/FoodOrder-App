@@ -90,8 +90,8 @@ struct AnimatedColorWheelOverlay: View {
     }
 }
 
-//struct AnimatedColorWheelOverlay_Previews: PreviewProvider {
-//    static var previews: some View {
-//        AnimatedColorWheelOverlay()
-//    }
-//}
+struct AnimatedColorWheelOverlay_Previews: PreviewProvider {
+    static var previews: some View {
+        AnimatedColorWheelOverlay()
+    }
+}
