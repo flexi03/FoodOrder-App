@@ -70,8 +70,9 @@ struct OrderFormView: View {
             .padding(.horizontal, 4)
             
             HStack {
-                Spacer(minLength: 1)
+//                Spacer(minLength: 1)
                 Image(systemName: "trash")
+					.frame(width: 160)
                     .background {
                         RoundedRectangle(cornerRadius: 30).fill(Color.red)
                             .frame(width: 160, height: 50)
@@ -86,8 +87,9 @@ struct OrderFormView: View {
                         createResetActionSheet()
                     }
                 
-                Spacer(minLength: 145)
+                Spacer()
                 Image(systemName: "checkmark.circle")
+					.frame(width: 160)
                     .background {
                         RoundedRectangle(cornerRadius: 30).fill(Color.green)
                             .frame(width: 160, height: 50)
@@ -101,9 +103,12 @@ struct OrderFormView: View {
                     }
                     .padding(.all)
                 
-                Spacer(minLength: 1)
+//                Spacer(minLength: 1)
             }
-            .padding()
+			.padding()
+			.padding(.horizontal, 4)
+			
+			
             if settings.showPatientTypePicker {
                 Picker("Patientenart", selection: $settings.isPrivatePatient) {
                     Text("Normal").tag(false)
@@ -244,26 +249,48 @@ struct OrderFormView: View {
         let minValue = 0
         let maxValue = 10
         
-        Stepper(
-            onIncrement: count < maxValue ? {
-                updateCount(for: option, in: category, patientNumber: patientNumber, increment: true)
-            } : nil,
-            onDecrement: count > minValue ? {
-                updateCount(for: option, in: category, patientNumber: patientNumber, increment: false)
-            } : nil
-        ) {
-            Text("\(option) (\(count))")
-                .fontWeight(count >= 1 ? .semibold : .regular)
-        }
-        .padding(.vertical, 2)
-        .background(
-            Group {
-                RoundedRectangle(cornerRadius: 20)
-                    .fill(count >= 1 ? Color.accentColor.opacity(0.3) : Color.clear)
-                    .padding(-10)
-                    .padding(.trailing, 1)
+        // Compute radius in a non-view expression, then return a single View expression
+//        let radius: CGFloat = {
+//            if #available(iOS 26.0, *) {
+////                print("iOS 26.0")
+//                return 24
+//            } else {
+////                print("iOS not 26.0")
+//                return 11
+//            }
+//        }()
+        
+        Group {
+            Stepper(
+                onIncrement: count < maxValue ? {
+                    updateCount(for: option, in: category, patientNumber: patientNumber, increment: true)
+                } : nil,
+                onDecrement: count > minValue ? {
+                    updateCount(for: option, in: category, patientNumber: patientNumber, increment: false)
+                } : nil
+            ) {
+                Text("\(option) (\(count))")
+                    .fontWeight(count >= 1 ? .semibold : .regular)
             }
-        )
+            .padding(.vertical, 2)
+            .background(
+                Group {
+                    if #available(iOS 26.0, *) {
+                        RoundedRectangle(cornerRadius: 24)
+                            .fill(count >= 1 ? Color.accentColor.opacity(0.3) : Color.clear)
+                            // iOS 26+
+                            .padding(-10)
+                            .padding(.trailing, 1)
+                    } else {
+                        RoundedRectangle(cornerRadius: 11)
+                            .fill(count >= 1 ? Color.accentColor.opacity(0.3) : Color.clear)
+                            // iOS 18 and below
+                            .padding(.leading, -14)
+                            .padding(.trailing, -3)
+                    }
+                }
+            )
+        }
     }
     
     private func updateCount(for option: String, in category: String, patientNumber: Int, increment: Bool) {
@@ -510,23 +537,23 @@ struct OrderFormView: View {
         }
     }
     
-    @ViewBuilder
-    func createQuantitySummary(for quantities: [String: Int]) -> some View {
-        let selectedItems = quantities.filter { $0.value > 0 }
-        if !selectedItems.isEmpty {
-            VStack(alignment: .leading) {
-                Text("Zusammenfassung:")
-                    .font(.subheadline)
-                    .fontWeight(.semibold)
-                ForEach(selectedItems.sorted(by: { $0.key < $1.key }), id: \.key) { item, quantity in
-                    Text("\(item): \(quantity)")
-                        .font(.footnote)
-                }
-            }
-            .padding(.top, 5)
-            .padding(.bottom, 10)
-        }
-    }
+//    @ViewBuilder
+//    func createQuantitySummary(for quantities: [String: Int]) -> some View {
+//        let selectedItems = quantities.filter { $0.value > 0 }
+//        if !selectedItems.isEmpty {
+//            VStack(alignment: .leading) {
+//                Text("Zusammenfassung:")
+//                    .font(.subheadline)
+//                    .fontWeight(.semibold)
+//                ForEach(selectedItems.sorted(by: { $0.key < $1.key }), id: \.key) { item, quantity in
+//                    Text("\(item): \(quantity)")
+//                        .font(.footnote)
+//                }
+//            }
+//            .padding(.top, 5)
+//            .padding(.bottom, 10)
+//        }
+//    }
     
     @ViewBuilder
     func createExtrasSection(patientNumber: Int) -> some View {
@@ -558,31 +585,6 @@ struct OrderFormView: View {
     func toggleOrderSummaryButton() -> some View {
         if settings.toggleSummary {
             HStack(spacing: 12) {
-                // "Alle löschen" with a scoped alert
-//                Button(action: {
-//                    isDeleteAllConfirmationPresented = true
-//                }, label: {
-//                    Text("Alle löschen")
-//                        .fontWeight(.bold)
-//                        .foregroundColor(.white)
-//                        .frame(maxWidth: .infinity)
-//                        .padding(.vertical, 25)
-//                        .background(Color.red)
-//                        .contentShape(Rectangle())
-//                        .cornerRadius(12)
-//                })
-//                .alert("Alle Bestellungen löschen?", isPresented: $isDeleteAllConfirmationPresented) {
-//                    Button("Abbrechen", role: .cancel) { }
-//                    Button("Löschen", role: .destructive) {
-//                        settings.resetAllSelections()
-//                        patientSelection.patientSelection = 1
-//                        settings.toggleSummary = false
-//                        triggerHapticFeedback(.heavy)
-//                    }
-//                } message: {
-//                    Text("Diese Aktion setzt alle Bestellungen zurück. Fortfahren?")
-//                }
-//                
                 Button(action: {
                     // Hide summary and clear any pending alert
                     isDeleteAllConfirmationPresented = false

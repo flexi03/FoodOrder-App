@@ -10,15 +10,15 @@ import SwiftUI
 enum Tab: String, CaseIterable {
     
     case order = "Bestellung"
-    case workingtime = "Arbeitszeit"
+//    case workingtime = "Arbeitszeit"
     case settings = "Einstellungen"
     
     var systemImage: String {
         switch self {
             case .order:
                 return "cart.badge.plus"
-            case .workingtime:
-                return "clock.arrow.circlepath"
+//            case .workingtime:
+//                return "clock.arrow.circlepath"
             case .settings:
                 return "gear.badge"
         }
