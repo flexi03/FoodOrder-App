@@ -353,7 +353,7 @@ struct OrderFormView: View {
                                             RoundedRectangle(cornerRadius: 15)
                                                 .fill(restriction == option ? .red.opacity(0.25) : Color.secondary.opacity(0.2))
                                         )
-                                        .foregroundColor(restriction == option ? .white : .white.opacity(0.2))
+                                        .foregroundColor(restriction == option ? .primary : .primary.opacity(0.2))
                                         .overlay(
                                             // Base red border (as before) only for selected & not "Keine"
                                             RoundedRectangle(cornerRadius: 15)
@@ -377,7 +377,7 @@ struct OrderFormView: View {
                                             RoundedRectangle(cornerRadius: 15)
                                                 .fill(Color.secondary.opacity(0.2))
                                         )
-                                        .foregroundColor(restriction == option ? .white : .primary)
+										.foregroundColor(.primary)
                                         .overlay(
                                             // Keep the non-summary border behavior minimal (no spinning)
                                             RoundedRectangle(cornerRadius: 15)
@@ -736,5 +736,6 @@ struct PatientCountPickerView: View {
 struct OrderFormView2_Previews: PreviewProvider {
     static var previews: some View {
         OrderFormView(settings: Settings(), patientSelection: patientSelectionManager())
+			.preferredColorScheme(.dark)
     }
 }
