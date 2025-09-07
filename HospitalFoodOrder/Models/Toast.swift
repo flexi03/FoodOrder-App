@@ -252,7 +252,7 @@ struct ToastView: View {
                             .foregroundColor(.secondary)
                             .frame(width: 30, height: 30)
                             .overlay(
-                                RoundedRectangle(cornerRadius: 4)
+                                RoundedRectangle(cornerRadius: 8)
                                     .stroke(toast.type.color.opacity(0.3), lineWidth: isExpanded ? 2 : 1)
                             )
                     }
@@ -266,7 +266,7 @@ struct ToastView: View {
                         .foregroundColor(.secondary)
                         .frame(width: 30, height: 30)
                         .overlay(
-                            RoundedRectangle(cornerRadius: 4)
+                            RoundedRectangle(cornerRadius: 8)
                                 .stroke(Color.red.opacity(0.3), lineWidth: isExpanded ? 2 : 1)
                         )
                 }
@@ -309,12 +309,12 @@ struct ToastView: View {
             }
         }
         .background(
-            RoundedRectangle(cornerRadius: 12)
+            RoundedRectangle(cornerRadius: 24)
                 .fill(.regularMaterial)
                 .shadow(color: .black.opacity(0.1), radius: 8, x: 0, y: 4)
         )
         .overlay(
-            RoundedRectangle(cornerRadius: 12)
+            RoundedRectangle(cornerRadius: 24)
                 .stroke(toast.type.color.opacity(0.3), lineWidth: isExpanded ? 2 : 1)
         )
         .scaleEffect(isExpanded ? 1.0 : scaleForIndex)

@@ -124,7 +124,28 @@ public class Settings: ObservableObject {
         self.showRestrictions = UserDefaults.standard.bool(forKey: "showRestrictions") || true
         self.coffeeSelected = UserDefaults.standard.bool(forKey: "Kaffee") || true
         self.showPatientTypePicker = UserDefaults.standard.bool(forKey: "showPatientTypePicker") || false
-        self.NewTabBarSelection = UserDefaults.standard.bool(forKey: "NewTabBarSelection") || false
+        
+        // Determine default for NewTabBarSelection based on OS if no value stored yet.
+        if UserDefaults.standard.object(forKey: "NewTabBarSelection") == nil {
+            // Default logic:
+            // - true on iOS 18.x
+            // - false on iOS 26.0 or newer
+            // For versions between 19...25, we default to true (adjust if you need different behavior).
+            let defaultNewTabBarSelection: Bool = {
+                if #available(iOS 26.0, *) {
+                    return false
+                } else {
+                    // iOS 25 and below, including iOS 18
+					print("not iOS 26")
+                    return true
+                }
+            }()
+            self.NewTabBarSelection = defaultNewTabBarSelection
+            UserDefaults.standard.set(defaultNewTabBarSelection, forKey: "NewTabBarSelection")
+        } else {
+            self.NewTabBarSelection = UserDefaults.standard.bool(forKey: "NewTabBarSelection") || false
+        }
+        
         self.RainbowMode = UserDefaults.standard.bool(forKey: "RainbowMode") || true
         
         self.optionCategories = UserDefaults.standard.dictionary(forKey: "optionCategories") as? [String:[String:Int]] ?? [
@@ -383,3 +404,4 @@ extension Optional where Wrapped: Collection {
 public class ColorSchemeModel: ObservableObject {
     @AppStorage("selectedColorMode") var mode: String = "Dunkel"
 }
+

@@ -183,6 +183,7 @@ struct OrderApp: App {
             if isFirstLaunch {
                 SplashView(isFirstLaunch: $isFirstLaunch)
                     .withToasts()
+					.preferredColorScheme(.dark)
             } else {
                 ContentView(colorScheme: ColorSchemeModel())
                     .environmentObject(settings)
